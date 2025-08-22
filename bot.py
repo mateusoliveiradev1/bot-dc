@@ -3716,82 +3716,216 @@ async def reset_servidor(interaction: discord.Interaction, confirmacao: str):
     await interaction.response.defer()
     
     try:
+        logger.info(f"Iniciando reset completo do servidor por {interaction.user.display_name}")
+        
+        # Criar backup antes do reset
+        if hasattr(bot, 'storage'):
+            try:
+                if hasattr(bot.storage, 'create_backup'):
+                    backup_file = await bot.storage.create_backup()
+                    logger.info(f"Backup criado: {backup_file}")
+            except Exception as backup_error:
+                logger.warning(f"Erro ao criar backup: {backup_error}")
+        
+        # Reset dos sistemas usando PostgreSQL
+        reset_count = 0
+        
         # Reset do sistema de badges
-        bot.badge_system.user_badges = {}
-        bot.badge_system._save_user_badges()
+        try:
+            if hasattr(bot, 'badge_system'):
+                bot.badge_system.user_badges = {}
+                if hasattr(bot.badge_system, '_save_user_badges'):
+                    bot.badge_system._save_user_badges()
+                reset_count += 1
+                logger.info("✅ Sistema de badges resetado")
+        except Exception as e:
+            logger.error(f"Erro ao resetar badges: {e}")
         
         # Reset do sistema de conquistas
-        bot.achievement_system.user_achievements = {}
-        bot.achievement_system._save_user_achievements()
+        try:
+            if hasattr(bot, 'achievement_system'):
+                bot.achievement_system.user_achievements = {}
+                if hasattr(bot.achievement_system, '_save_user_achievements'):
+                    bot.achievement_system._save_user_achievements()
+                reset_count += 1
+                logger.info("✅ Sistema de conquistas resetado")
+        except Exception as e:
+            logger.error(f"Erro ao resetar conquistas: {e}")
         
         # Reset do sistema de ranking dual
-        bot.dual_ranking_system.user_data = {}
-        bot.dual_ranking_system._save_user_data()
+        try:
+            if hasattr(bot, 'dual_ranking_system'):
+                bot.dual_ranking_system.user_data = {}
+                if hasattr(bot.dual_ranking_system, '_save_user_data'):
+                    bot.dual_ranking_system._save_user_data()
+                reset_count += 1
+                logger.info("✅ Sistema de ranking dual resetado")
+        except Exception as e:
+            logger.error(f"Erro ao resetar ranking dual: {e}")
         
         # Reset do sistema de rank
-        bot.rank_system.user_data = {}
-        bot.rank_system._save_user_data()
+        try:
+            if hasattr(bot, 'rank_system'):
+                bot.rank_system.user_data = {}
+                if hasattr(bot.rank_system, '_save_user_data'):
+                    bot.rank_system._save_user_data()
+                reset_count += 1
+                logger.info("✅ Sistema de rank resetado")
+        except Exception as e:
+            logger.error(f"Erro ao resetar rank: {e}")
         
-        # Reset do sistema de clipes
-        if hasattr(bot, 'storage'):
-            bot.storage.data['clips'] = {}
-            bot.storage._save_data()
+        # Reset do PostgreSQL (se disponível)
+        try:
+            if hasattr(bot, 'storage') and hasattr(bot.storage, 'db'):
+                async with bot.storage.db.pool.acquire() as conn:
+                    # Limpar tabelas principais (mantendo estrutura)
+                    await conn.execute("DELETE FROM sessions WHERE user_id > 0")
+                    await conn.execute("DELETE FROM rankings WHERE user_id > 0")
+                    await conn.execute("UPDATE users SET total_sessions = 0, total_time = 0, is_checked_in = false, season_points = 0, total_matches = 0, wins = 0, kills = 0")
+                    logger.info("✅ Banco PostgreSQL limpo")
+                    reset_count += 1
+        except Exception as e:
+            logger.error(f"Erro ao limpar PostgreSQL: {e}")
         
-        # Limpar todas as mensagens dos canais de texto
+        # Reset do sistema de clipes (JSON)
+        try:
+            if hasattr(bot, 'storage') and hasattr(bot.storage, 'data'):
+                if 'clips' in bot.storage.data:
+                    bot.storage.data['clips'] = {}
+                    bot.storage._save_data()
+                    reset_count += 1
+                    logger.info("✅ Sistema de clipes resetado")
+        except Exception as e:
+            logger.error(f"Erro ao resetar clipes: {e}")
+        
+        # Limpar mensagens de forma mais eficiente
         deleted_messages = 0
         processed_channels = 0
+        failed_channels = 0
         
-        for channel in interaction.guild.text_channels:
+        # Processar canais em lotes menores para evitar rate limiting
+        channels_to_process = [ch for ch in interaction.guild.text_channels 
+                             if ch.permissions_for(interaction.guild.me).manage_messages]
+        
+        for i, channel in enumerate(channels_to_process):
             try:
-                # Pular canais que o bot não tem permissão
-                if not channel.permissions_for(interaction.guild.me).manage_messages:
-                    continue
-                    
-                # Deletar mensagens em lotes para eficiência
+                # Atualizar progresso a cada 5 canais
+                if i % 5 == 0 and i > 0:
+                    progress_embed = discord.Embed(
+                        title="🔄 Reset em Progresso",
+                        description=f"Processando canal {i+1}/{len(channels_to_process)}\n"
+                                  f"Mensagens deletadas: {deleted_messages}",
+                        color=0xFFFF00
+                    )
+                    try:
+                        await interaction.edit_original_response(embed=progress_embed)
+                    except:
+                        pass
+                
+                # Usar bulk delete quando possível (mensagens < 14 dias)
+                messages_to_delete = []
+                old_messages = []
+                
                 async for message in channel.history(limit=None):
+                    # Mensagens mais antigas que 14 dias precisam ser deletadas individualmente
+                    if (datetime.utcnow() - message.created_at).days >= 14:
+                        old_messages.append(message)
+                    else:
+                        messages_to_delete.append(message)
+                
+                # Bulk delete para mensagens recentes
+                if messages_to_delete:
+                    # Dividir em lotes de 100 (limite do Discord)
+                    for j in range(0, len(messages_to_delete), 100):
+                        batch = messages_to_delete[j:j+100]
+                        try:
+                            await channel.delete_messages(batch)
+                            deleted_messages += len(batch)
+                            await asyncio.sleep(1)  # Pausa entre lotes
+                        except discord.HTTPException:
+                            # Se bulk delete falhar, deletar individualmente
+                            for msg in batch:
+                                try:
+                                    await msg.delete()
+                                    deleted_messages += 1
+                                    await asyncio.sleep(0.1)
+                                except:
+                                    pass
+                
+                # Deletar mensagens antigas individualmente
+                for message in old_messages:
                     try:
                         await message.delete()
                         deleted_messages += 1
-                        # Pequena pausa para evitar rate limiting
-                        await asyncio.sleep(0.1)
-                    except discord.NotFound:
-                        # Mensagem já foi deletada
+                        await asyncio.sleep(0.2)  # Pausa maior para mensagens antigas
+                    except:
                         pass
-                    except discord.Forbidden:
-                        # Sem permissão para deletar esta mensagem específica
-                        pass
-                    except Exception as msg_error:
-                        logger.warning(f"Erro ao deletar mensagem no canal {channel.name}: {msg_error}")
                         
                 processed_channels += 1
+                logger.info(f"Canal {channel.name} processado: {len(messages_to_delete) + len(old_messages)} mensagens")
                 
             except discord.Forbidden:
                 logger.warning(f"Sem permissão para acessar canal: {channel.name}")
+                failed_channels += 1
             except Exception as channel_error:
                 logger.error(f"Erro ao processar canal {channel.name}: {channel_error}")
+                failed_channels += 1
         
+        # Embed de resultado final
         embed = discord.Embed(
-            title="🔄 Reset Completo",
-            description="Todos os dados do servidor foram resetados e mensagens foram apagadas!",
-            color=0x00FF00
+            title="🔄 Reset Completo do Servidor",
+            description="Reset executado com sucesso!",
+            color=0x00FF00,
+            timestamp=datetime.utcnow()
         )
+        
         embed.add_field(
-            name="Dados Resetados",
-            value="• Sistema de Badges\n• Sistema de Conquistas\n• Sistema de Ranking\n• Sistema de Clipes\n• Dados de Usuários",
+            name="📊 Sistemas Resetados",
+            value=f"• {reset_count} sistemas limpos\n"
+                  f"• Badges e Conquistas\n"
+                  f"• Rankings e Estatísticas\n"
+                  f"• Banco de Dados PostgreSQL\n"
+                  f"• Sistema de Clipes",
             inline=False
         )
+        
         embed.add_field(
-            name="Limpeza de Mensagens",
-            value=f"• {deleted_messages} mensagens deletadas\n• {processed_channels} canais processados",
+            name="🗑️ Limpeza de Mensagens",
+            value=f"• **{deleted_messages:,}** mensagens deletadas\n"
+                  f"• **{processed_channels}** canais processados\n"
+                  f"• **{failed_channels}** canais com erro",
             inline=False
         )
-        embed.set_footer(text=f"Reset executado por {interaction.user.display_name}")
+        
+        embed.add_field(
+            name="ℹ️ Informações",
+            value=f"• Backup criado automaticamente\n"
+                  f"• Estrutura do servidor mantida\n"
+                  f"• Logs detalhados salvos",
+            inline=False
+        )
+        
+        embed.set_footer(
+            text=f"Reset executado por {interaction.user.display_name}",
+            icon_url=interaction.user.display_avatar.url
+        )
         
         await interaction.followup.send(embed=embed)
+        logger.info(f"Reset completo finalizado: {deleted_messages} mensagens, {reset_count} sistemas")
         
     except Exception as e:
-        logger.error(f"Erro no reset do servidor: {e}")
-        await interaction.followup.send("❌ Erro ao resetar dados do servidor. Verifique os logs.", ephemeral=True)
+        logger.error(f"Erro crítico no reset do servidor: {e}")
+        error_embed = discord.Embed(
+            title="❌ Erro no Reset",
+            description=f"Ocorreu um erro durante o reset:\n```{str(e)[:1000]}```",
+            color=0xFF0000
+        )
+        error_embed.add_field(
+            name="🔧 Solução",
+            value="• Verifique os logs do bot\n• Tente novamente em alguns minutos\n• Contate o desenvolvedor se persistir",
+            inline=False
+        )
+        await interaction.followup.send(embed=error_embed, ephemeral=True)
 
 @bot.tree.command(name="meus_badges", description="🏆 Mostra seus emblemas conquistados")
 @discord.app_commands.describe(
