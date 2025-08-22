@@ -131,8 +131,8 @@ class HawkBot(commands.Bot):
             
             # Inicializar sistema keep alive para Render
             if os.getenv('RENDER'):
-                self.keep_alive = KeepAlive()
-                self.keep_alive.start()
+                self.keep_alive = KeepAlive(self)
+                await self.keep_alive.start()
                 logger.info("🔄 Sistema keep alive iniciado para Render")
             
             # Sincronizar comandos slash
@@ -196,7 +196,7 @@ class HawkBot(commands.Bot):
         """Método chamado quando o bot é desligado"""
         # Parar sistema keep alive se estiver rodando
         if hasattr(self, 'keep_alive') and self.keep_alive:
-            self.keep_alive.stop()
+            await self.keep_alive.stop()
             logger.info("🔄 Sistema keep alive parado")
         
         # Fechar conexão do storage
