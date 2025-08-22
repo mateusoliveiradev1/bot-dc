@@ -214,13 +214,17 @@ class HawkBot(commands.Bot):
         # Iniciar dashboard web em thread separada
         try:
             import threading
+            # Configurar host e porta para Render
+            host = '0.0.0.0' if os.getenv('RENDER') else 'localhost'
+            port = int(os.getenv('PORT', 5000))  # Render usa variável PORT
+            
             dashboard_thread = threading.Thread(
                 target=self.web_dashboard.run,
-                kwargs={'host': 'localhost', 'port': 5000, 'debug': False}
+                kwargs={'host': host, 'port': port, 'debug': False}
             )
             dashboard_thread.daemon = True
             dashboard_thread.start()
-            logger.info("Dashboard web iniciado em http://localhost:5000")
+            logger.info(f"Dashboard web iniciado em http://{host}:{port}")
         except Exception as e:
             logger.error(f"Erro ao iniciar dashboard web: {e}")
         
@@ -609,9 +613,15 @@ async def dashboard_command(interaction: discord.Interaction):
         inline=False
     )
     
+    # Configurar URL baseado no ambiente
+    if os.getenv('RENDER'):
+        dashboard_url = "https://hawk-esports-bot.onrender.com"  # Substitua pela sua URL do Render
+    else:
+        dashboard_url = "http://localhost:5000"
+    
     embed.add_field(
         name="🔗 Link de Acesso",
-        value="[**Clique aqui para acessar o Dashboard**](http://localhost:5000)",
+        value=f"[**Clique aqui para acessar o Dashboard**]({dashboard_url})",
         inline=False
     )
     
