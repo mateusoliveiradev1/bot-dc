@@ -1,0 +1,225 @@
+{
+  "system_settings": {
+    "max_notifications_per_user": 50,
+    "cleanup_interval_hours": 24,
+    "batch_send_size": 10,
+    "default_quiet_hours": {
+      "start": 22,
+      "end": 8
+    },
+    "notification_channels": [
+      "notificações",
+      "geral",
+      "avisos"
+    ]
+  },
+  "notification_templates": {
+    "rank_update_promotion": {
+      "enabled": true,
+      "title": "🎉 Promoção de Rank!",
+      "message": "Parabéns! Você subiu para o rank **{new_rank}** com {points} pontos!",
+      "color": 4437377,
+      "emoji": "🎉",
+      "priority": "high",
+      "expires_after": 1440,
+      "requires_action": false
+    },
+    "rank_update_demotion": {
+      "enabled": true,
+      "title": "📉 Mudança de Rank",
+      "message": "Seu rank foi alterado para **{new_rank}**. Continue se esforçando!",
+      "color": 15844367,
+      "emoji": "📉",
+      "priority": "medium",
+      "expires_after": 1440
+    },
+    "achievement_unlocked": {
+      "enabled": true,
+      "title": "🏆 Nova Conquista Desbloqueada!",
+      "message": "Você desbloqueou a conquista **{achievement_name}**!\n{achievement_description}",
+      "color": 16766720,
+      "emoji": "🏆",
+      "priority": "medium",
+      "expires_after": 2880
+    },
+    "tournament_starting": {
+      "enabled": true,
+      "title": "⚔️ Torneio Iniciando!",
+      "message": "O torneio **{tournament_name}** está começando em {time_remaining}!\nPrepare-se para a batalha!",
+      "color": 15746887,
+      "emoji": "⚔️",
+      "priority": "high",
+      "requires_action": true,
+      "action_button": "Participar",
+      "expires_after": 60
+    },
+    "tournament_result": {
+      "enabled": true,
+      "title": "🏅 Resultado do Torneio",
+      "message": "Torneio **{tournament_name}** finalizado!\n🥇 **{winner}** foi o campeão!\nSua posição: **{user_position}º lugar**",
+      "color": 3447003,
+      "emoji": "🏅",
+      "priority": "medium",
+      "expires_after": 4320
+    },
+    "daily_challenge_available": {
+      "enabled": true,
+      "title": "🎯 Novo Desafio Diário!",
+      "message": "Um novo desafio diário está disponível!\n**{challenge_name}**\nRecompensa: {reward}",
+      "color": 7506394,
+      "emoji": "🎯",
+      "priority": "medium",
+      "expires_after": 1440
+    },
+    "daily_challenge_completed": {
+      "enabled": true,
+      "title": "✅ Desafio Concluído!",
+      "message": "Parabéns! Você completou o desafio **{challenge_name}**!\nRecompensa recebida: {reward}",
+      "color": 2664261,
+      "emoji": "✅",
+      "priority": "medium",
+      "expires_after": 2880
+    },
+    "minigame_milestone": {
+      "enabled": true,
+      "title": "🎮 Marco Alcançado!",
+      "message": "Você alcançou um marco nos mini-games!\n**{milestone_name}**\n{description}",
+      "color": 10181046,
+      "emoji": "🎮",
+      "priority": "low",
+      "expires_after": 2880
+    },
+    "minigame_highscore": {
+      "enabled": true,
+      "title": "🔥 Novo Recorde!",
+      "message": "Incrível! Você estabeleceu um novo recorde em **{game_name}**!\nPontuação: **{score}** pontos",
+      "color": 16750848,
+      "emoji": "🔥",
+      "priority": "high",
+      "expires_after": 4320
+    },
+    "moderation_warning": {
+      "enabled": true,
+      "title": "⚠️ Aviso de Moderação",
+      "message": "Você recebeu um aviso por: **{reason}**\nModerador: {moderator}\nData: {date}",
+      "color": 16776960,
+      "emoji": "⚠️",
+      "priority": "high",
+      "expires_after": 10080
+    },
+    "moderation_mute": {
+      "enabled": true,
+      "title": "🔇 Você foi Silenciado",
+      "message": "Você foi silenciado por: **{reason}**\nDuração: {duration}\nModerador: {moderator}",
+      "color": 15158332,
+      "emoji": "🔇",
+      "priority": "urgent",
+      "expires_after": 10080
+    },
+    "system_announcement": {
+      "enabled": true,
+      "title": "📢 Anúncio do Sistema",
+      "message": "{announcement_text}",
+      "color": 52378,
+      "emoji": "📢",
+      "priority": "medium",
+      "expires_after": 4320
+    },
+    "system_maintenance": {
+      "enabled": true,
+      "title": "🔧 Manutenção Programada",
+      "message": "O bot entrará em manutenção em **{maintenance_time}**.\nDuração estimada: {duration}\nMotivo: {reason}",
+      "color": 9807270,
+      "emoji": "🔧",
+      "priority": "high",
+      "expires_after": 480
+    },
+    "birthday_reminder": {
+      "enabled": true,
+      "title": "🎂 Feliz Aniversário!",
+      "message": "Hoje é seu aniversário! 🎉\nA equipe Hawk Esports deseja um feliz aniversário!\nVocê ganhou um presente especial!",
+      "color": 16761035,
+      "emoji": "🎂",
+      "priority": "high",
+      "expires_after": 1440
+    },
+    "clan_news": {
+      "enabled": true,
+      "title": "📰 Notícias do Clã",
+      "message": "**{news_title}**\n{news_content}",
+      "color": 5763719,
+      "emoji": "📰",
+      "priority": "medium",
+      "expires_after": 4320
+    },
+    "pubg_stats_update": {
+      "enabled": true,
+      "title": "📊 Estatísticas PUBG Atualizadas",
+      "message": "Suas estatísticas do PUBG foram atualizadas!\n**K/D**: {kd_ratio}\n**Vitórias**: {wins}\n**Top 10**: {top10}",
+      "color": 3066993,
+      "emoji": "📊",
+      "priority": "low",
+      "expires_after": 2880
+    },
+    "pubg_season_end": {
+      "enabled": true,
+      "title": "🏁 Fim de Temporada PUBG",
+      "message": "A temporada do PUBG está chegando ao fim!\nSeu rank atual: **{current_rank}**\nPontos: {points}\nTempo restante: {time_remaining}",
+      "color": 15105570,
+      "emoji": "🏁",
+      "priority": "high",
+      "expires_after": 1440
+    },
+    "level_up": {
+      "enabled": true,
+      "title": "⬆️ Subiu de Nível!",
+      "message": "Parabéns! Você alcançou o nível **{new_level}**!\nXP total: {total_xp}\nPróximo nível em: {xp_to_next} XP",
+      "color": 5763719,
+      "emoji": "⬆️",
+      "priority": "medium",
+      "expires_after": 2880
+    },
+    "weekly_summary": {
+      "enabled": true,
+      "title": "📈 Resumo Semanal",
+      "message": "Seu resumo da semana:\n🎮 **Jogos**: {games_played}\n🏆 **Vitórias**: {wins}\n📊 **XP Ganho**: {xp_gained}\n🎯 **Desafios**: {challenges_completed}",
+      "color": 3447003,
+      "emoji": "📈",
+      "priority": "low",
+      "expires_after": 10080
+    },
+    "friend_online": {
+      "enabled": false,
+      "title": "🟢 Amigo Online",
+      "message": "**{friend_name}** entrou online!\nQue tal jogar uma partida juntos?",
+      "color": 2664261,
+      "emoji": "🟢",
+      "priority": "low",
+      "expires_after": 60
+    },
+    "event_reminder": {
+      "enabled": true,
+      "title": "📅 Lembrete de Evento",
+      "message": "Não esqueça! O evento **{event_name}** começa em {time_remaining}!\n📍 Local: {location}\n🎁 Prêmios: {prizes}",
+      "color": 16776960,
+      "emoji": "📅",
+      "priority": "medium",
+      "expires_after": 120
+    }
+  },
+  "priority_colors": {
+    "low": 9807270,
+    "medium": 3447003,
+    "high": 15844367,
+    "urgent": 15158332
+  },
+  "default_emojis": {
+    "info": "ℹ️",
+    "success": "✅",
+    "warning": "⚠️",
+    "error": "❌",
+    "celebration": "🎉",
+    "reminder": "⏰",
+    "announcement": "📢"
+  }
+}

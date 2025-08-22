@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "auto_assign": true,
+  "remove_old_roles": true,
+  "announcement_channel": null,
+  "announce_promotions": true,
+  "announce_demotions": false,
+  "role_permissions": {
+    "create_roles": true,
+    "manage_roles": true
+  },
+  "update_settings": {
+    "auto_update_on_stats_change": true,
+    "update_interval_minutes": 30,
+    "batch_update_on_startup": true
+  },
+  "rank_display": {
+    "show_emoji_in_name": true,
+    "show_points_in_description": true,
+    "color_roles": true
+  },
+  "requirements": {
+    "minimum_matches": 10,
+    "minimum_playtime_hours": 5,
+    "account_verification_required": true
+  },
+  "notifications": {
+    "dm_on_promotion": true,
+    "dm_on_demotion": false,
+    "include_next_rank_info": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "banned_words": [
+    "spam",
+    "hack",
+    "cheat",
+    "bot",
+    "fake",
+    "scam",
+    "virus",
+    "malware",
+    "phishing",
+    "discord.gg",
+    "bit.ly",
+    "tinyurl",
+    "@everyone",
+    "@here"
+  ],
+  "toxic_words": [
+    "idiota",
+    "burro",
+    "estupido",
+    "lixo",
+    "merda",
+    "porra",
+    "caralho",
+    "fdp",
+    "otario",
+    "babaca",
+    "imbecil",
+    "retardado",
+    "gay",
+    "viado",
+    "puto",
+    "vagabundo",
+    "desgraçado"
+  ],
+  "spam_settings": {
+    "max_messages": 5,
+    "time_window": 10,
+    "max_duplicates": 3,
+    "max_mentions": 3,
+    "max_emojis": 10,
+    "max_caps_percentage": 70
+  },
+  "raid_protection": {
+    "enabled": true,
+    "max_joins_per_minute": 10,
+    "new_account_threshold_days": 7,
+    "auto_kick_new_accounts": false
+  },
+  "automod_settings": {
+    "enabled": true,
+    "delete_spam": true,
+    "delete_toxic": true,
+    "log_actions": true,
+    "dm_warnings": true
+  },
+  "warning_thresholds": {
+    "timeout_warnings": 3,
+    "kick_warnings": 5,
+    "ban_warnings": 7
+  },
+  "timeout_durations": {
+    "first_offense": 300,
+    "second_offense": 900,
+    "third_offense": 3600
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "reminder_settings": {
+    "default_reminders": {
+      "session_start": [
+        45,
+        30,
+        15,
+        5
+      ],
+      "checkin_deadline": [
+        10,
+        5
+      ],
+      "session_end": [
+        15,
+        5
+      ],
+      "checkout_reminder": [
+        30
+      ]
+    },
+    "custom_reminders": {},
+    "enabled_reminders": {
+      "session_start": true,
+      "checkin_deadline": true,
+      "session_end": true,
+      "checkout_reminder": true
+    }
+  },
+  "checkin_system": {
+    "sessions": {},
+    "player_stats": {},
+    "settings": {
+      "reminder_time": 30,
+      "auto_checkout_time": 180,
+      "require_checkout": true
+    }
+  }
+}

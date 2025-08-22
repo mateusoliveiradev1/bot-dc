@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawk Esports - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            /* Tema Escuro (padrão) */
+            --hawk-primary: #1a1a2e;
+            --hawk-secondary: #16213e;
+            --hawk-accent: #0f3460;
+            --hawk-gold: #ffd700;
+            --hawk-text: #ffffff;
+            
+            --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.1);
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-color: #ffd700;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+        }
+        
+        [data-theme="light"] {
+            /* Tema Claro */
+            --hawk-primary: #f8f9fa;
+            --hawk-secondary: #e9ecef;
+            --hawk-accent: #007bff;
+            --hawk-gold: #007bff;
+            --hawk-text: #212529;
+            
+            --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+            --bg-secondary: rgba(0, 0, 0, 0.05);
+            --bg-card: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --text-muted: #adb5bd;
+            --border-color: #dee2e6;
+            --accent-color: #007bff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            background: var(--hawk-accent) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-brand {
+            color: var(--hawk-gold) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        [data-theme="light"] .card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background: rgba(255,215,0,0.1);
+            border-bottom: 1px solid rgba(255,215,0,0.3);
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        [data-theme="light"] .card-header {
+            background: rgba(0,123,255,0.1);
+            border-bottom: 1px solid rgba(0,123,255,0.3);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        .table-dark {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        [data-theme="light"] .table-dark {
+            background: var(--bg-card);
+        }
+        
+        .badge {
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.7;
+        }
+        
+        .refresh-btn {
+            background: var(--accent-color);
+            border: none;
+            color: var(--hawk-primary);
+            font-weight: bold;
+        }
+        
+        .refresh-btn:hover {
+            background: var(--accent-color);
+            opacity: 0.9;
+            color: var(--hawk-primary);
+        }
+        
+        [data-theme="light"] .refresh-btn {
+            color: #ffffff;
+        }
+        
+        [data-theme="light"] .refresh-btn:hover {
+            color: #ffffff;
+        }
+        
+        .player-avatar {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .form-select {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+        
+        .form-select:focus {
+            background-color: var(--bg-secondary);
+            border-color: var(--accent-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+        }
+        
+        [data-theme="light"] .form-select:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        
+        .form-label {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .collapse .card-body {
+            background-color: var(--bg-secondary);
+        }
+        
+        .table th {
+                border-top: none;
+                font-weight: 600;
+                color: var(--accent-color);
+            }
+            
+            .player-link {
+                transition: color 0.3s ease;
+            }
+            
+            .player-link:hover {
+                color: var(--accent-color) !important;
+                text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            }
+            
+            [data-theme="light"] .player-link:hover {
+                text-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+        
+        .tournament-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-active { background: #28a745; }
+        .status-pending { background: #ffc107; color: #000; }
+        .status-completed { background: #6c757d; }
+        
+        .clip-thumbnail {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-gamepad me-2"></i>
+                Hawk Esports Dashboard
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-light me-2" onclick="toggleTheme()" id="themeToggle">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                    <span id="themeText">Modo Escuro</span>
+                </button>
+                <button class="btn refresh-btn" onclick="refreshData()">
+                    <i class="fas fa-sync-alt me-1"></i>
+                    Atualizar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container de Notificações -->
+    <div id="notificationContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050; max-width: 350px;">
+        <!-- Notificações aparecerão aqui -->
+    </div>
+
+    <div class="container-fluid mt-4">
+        <!-- Estatísticas Gerais -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="stat-number" id="totalPlayers">-</div>
+                    <div class="stat-label">
+                        <i class="fas fa-users me-1"></i>
+                        Total de Jogadores
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="stat-number" id="activePlayers">-</div>
+                    <div class="stat-label">
+                        <i class="fas fa-user-check me-1"></i>
+                        Jogadores Ativos
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="stat-number" id="activeTournaments">-</div>
+                    <div class="stat-label">
+                        <i class="fas fa-trophy me-1"></i>
+                        Torneios Ativos
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="stat-number" id="totalClips">-</div>
+                    <div class="stat-label">
+                        <i class="fas fa-video me-1"></i>
+                        Total de Clipes
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard e Torneios -->
+        <div class="row mb-4">
+            <div class="col-lg-8 mb-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-medal me-2"></i>
+                            Leaderboard
+                        </div>
+                        <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#leaderboardFilters">
+                            <i class="fas fa-filter me-1"></i>
+                            Filtros
+                        </button>
+                    </div>
+                    <div class="collapse" id="leaderboardFilters">
+                        <div class="card-body border-bottom">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label">Modo de Jogo</label>
+                                    <select class="form-select form-select-sm" id="modeFilter">
+                                        <option value="squad">Squad</option>
+                                        <option value="duo">Duo</option>
+                                        <option value="solo">Solo</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Período</label>
+                                    <select class="form-select form-select-sm" id="periodFilter">
+                                        <option value="all">Todos os tempos</option>
+                                        <option value="daily">Último dia</option>
+                                        <option value="weekly">Última semana</option>
+                                        <option value="monthly">Último mês</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Ordenar por</label>
+                                    <select class="form-select form-select-sm" id="sortByFilter">
+                                        <option value="kd_ratio">K/D Ratio</option>
+                                        <option value="kills">Total Kills</option>
+                                        <option value="wins">Vitórias</option>
+                                        <option value="damage">Dano Total</option>
+                                        <option value="avg_damage">Dano Médio</option>
+                                        <option value="win_rate">Taxa de Vitória</option>
+                                        <option value="matches">Partidas</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Região</label>
+                                    <select class="form-select form-select-sm" id="regionFilter">
+                                        <option value="all">Todas</option>
+                                        <option value="steam">Steam</option>
+                                        <option value="kakao">Kakao</option>
+                                        <option value="console">Console</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <button class="btn btn-sm refresh-btn" onclick="applyLeaderboardFilters()">
+                                        <i class="fas fa-search me-1"></i>
+                                        Aplicar Filtros
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Jogador</th>
+                                        <th>Região</th>
+                                        <th>K/D</th>
+                                        <th>Kills</th>
+                                        <th>Vitórias</th>
+                                        <th>Partidas</th>
+                                        <th>Taxa Vitória</th>
+                                        <th>Dano Médio</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboardTable">
+                                    <tr>
+                                        <td colspan="9" class="loading">
+                                            <i class="fas fa-spinner fa-spin me-2"></i>
+                                            Carregando...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-trophy me-2"></i>
+                        Torneios
+                    </div>
+                    <div class="card-body" id="tournamentsContainer">
+                        <div class="loading">
+                            <i class="fas fa-spinner fa-spin me-2"></i>
+                            Carregando...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficos de Análise -->
+        <div class="row mb-4">
+            <div class="col-lg-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Crescimento de Jogadores (30 dias)
+                    </div>
+                    <div class="card-body">
+                        <canvas id="playersGrowthChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-2"></i>
+                        Atividade por Dia da Semana
+                    </div>
+                    <div class="card-body">
+                        <canvas id="activityChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Teste de Notificações -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-bell me-2"></i>
+                        Sistema de Notificações
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted mb-3">Teste o sistema de notificações em tempo real:</p>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" onclick="testNotification('player_update')">
+                                <i class="fas fa-user me-1"></i>
+                                Atualização de Jogador
+                            </button>
+                            <button type="button" class="btn btn-success" onclick="testNotification('tournament_update')">
+                                <i class="fas fa-trophy me-1"></i>
+                                Torneio
+                            </button>
+                            <button type="button" class="btn btn-warning" onclick="testNotification('new_clip')">
+                                <i class="fas fa-video me-1"></i>
+                                Novo Clipe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de Performance -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-radar me-2"></i>
+                        Performance dos Top 10 Jogadores
+                    </div>
+                    <div class="card-body">
+                        <canvas id="performanceChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clipes Recentes -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-video me-2"></i>
+                        Clipes Recentes
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="clipsContainer">
+                            <div class="col-12 loading">
+                                <i class="fas fa-spinner fa-spin me-2"></i>
+                                Carregando...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script> -->
+    <script>
+        // Inicializar WebSocket (temporariamente desabilitado)
+        // const socket = io();
+        let notificationCount = 0;
+        
+        // Eventos WebSocket (temporariamente desabilitados)
+        /*
+        socket.on('connect', function() {
+            console.log('Conectado ao servidor WebSocket');
+            socket.emit('join_notifications', {user: 'dashboard_user'});
+        });
+        
+        socket.on('connected', function(data) {
+            console.log('WebSocket conectado:', data.message);
+            showNotification('success', 'Sistema de Notificações', 'Conectado com sucesso!', 3000);
+        });
+        
+        socket.on('notification', function(data) {
+            console.log('Nova notificação:', data);
+            handleNotification(data);
+        });
+        
+        socket.on('disconnect', function() {
+            console.log('Desconectado do servidor WebSocket');
+            showNotification('warning', 'Sistema de Notificações', 'Conexão perdida. Tentando reconectar...', 5000);
+        });
+        */
+        
+        // Função para exibir notificações
+        function showNotification(type, title, message, duration = 5000) {
+            const container = document.getElementById('notificationContainer');
+            const notificationId = 'notification-' + (++notificationCount);
+            
+            const typeClasses = {
+                'success': 'bg-success',
+                'info': 'bg-info',
+                'warning': 'bg-warning text-dark',
+                'error': 'bg-danger',
+                'player_update': 'bg-primary',
+                'tournament_update': 'bg-info',
+                'new_clip': 'bg-success'
+            };
+            
+            const typeIcons = {
+                'success': 'fas fa-check-circle',
+                'info': 'fas fa-info-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'error': 'fas fa-times-circle',
+                'player_update': 'fas fa-user',
+                'tournament_update': 'fas fa-trophy',
+                'new_clip': 'fas fa-video'
+            };
+            
+            const notification = document.createElement('div');
+            notification.id = notificationId;
+            notification.className = `toast show ${typeClasses[type] || 'bg-secondary'} text-white mb-2`;
+            notification.style.cssText = 'animation: slideInRight 0.3s ease-out;';
+            
+            notification.innerHTML = `
+                <div class="toast-header ${typeClasses[type] || 'bg-secondary'} text-white border-0">
+                    <i class="${typeIcons[type] || 'fas fa-bell'} me-2"></i>
+                    <strong class="me-auto">${title}</strong>
+                    <small class="text-white-50">${new Date().toLocaleTimeString('pt-BR')}</small>
+                    <button type="button" class="btn-close btn-close-white" onclick="removeNotification('${notificationId}')"></button>
+                </div>
+                <div class="toast-body">
+                    ${message}
+                </div>
+            `;
+            
+            container.appendChild(notification);
+            
+            // Auto remover após o tempo especificado
+            if (duration > 0) {
+                setTimeout(() => removeNotification(notificationId), duration);
+            }
+        }
+        
+        function removeNotification(notificationId) {
+            const notification = document.getElementById(notificationId);
+            if (notification) {
+                notification.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }
+        
+        function handleNotification(data) {
+            const { type, data: notificationData } = data;
+            
+            switch (type) {
+                case 'player_update':
+                    showNotification('player_update', 'Atualização de Jogador', notificationData.message);
+                    // Atualizar leaderboard se necessário
+                    loadLeaderboard();
+                    break;
+                    
+                case 'tournament_update':
+                    showNotification('tournament_update', 'Atualização de Torneio', notificationData.message);
+                    // Atualizar lista de torneios
+                    loadTournaments();
+                    break;
+                    
+                case 'new_clip':
+                    showNotification('new_clip', 'Novo Clipe', notificationData.message);
+                    // Atualizar lista de clipes
+                    loadClips();
+                    break;
+                    
+                default:
+                    showNotification('info', 'Notificação', notificationData.message || 'Nova atualização disponível');
+            }
+        }
+        
+        // Função para testar notificações
+        function testNotification(type) {
+            fetch(`/api/test-notification?type=${type}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('success', 'Teste', 'Notificação de teste enviada com sucesso!');
+                    } else {
+                        showNotification('error', 'Erro', 'Erro ao enviar notificação de teste');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    showNotification('error', 'Erro', 'Erro de conexão ao testar notificação');
+                });
+        }
+        
+        // Sistema de Temas
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('dashboard-theme') || 'dark';
+            applyTheme(savedTheme);
+        }
+        
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('dashboard-theme', newTheme);
+            
+            // Mostrar notificação de mudança de tema
+            const themeName = newTheme === 'dark' ? 'Escuro' : 'Claro';
+            showNotification('info', 'Tema', `Tema ${themeName} ativado!`, 2000);
+        }
+        
+        function applyTheme(theme) {
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Modo Claro';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Modo Escuro';
+            }
+            
+            // Recriar gráficos para aplicar as novas cores
+            setTimeout(() => {
+                if (typeof loadPlayersGrowthChart === 'function') loadPlayersGrowthChart();
+                if (typeof loadActivityChart === 'function') loadActivityChart();
+                if (typeof loadPerformanceChart === 'function') loadPerformanceChart();
+            }, 100);
+        }
+        
+        // Adicionar estilos de animação
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            
+            .toast {
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        `;
+        document.head.appendChild(style);
+        // Função para carregar estatísticas gerais
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                document.getElementById('totalPlayers').textContent = stats.total_players || 0;
+                document.getElementById('activePlayers').textContent = stats.active_players || 0;
+                document.getElementById('activeTournaments').textContent = stats.active_tournaments || 0;
+                document.getElementById('totalClips').textContent = stats.total_clips || 0;
+            } catch (error) {
+                console.error('Erro ao carregar estatísticas:', error);
+            }
+        }
+
+        // Função para carregar leaderboard
+        async function loadLeaderboard(filters = {}) {
+            try {
+                const params = new URLSearchParams();
+                
+                // Adicionar filtros aos parâmetros da URL
+                if (filters.mode) params.append('mode', filters.mode);
+                if (filters.period) params.append('period', filters.period);
+                if (filters.sort_by) params.append('sort_by', filters.sort_by);
+                if (filters.region) params.append('region', filters.region);
+                if (filters.limit) params.append('limit', filters.limit);
+                
+                const url = `/api/leaderboard${params.toString() ? '?' + params.toString() : ''}?mode=squad&period=weekly`;
+                const response = await fetch(url);
+                const leaderboard = await response.json();
+                
+                const tbody = document.getElementById('leaderboardTable');
+                tbody.innerHTML = '';
+                
+                // Verificar se é um array e se tem dados
+                if (!Array.isArray(leaderboard) || leaderboard.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="9" class="text-center">Nenhum jogador encontrado</td></tr>';
+                    return;
+                }
+                
+                leaderboard.slice(0, 10).forEach((player, index) => {
+                    const winRate = player.matches > 0 ? ((player.wins / player.matches) * 100).toFixed(1) : '0.0';
+                    const avgDamage = player.avg_damage ? player.avg_damage.toFixed(0) : '0';
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><span class="badge bg-warning text-dark">${index + 1}</span></td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="player-avatar me-2">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div>
+                                    <div class="fw-bold">
+                                        <a href="/player?id=${player.discord_id}" class="text-decoration-none text-light player-link">
+                                            ${player.discord_name || player.pubg_name}
+                                        </a>
+                                    </div>
+                                    <small class="text-muted">${player.pubg_name || 'N/A'}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-secondary">${player.region || 'N/A'}</span></td>
+                        <td><strong>${player.kd_ratio.toFixed(2)}</strong></td>
+                        <td>${player.kills}</td>
+                        <td>${player.wins}</td>
+                        <td>${player.matches}</td>
+                        <td>${winRate}%</td>
+                        <td>${avgDamage}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar leaderboard:', error);
+                document.getElementById('leaderboardTable').innerHTML = 
+                    '<tr><td colspan="9" class="text-center text-danger">Erro ao carregar dados</td></tr>';
+            }
+        }
+        
+        function applyLeaderboardFilters() {
+            const filters = {
+                mode: document.getElementById('modeFilter').value,
+                period: document.getElementById('periodFilter').value,
+                sort_by: document.getElementById('sortByFilter').value,
+                region: document.getElementById('regionFilter').value === 'all' ? null : document.getElementById('regionFilter').value,
+                limit: 20 // Aumentar para 20 resultados
+            };
+            
+            // Remover valores null/undefined
+            Object.keys(filters).forEach(key => {
+                if (filters[key] === null || filters[key] === undefined) {
+                    delete filters[key];
+                }
+            });
+            
+            loadLeaderboard(filters);
+        }
+
+        // Função para carregar torneios
+        async function loadTournaments() {
+            try {
+                const response = await fetch('/api/tournaments');
+                const tournaments = await response.json();
+                
+                const container = document.getElementById('tournamentsContainer');
+                container.innerHTML = '';
+                
+                // Verificar se é um array e se tem dados
+                if (!Array.isArray(tournaments) || tournaments.length === 0) {
+                    container.innerHTML = '<p class="text-center mb-0">Nenhum torneio ativo</p>';
+                    return;
+                }
+                
+                tournaments.slice(0, 5).forEach(tournament => {
+                    const statusClass = `status-${tournament.status}`;
+                    const tournamentElement = document.createElement('div');
+                    tournamentElement.className = 'mb-3 p-2 border rounded';
+                    tournamentElement.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>${tournament.name}</strong><br>
+                                <small class="text-muted">${tournament.participants}/${tournament.max_participants} participantes</small>
+                            </div>
+                            <span class="tournament-status ${statusClass}">${tournament.status}</span>
+                        </div>
+                    `;
+                    container.appendChild(tournamentElement);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar torneios:', error);
+                document.getElementById('tournamentsContainer').innerHTML = 
+                    '<p class="text-center text-danger mb-0">Erro ao carregar dados</p>';
+            }
+        }
+
+        // Função para carregar clipes
+        async function loadClips() {
+            try {
+                const response = await fetch('/api/clips');
+                const clips = await response.json();
+                
+                const container = document.getElementById('clipsContainer');
+                container.innerHTML = '';
+                
+                // Verificar se é um array e se tem dados
+                if (!Array.isArray(clips) || clips.length === 0) {
+                    container.innerHTML = '<div class="col-12 text-center">Nenhum clipe encontrado</div>';
+                    return;
+                }
+                
+                clips.forEach(clip => {
+                    const clipElement = document.createElement('div');
+                    clipElement.className = 'col-md-6 col-lg-4 mb-3';
+                    clipElement.innerHTML = `
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="card-title">${clip.title}</h6>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        <i class="fas fa-user me-1"></i>${clip.player}<br>
+                                        <i class="fas fa-gamepad me-1"></i>${clip.game}<br>
+                                        <i class="fas fa-eye me-1"></i>${clip.views} visualizações
+                                    </small>
+                                </p>
+                                <a href="${clip.url}" target="_blank" class="btn btn-sm btn-outline-light">
+                                    <i class="fas fa-external-link-alt me-1"></i>
+                                    Ver Clipe
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(clipElement);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar clipes:', error);
+                document.getElementById('clipsContainer').innerHTML = 
+                    '<div class="col-12 text-center text-danger">Erro ao carregar dados</div>';
+            }
+        }
+
+        // Variáveis globais para os gráficos
+        let playersGrowthChart, activityChart, performanceChart;
+
+        // Função para carregar gráfico de crescimento de jogadores
+        async function loadPlayersGrowthChart() {
+            try {
+                const response = await fetch('/api/charts/players-growth');
+                const data = await response.json();
+                
+                const ctx = document.getElementById('playersGrowthChart').getContext('2d');
+                
+                if (playersGrowthChart) {
+                    playersGrowthChart.destroy();
+                }
+                
+                // Cores baseadas no tema atual
+                const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+                const textColor = isLightTheme ? '#212529' : '#ffffff';
+                const gridColor = isLightTheme ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+                const accentColor = isLightTheme ? '#007bff' : '#ffd700';
+                
+                playersGrowthChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.map(d => new Date(d.date).toLocaleDateString('pt-BR')),
+                        datasets: [{
+                            label: 'Jogadores Registrados',
+                            data: data.map(d => d.players),
+                            borderColor: accentColor,
+                            backgroundColor: isLightTheme ? 'rgba(0, 123, 255, 0.1)' : 'rgba(255, 215, 0, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: textColor
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico de crescimento:', error);
+            }
+        }
+
+        // Função para carregar gráfico de atividade
+        async function loadActivityChart() {
+            try {
+                const response = await fetch('/api/charts/activity');
+                const data = await response.json();
+                
+                const ctx = document.getElementById('activityChart').getContext('2d');
+                
+                if (activityChart) {
+                    activityChart.destroy();
+                }
+                
+                // Cores baseadas no tema atual
+                const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+                const textColor = isLightTheme ? '#212529' : '#ffffff';
+                const gridColor = isLightTheme ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+                const borderColor = isLightTheme ? '#ffffff' : '#ffffff';
+                
+                activityChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Jogadores Ativos',
+                            data: data.data,
+                            backgroundColor: isLightTheme ? [
+                                '#007bff', '#dc3545', '#28a745', '#ffc107',
+                                '#17a2b8', '#6f42c1', '#fd7e14'
+                            ] : [
+                                '#ff6384', '#36a2eb', '#cc65fe', '#ffce56',
+                                '#4bc0c0', '#9966ff', '#ff9f40'
+                            ],
+                            borderColor: borderColor,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: textColor
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico de atividade:', error);
+            }
+        }
+
+        // Função para carregar gráfico de performance
+        async function loadPerformanceChart() {
+            try {
+                const response = await fetch('/api/charts/performance');
+                const data = await response.json();
+                
+                const ctx = document.getElementById('performanceChart').getContext('2d');
+                
+                if (performanceChart) {
+                    performanceChart.destroy();
+                }
+                
+                // Cores baseadas no tema atual
+                const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+                const textColor = isLightTheme ? '#212529' : '#ffffff';
+                const gridColor = isLightTheme ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+                
+                performanceChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [
+                            {
+                                label: 'K/D Ratio',
+                                data: data.kd_data,
+                                backgroundColor: isLightTheme ? 'rgba(0, 123, 255, 0.8)' : 'rgba(255, 215, 0, 0.8)',
+                                borderColor: isLightTheme ? '#007bff' : '#ffd700',
+                                borderWidth: 1,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Total Kills',
+                                data: data.kills_data,
+                                backgroundColor: isLightTheme ? 'rgba(220, 53, 69, 0.8)' : 'rgba(255, 99, 132, 0.8)',
+                                borderColor: isLightTheme ? '#dc3545' : '#ff6384',
+                                borderWidth: 1,
+                                yAxisID: 'y1'
+                            },
+                            {
+                                label: 'Vitórias',
+                                data: data.wins_data,
+                                backgroundColor: isLightTheme ? 'rgba(40, 167, 69, 0.8)' : 'rgba(54, 162, 235, 0.8)',
+                                borderColor: isLightTheme ? '#28a745' : '#36a2eb',
+                                borderWidth: 1,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: textColor
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    color: gridColor
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                ticks: {
+                                    color: textColor
+                                },
+                                grid: {
+                                    drawOnChartArea: false
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico de performance:', error);
+            }
+        }
+
+        // Função para atualizar todos os dados
+        function refreshData() {
+            loadStats();
+            loadLeaderboard();
+            loadTournaments();
+            loadClips();
+            loadPlayersGrowthChart();
+            loadActivityChart();
+            loadPerformanceChart();
+        }
+
+        // Carregar dados iniciais
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar tema
+            initializeTheme();
+            
+            // Carregar dados
+            refreshData();
+            
+            // Atualizar dados a cada 30 segundos
+            setInterval(refreshData, 30000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+{
+  "players": {
+    "343264130905669632": {
+      "pubg_name": "LiiiraaK1nG",
+      "shard": "steam",
+      "guild_id": "1408155164589953186",
+      "registered_at": "2025-08-21T16:12:18.096985",
+      "last_update": null,
+      "stats": {
+        "ranked": {
+          "kd": 0.0,
+          "wins": 0,
+          "matches": 0,
+          "damage_avg": 0.0
+        },
+        "mm": {
+          "kd": 1.69,
+          "wins": 4,
+          "matches": 38,
+          "damage_avg": 230.37
+        }
+      },
+      "current_ranks": {
+        "ranked": "Sem rank",
+        "mm": "Prata MM"
+      },
+      "clips": [],
+      "ranked_rank": "Sem rank",
+      "mm_rank": "Prata MM",
+      "last_stats_update": "2025-08-22T14:15:25.460937",
+      "season_stats": {
+        "ranked": {
+          "solo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "duo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "squad": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          }
+        },
+        "mm": {
+          "solo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "duo": {
+            "kd": 1.0,
+            "wins": 0,
+            "matches": 3,
+            "damage_avg": 141.73,
+            "kills": 3,
+            "deaths": 3,
+            "top10s": 1,
+            "winrate": 0.0
+          },
+          "squad": {
+            "kd": 1.81,
+            "wins": 4,
+            "matches": 35,
+            "damage_avg": 237.97,
+            "kills": 58,
+            "deaths": 32,
+            "top10s": 17,
+            "winrate": 11.43
+          }
+        }
+      },
+      "achievements": [
+        "first_win"
+      ]
+    },
+    "1401983578547687475": {
+      "pubg_name": "chablal",
+      "shard": "steam",
+      "guild_id": "1408155164589953186",
+      "registered_at": "2025-08-22T13:49:45.471951",
+      "last_update": null,
+      "stats": {
+        "ranked": {
+          "kd": 0.0,
+          "wins": 0,
+          "matches": 0,
+          "damage_avg": 0.0
+        },
+        "mm": {
+          "kd": 0.0,
+          "wins": 0,
+          "matches": 0,
+          "damage_avg": 0.0
+        }
+      },
+      "current_ranks": {
+        "ranked": "Sem rank",
+        "mm": "Sem rank MM"
+      },
+      "clips": [],
+      "ranked_rank": "Sem rank",
+      "mm_rank": "Sem rank MM",
+      "last_stats_update": "2025-08-22T14:05:55.264292",
+      "season_stats": {
+        "ranked": {
+          "solo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "duo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "squad": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          }
+        },
+        "mm": {
+          "solo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "duo": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          },
+          "squad": {
+            "kd": 0.0,
+            "wins": 0,
+            "matches": 0,
+            "damage_avg": 0.0,
+            "kills": 0,
+            "deaths": 1,
+            "top10s": 0,
+            "winrate": 0.0
+          }
+        }
+      }
+    }
+  },
+  "guilds": {},
+  "clips": {},
+  "rankings": {},
+  "settings": {
+    "last_update": null,
+    "version": "1.0.0",
+    "created_at": "2025-08-21T15:41:13.277922"
+  },
+  "stats": {
+    "total_players": 2,
+    "total_clips": 0,
+    "last_rank_update": null
+  },
+  "user_achievements": {
+    "343264130905669632": {
+      "unlocked": [
+        "first_registration",
+        "first_blood",
+        "first_win",
+        "perfectionist"
+      ],
+      "progress": {},
+      "total_points": 230,
+      "last_check": "2025-08-22T14:05:54.254855"
+    },
+    "1401983578547687475": {
+      "unlocked": [
+        "first_registration",
+        "perfectionist"
+      ],
+      "progress": {},
+      "total_points": 210,
+      "last_check": "2025-08-22T14:05:55.265634"
+    }
+  },
+  "temporal_rankings": {
+    "daily": {
+      "last_reset": "2025-08-22T13:38:46.516023",
+      "players": {},
+      "period": "daily"
+    }
+  }
+}

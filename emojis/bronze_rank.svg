@@ -1,0 +1,26 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bronzeGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#CD7F32;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </radialGradient>
+    <filter id="bronzeGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Shield background -->
+  <path d="M16 2 L26 8 L26 20 Q26 26 16 30 Q6 26 6 20 L6 8 Z" fill="url(#bronzeGradient)" stroke="#4A4A4A" stroke-width="1" filter="url(#bronzeGlow)"/>
+  
+  <!-- Inner design -->
+  <circle cx="16" cy="14" r="6" fill="none" stroke="#FFE4B5" stroke-width="1.5" opacity="0.8"/>
+  <text x="16" y="18" text-anchor="middle" fill="#FFE4B5" font-family="Arial, sans-serif" font-size="8" font-weight="bold">IV</text>
+  
+  <!-- Bottom accent -->
+  <rect x="10" y="22" width="12" height="2" fill="#FFE4B5" opacity="0.6" rx="1"/>
+</svg>

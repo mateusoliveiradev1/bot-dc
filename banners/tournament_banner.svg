@@ -1,0 +1,57 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tournamentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="tournamentGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+    <animateTransform id="rotate" attributeName="transform" type="rotate" values="0 400 100;360 400 100" dur="20s" repeatCount="indefinite"/>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#tournamentGradient)" rx="15" ry="15"/>
+  
+  <!-- Animated background elements -->
+  <g opacity="0.1">
+    <circle cx="150" cy="50" r="20" fill="white">
+      <animateTransform attributeName="transform" type="rotate" values="0 150 50;360 150 50" dur="15s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="150" r="25" fill="white">
+      <animateTransform attributeName="transform" type="rotate" values="360 650 150;0 650 150" dur="12s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Trophy icon -->
+  <g transform="translate(50, 75)">
+    <polygon points="25,0 35,15 45,15 35,25 40,40 25,30 10,40 15,25 5,15 15,15" fill="#FBBF24" filter="url(#tournamentGlow)"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="70" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="36" font-weight="bold" filter="url(#tournamentGlow)">
+    🏆 TORNEIO 🏆
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="110" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="20">
+    Batalha pela Supremacia
+  </text>
+  
+  <!-- Prize indicator -->
+  <rect x="300" y="130" width="200" height="30" fill="rgba(251,191,36,0.2)" rx="15" ry="15"/>
+  <text x="400" y="150" text-anchor="middle" fill="#FBBF24" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    💎 PRÊMIOS EXCLUSIVOS 💎
+  </text>
+  
+  <!-- Bottom accent -->
+  <rect x="0" y="180" width="800" height="20" fill="rgba(0,0,0,0.3)" rx="0" ry="0"/>
+  <text x="400" y="195" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="12">
+    HAWK ESPORTS • PREMIUM TOURNAMENT SYSTEM
+  </text>
+</svg>

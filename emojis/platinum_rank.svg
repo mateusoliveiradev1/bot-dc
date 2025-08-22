@@ -1,0 +1,29 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="platinumGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#E5E4E2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#BCC6CC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#98AFC7;stop-opacity:1" />
+    </radialGradient>
+    <filter id="platinumGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Shield background -->
+  <path d="M16 2 L26 8 L26 20 Q26 26 16 30 Q6 26 6 20 L6 8 Z" fill="url(#platinumGradient)" stroke="#4A4A4A" stroke-width="1" filter="url(#platinumGlow)"/>
+  
+  <!-- Inner design -->
+  <circle cx="16" cy="14" r="6" fill="none" stroke="#F8F8FF" stroke-width="1.5" opacity="0.9"/>
+  <text x="16" y="18" text-anchor="middle" fill="#F8F8FF" font-family="Arial, sans-serif" font-size="8" font-weight="bold">IV</text>
+  
+  <!-- Star accents -->
+  <polygon points="16,6 17,9 20,9 17.5,11 18.5,14 16,12 13.5,14 14.5,11 12,9 15,9" fill="#F8F8FF" opacity="0.8"/>
+  
+  <!-- Bottom accent -->
+  <rect x="10" y="22" width="12" height="2" fill="#F8F8FF" opacity="0.8" rx="1"/>
+</svg>

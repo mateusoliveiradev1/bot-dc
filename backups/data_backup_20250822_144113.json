@@ -1,0 +1,16 @@
+{
+  "players": {},
+  "guilds": {},
+  "clips": {},
+  "rankings": {},
+  "settings": {
+    "last_update": null,
+    "version": "1.0.0",
+    "created_at": "2025-08-22T14:41:13.783019"
+  },
+  "stats": {
+    "total_players": 0,
+    "total_clips": 0,
+    "last_rank_update": null
+  }
+}

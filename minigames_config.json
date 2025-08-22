@@ -1,0 +1,196 @@
+{
+  "quiz_questions": {
+    "easy": [
+      {
+        "question": "Qual é o tamanho do mapa Erangel?",
+        "options": ["6x6 km", "8x8 km", "4x4 km", "10x10 km"],
+        "correct": 1
+      },
+      {
+        "question": "Quantos jogadores podem jogar em um squad?",
+        "options": ["2", "3", "4", "5"],
+        "correct": 2
+      },
+      {
+        "question": "Qual é a zona segura inicial no PUBG?",
+        "options": ["Círculo branco", "Círculo azul", "Círculo vermelho", "Círculo verde"],
+        "correct": 0
+      },
+      {
+        "question": "Quantas pessoas podem jogar em um duo?",
+        "options": ["1", "2", "3", "4"],
+        "correct": 1
+      }
+    ],
+    "medium": [
+      {
+        "question": "Qual arma tem o maior dano por tiro?",
+        "options": ["AWM", "Kar98k", "M24", "Win94"],
+        "correct": 0
+      },
+      {
+        "question": "Em que ano PUBG foi lançado?",
+        "options": ["2016", "2017", "2018", "2019"],
+        "correct": 1
+      },
+      {
+        "question": "Qual mapa foi o primeiro a ser adicionado após Erangel?",
+        "options": ["Miramar", "Sanhok", "Vikendi", "Karakin"],
+        "correct": 0
+      },
+      {
+        "question": "Qual é o nome da empresa desenvolvedora do PUBG?",
+        "options": ["Epic Games", "PUBG Corporation", "Bluehole", "Krafton"],
+        "correct": 3
+      }
+    ],
+    "hard": [
+      {
+        "question": "Qual é a velocidade máxima do veículo mais rápido?",
+        "options": ["120 km/h", "140 km/h", "160 km/h", "180 km/h"],
+        "correct": 1
+      },
+      {
+        "question": "Qual é o calibre da M416?",
+        "options": ["5.56mm", "7.62mm", "9mm", ".45 ACP"],
+        "correct": 0
+      },
+      {
+        "question": "Quantos slots de equipamento tem uma mochila nível 3?",
+        "options": ["200", "220", "250", "270"],
+        "correct": 2
+      },
+      {
+        "question": "Qual é o dano base da AWM no corpo?",
+        "options": ["105", "120", "132", "150"],
+        "correct": 2
+      },
+      {
+        "question": "Quantos pontos de boost você ganha com uma bebida energética?",
+        "options": ["20", "40", "60", "80"],
+        "correct": 1
+      }
+    ]
+  },
+  "daily_challenges": [
+    {
+      "name": "Mestre das Palavras",
+      "description": "Envie 50 mensagens no servidor hoje",
+      "type": "messages",
+      "target": 50,
+      "reward_points": 100,
+      "reward_title": "Tagarela do Dia"
+    },
+    {
+      "name": "Socialização",
+      "description": "Reaja a 20 mensagens diferentes hoje",
+      "type": "reactions",
+      "target": 20,
+      "reward_points": 75,
+      "reward_title": "Reagidor Profissional"
+    },
+    {
+      "name": "Gamer Ativo",
+      "description": "Fique 2 horas em canal de voz hoje",
+      "type": "voice_time",
+      "target": 7200,
+      "reward_points": 150,
+      "reward_title": "Viciado em Voz"
+    },
+    {
+      "name": "Quiz Master",
+      "description": "Acerte 5 perguntas no quiz PUBG",
+      "type": "quiz_correct",
+      "target": 5,
+      "reward_points": 200,
+      "reward_title": "Especialista PUBG"
+    },
+    {
+      "name": "Sortudo",
+      "description": "Ganhe na roleta 3 vezes hoje",
+      "type": "roulette_wins",
+      "target": 3,
+      "reward_points": 300,
+      "reward_title": "Rei da Sorte"
+    },
+    {
+      "name": "Competidor",
+      "description": "Jogue 10 partidas de pedra-papel-tesoura",
+      "type": "rps_games",
+      "target": 10,
+      "reward_points": 120,
+      "reward_title": "Jogador Dedicado"
+    },
+    {
+      "name": "Estudioso",
+      "description": "Responda 15 perguntas no quiz (certas ou erradas)",
+      "type": "quiz_total",
+      "target": 15,
+      "reward_points": 80,
+      "reward_title": "Aprendiz Dedicado"
+    }
+  ],
+  "roulette_settings": {
+    "outcomes": [
+      {
+        "multiplier": 0,
+        "probability": 0.4,
+        "name": "Perdeu tudo",
+        "emoji": "💀"
+      },
+      {
+        "multiplier": 0.5,
+        "probability": 0.2,
+        "name": "Perdeu metade",
+        "emoji": "😢"
+      },
+      {
+        "multiplier": 1,
+        "probability": 0.15,
+        "name": "Empatou",
+        "emoji": "😐"
+      },
+      {
+        "multiplier": 1.5,
+        "probability": 0.1,
+        "name": "Ganhou 50%",
+        "emoji": "😊"
+      },
+      {
+        "multiplier": 2,
+        "probability": 0.08,
+        "name": "Dobrou!",
+        "emoji": "🎉"
+      },
+      {
+        "multiplier": 3,
+        "probability": 0.05,
+        "name": "Triplicou!",
+        "emoji": "🤑"
+      },
+      {
+        "multiplier": 5,
+        "probability": 0.02,
+        "name": "JACKPOT!",
+        "emoji": "💰"
+      }
+    ]
+  },
+  "points_system": {
+    "rps_win": 50,
+    "rps_draw": 10,
+    "rps_lose": 5,
+    "quiz_easy": 25,
+    "quiz_medium": 50,
+    "quiz_hard": 100,
+    "quiz_wrong": 5,
+    "daily_challenge_bonus": 50
+  },
+  "game_settings": {
+    "quiz_timeout": 300,
+    "max_bet_percentage": 0.5,
+    "min_bet": 1,
+    "starting_points": 100,
+    "leaderboard_size": 10
+  }
+}

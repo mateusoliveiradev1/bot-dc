@@ -1,0 +1,165 @@
+{
+  "enabled": true,
+  "auto_create_seasons": true,
+  "season_duration_days": 90,
+  "announcement_channel_id": null,
+  "reset_rankings_on_season_end": true,
+  "preserve_season_history": true,
+  "max_seasons_history": 10,
+  "reward_distribution": {
+    "top_1_percent": [
+      "legendary_role",
+      "exclusive_badge",
+      "1000_coins"
+    ],
+    "top_5_percent": [
+      "epic_role",
+      "season_badge",
+      "500_coins"
+    ],
+    "top_10_percent": [
+      "rare_role",
+      "participation_badge",
+      "250_coins"
+    ],
+    "top_25_percent": [
+      "common_role",
+      "100_coins"
+    ],
+    "participation": [
+      "participation_title",
+      "50_coins"
+    ]
+  },
+  "themes": {
+    "default": {
+      "color": 65280,
+      "emoji": "🏆",
+      "name": "Padrão",
+      "description": "Tema clássico de competição"
+    },
+    "winter": {
+      "color": 8900331,
+      "emoji": "❄️",
+      "name": "Inverno",
+      "description": "Temporada gelada com recompensas cristalinas"
+    },
+    "summer": {
+      "color": 16766720,
+      "emoji": "☀️",
+      "name": "Verão",
+      "description": "Temporada quente com recompensas douradas"
+    },
+    "autumn": {
+      "color": 16747520,
+      "emoji": "🍂",
+      "name": "Outono",
+      "description": "Temporada das folhas com recompensas terrosas"
+    },
+    "spring": {
+      "color": 10025880,
+      "emoji": "🌸",
+      "name": "Primavera",
+      "description": "Temporada do renascimento com recompensas florais"
+    },
+    "cyberpunk": {
+      "color": 16711935,
+      "emoji": "🤖",
+      "name": "Cyberpunk",
+      "description": "Temporada futurística com recompensas tecnológicas"
+    },
+    "medieval": {
+      "color": 8421504,
+      "emoji": "⚔️",
+      "name": "Medieval",
+      "description": "Temporada épica com recompensas de cavaleiro"
+    },
+    "space": {
+      "color": 4915330,
+      "emoji": "🚀",
+      "name": "Espacial",
+      "description": "Temporada cósmica com recompensas estelares"
+    }
+  },
+  "notifications": {
+    "season_start": true,
+    "season_end": true,
+    "rewards_distributed": true,
+    "new_season_announcement": true,
+    "season_reminder_days": [30, 14, 7, 3, 1],
+    "top_player_highlights": true
+  },
+  "ranking_system": {
+    "points_multiplier": 1.5,
+    "bonus_points": {
+      "daily_play": 10,
+      "weekly_streak": 50,
+      "monthly_achievement": 100
+    },
+    "decay_system": {
+      "enabled": true,
+      "inactive_days_threshold": 14,
+      "decay_rate_percent": 5
+    }
+  },
+  "rewards_config": {
+    "role_permissions": {
+      "legendary": {
+        "priority": 1,
+        "mentionable": true,
+        "display_separately": true
+      },
+      "epic": {
+        "priority": 2,
+        "mentionable": true,
+        "display_separately": true
+      },
+      "rare": {
+        "priority": 3,
+        "mentionable": false,
+        "display_separately": false
+      }
+    },
+    "badge_categories": {
+      "season_champion": "Campeões de Temporada",
+      "season_participant": "Participantes",
+      "season_special": "Conquistas Especiais"
+    },
+    "title_display": {
+      "max_titles_shown": 3,
+      "show_season_year": true,
+      "show_rank_achieved": true
+    }
+  },
+  "leaderboard": {
+    "update_interval_minutes": 60,
+    "show_top_players": 25,
+    "categories": [
+      "overall_points",
+      "games_played",
+      "win_rate",
+      "kill_death_ratio",
+      "average_damage"
+    ],
+    "historical_tracking": true
+  },
+  "season_events": {
+    "double_xp_weekends": true,
+    "special_challenges": true,
+    "community_goals": true,
+    "mid_season_rewards": true
+  },
+  "advanced_features": {
+    "season_pass": {
+      "enabled": false,
+      "tiers": 50,
+      "premium_rewards": true
+    },
+    "clan_competitions": {
+      "enabled": false,
+      "season_tournaments": true
+    },
+    "achievement_integration": true,
+    "statistics_tracking": true
+  }
+}

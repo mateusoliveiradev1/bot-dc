@@ -1,0 +1,27 @@
+{
+  "notifications": {},
+  "preferences": {
+    "123456789": {
+      "enabled_types": [
+        "moderation_alert",
+        "birthday",
+        "minigame_milestone",
+        "custom_reminder",
+        "daily_challenge",
+        "system_announcement",
+        "rank_update",
+        "tournament_start",
+        "pubg_stats_update",
+        "tournament_result",
+        "clan_news",
+        "new_achievement"
+      ],
+      "dm_enabled": true,
+      "channel_enabled": true,
+      "quiet_hours_start": 22,
+      "quiet_hours_end": 8,
+      "min_priority": "low",
+      "custom_settings": {}
+    }
+  }
+}

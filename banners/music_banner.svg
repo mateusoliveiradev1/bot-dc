@@ -1,0 +1,68 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="musicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1DB954;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="musicGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#musicGradient)" rx="15" ry="15"/>
+  
+  <!-- Sound waves animation -->
+  <g opacity="0.3">
+    <rect x="100" y="80" width="4" height="40" fill="white" rx="2" ry="2">
+      <animate attributeName="height" values="40;80;40" dur="1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="80;60;80" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="110" y="70" width="4" height="60" fill="white" rx="2" ry="2">
+      <animate attributeName="height" values="60;100;60" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="70;50;70" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="120" y="85" width="4" height="30" fill="white" rx="2" ry="2">
+      <animate attributeName="height" values="30;70;30" dur="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="85;65;85" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="130" y="75" width="4" height="50" fill="white" rx="2" ry="2">
+      <animate attributeName="height" values="50;90;50" dur="1.1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="75;55;75" dur="1.1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Music note -->
+  <g transform="translate(650, 75)">
+    <ellipse cx="15" cy="35" rx="8" ry="6" fill="white" filter="url(#musicGlow)"/>
+    <rect x="23" y="10" width="3" height="25" fill="white"/>
+    <path d="M26 10 Q35 5 35 15 Q35 20 26 15" fill="white"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="70" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="bold" filter="url(#musicGlow)">
+    🎵 SISTEMA DE MÚSICA 🎶
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="105" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="18">
+    Experiência Musical Premium
+  </text>
+  
+  <!-- Features -->
+  <rect x="250" y="125" width="300" height="30" fill="rgba(255,255,255,0.1)" rx="15" ry="15"/>
+  <text x="400" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">
+    🎧 Playlists • 🎛️ Filtros • 🗳️ Votação • ❤️ Favoritos
+  </text>
+  
+  <!-- Bottom accent -->
+  <rect x="0" y="180" width="800" height="20" fill="rgba(0,0,0,0.2)" rx="0" ry="0"/>
+  <text x="400" y="195" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="12">
+    HAWK ESPORTS • ADVANCED MUSIC SYSTEM
+  </text>
+</svg>

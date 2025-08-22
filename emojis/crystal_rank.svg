@@ -1,0 +1,32 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="crystalGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#E6E6FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9370DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A5ACD;stop-opacity:1" />
+    </radialGradient>
+    <filter id="crystalGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Shield background -->
+  <path d="M16 2 L26 8 L26 20 Q26 26 16 30 Q6 26 6 20 L6 8 Z" fill="url(#crystalGradient)" stroke="#4A4A4A" stroke-width="1" filter="url(#crystalGlow)"/>
+  
+  <!-- Crystal formation -->
+  <path d="M16 7 L19 10 L18 14 L16 16 L14 14 L13 10 Z" fill="#F0E68C" stroke="#FFFFFF" stroke-width="1" opacity="0.9"/>
+  <path d="M16 7 L18 9 L16 11 L14 9 Z" fill="#FFFFFF" opacity="0.7"/>
+  <text x="16" y="22" text-anchor="middle" fill="#F0E68C" font-family="Arial, sans-serif" font-size="7" font-weight="bold">IV</text>
+  
+  <!-- Crystal sparkles -->
+  <circle cx="12" cy="8" r="0.5" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="20" cy="10" r="0.5" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="18" cy="18" r="0.5" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Bottom accent -->
+  <rect x="10" y="25" width="12" height="2" fill="#F0E68C" opacity="0.8" rx="1"/>
+</svg>

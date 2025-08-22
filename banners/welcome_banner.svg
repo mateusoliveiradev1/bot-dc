@@ -1,0 +1,83 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#F7931E;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFD23F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06FFA5;stop-opacity:1" />
+    </linearGradient>
+    <filter id="welcomeGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+    <pattern id="hexPattern" patternUnits="userSpaceOnUse" width="40" height="35">
+      <polygon points="20,5 35,15 35,25 20,35 5,25 5,15" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#welcomeGradient)" rx="15" ry="15"/>
+  <rect width="800" height="200" fill="url(#hexPattern)" rx="15" ry="15"/>
+  
+  <!-- Floating particles -->
+  <g opacity="0.6">
+    <circle cx="120" cy="50" r="2" fill="white">
+      <animate attributeName="cy" values="50;30;50" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="680" cy="80" r="3" fill="white">
+      <animate attributeName="cy" values="80;60;80" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="150" r="2.5" fill="white">
+      <animate attributeName="cy" values="150;130;150" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="160" r="2" fill="white">
+      <animate attributeName="cy" values="160;140;160" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Welcome icon -->
+  <g transform="translate(50, 75)">
+    <circle cx="25" cy="25" r="22" fill="rgba(255,255,255,0.2)" filter="url(#welcomeGlow)"/>
+    <text x="25" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">👋</text>
+  </g>
+  
+  <!-- PUBG logo area -->
+  <g transform="translate(700, 75)">
+    <circle cx="25" cy="25" r="22" fill="rgba(255,255,255,0.2)" filter="url(#welcomeGlow)"/>
+    <text x="25" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">🎮</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="65" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="36" font-weight="bold" filter="url(#welcomeGlow)">
+    BEM-VINDO AO HAWK ESPORTS!
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="95" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="Arial, sans-serif" font-size="18">
+    Sua jornada no PUBG começa aqui
+  </text>
+  
+  <!-- Features highlight -->
+  <rect x="200" y="115" width="400" height="35" fill="rgba(255,255,255,0.15)" rx="17" ry="17"/>
+  <text x="400" y="135" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    🏆 Rankings • 🎵 Música • 🎯 Torneios • 🏅 Conquistas
+  </text>
+  
+  <!-- Call to action -->
+  <text x="400" y="165" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Digite /help para começar sua aventura!
+  </text>
+  
+  <!-- Bottom accent -->
+  <rect x="0" y="180" width="800" height="20" fill="rgba(0,0,0,0.2)" rx="0" ry="0"/>
+  <text x="400" y="195" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="Arial, sans-serif" font-size="12">
+    HAWK ESPORTS • COMUNIDADE PUBG PREMIUM
+  </text>
+</svg>

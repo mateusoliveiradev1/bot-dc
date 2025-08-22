@@ -1,0 +1,152 @@
+{
+  "period": {
+    "start_date": "2025-07-23T14:51:18.877267",
+    "end_date": "2025-08-22T14:51:18.877267",
+    "days": 30
+  },
+  "summary": {
+    "total_sessions": 7,
+    "total_checkins": 49,
+    "total_checkouts": 39,
+    "participation_rate": 79.59,
+    "avg_players_per_session": 7.0
+  },
+  "session_types": {
+    "Ranked": 2,
+    "Casual": 2,
+    "Tournament": 2,
+    "Training": 1
+  },
+  "player_stats": {
+    "player_1": {
+      "checkins": 7,
+      "checkouts": 7,
+      "sessions_participated": 7,
+      "session_types": {
+        "Ranked": 2,
+        "Casual": 2,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 840,
+      "avg_session_time": 120.0
+    },
+    "player_2": {
+      "checkins": 7,
+      "checkouts": 7,
+      "sessions_participated": 7,
+      "session_types": {
+        "Ranked": 2,
+        "Casual": 2,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 840,
+      "avg_session_time": 120.0
+    },
+    "player_3": {
+      "checkins": 7,
+      "checkouts": 7,
+      "sessions_participated": 7,
+      "session_types": {
+        "Ranked": 2,
+        "Casual": 2,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 840,
+      "avg_session_time": 120.0
+    },
+    "player_4": {
+      "checkins": 7,
+      "checkouts": 6,
+      "sessions_participated": 7,
+      "session_types": {
+        "Ranked": 2,
+        "Casual": 2,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 720,
+      "avg_session_time": 120.0
+    },
+    "player_5": {
+      "checkins": 6,
+      "checkouts": 5,
+      "sessions_participated": 6,
+      "session_types": {
+        "Ranked": 2,
+        "Casual": 1,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 600,
+      "avg_session_time": 120.0
+    },
+    "player_6": {
+      "checkins": 5,
+      "checkouts": 4,
+      "sessions_participated": 5,
+      "session_types": {
+        "Ranked": 2,
+        "Tournament": 2,
+        "Training": 1
+      },
+      "total_time": 480,
+      "avg_session_time": 120.0
+    },
+    "player_7": {
+      "checkins": 4,
+      "checkouts": 2,
+      "sessions_participated": 4,
+      "session_types": {
+        "Ranked": 2,
+        "Tournament": 2
+      },
+      "total_time": 240,
+      "avg_session_time": 120.0
+    },
+    "player_8": {
+      "checkins": 3,
+      "checkouts": 1,
+      "sessions_participated": 3,
+      "session_types": {
+        "Ranked": 1,
+        "Tournament": 2
+      },
+      "total_time": 120,
+      "avg_session_time": 120.0
+    },
+    "player_9": {
+      "checkins": 2,
+      "checkouts": 0,
+      "sessions_participated": 2,
+      "session_types": {
+        "Tournament": 2
+      },
+      "total_time": 0,
+      "avg_session_time": 0
+    },
+    "player_10": {
+      "checkins": 1,
+      "checkouts": 0,
+      "sessions_participated": 1,
+      "session_types": {
+        "Tournament": 1
+      },
+      "total_time": 0,
+      "avg_session_time": 0
+    }
+  },
+  "weekday_stats": {
+    "Quinta-feira": 2,
+    "Terça-feira": 2,
+    "Domingo": 1,
+    "Sexta-feira": 1,
+    "Sábado": 1
+  },
+  "hourly_stats": {
+    "14:00-15:00": 7
+  },
+  "generated_at": "2025-08-22T14:51:18.877404"
+}

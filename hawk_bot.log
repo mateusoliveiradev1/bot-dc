@@ -1,0 +1,297 @@
+2025-08-21 15:41:13,277 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:41:13,278 - HawkBot.Storage - INFO - Arquivo de dados criado com estrutura inicial
+2025-08-21 15:41:13,278 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:41:13,278 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:41:13,278 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:41:31,230 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:41:31,231 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:41:31,231 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:41:54,619 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:41:54,620 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:41:54,620 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:41:54,620 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:41:54,620 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:41:54,620 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 15:41:54,620 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 15:42:10,398 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:42:10,399 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:42:10,400 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:42:10,400 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:42:10,400 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:42:10,400 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 15:42:10,400 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 15:42:10,400 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 15:42:10,400 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 15:42:10,402 - discord.client - INFO - logging in using static token
+2025-08-21 15:42:10,743 - HawkBot - ERROR - Erro fatal ao executar bot: Improper token has been passed.
+2025-08-21 15:45:33,326 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:45:33,327 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:45:33,327 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:45:33,327 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:45:33,327 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:45:33,327 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 15:45:33,327 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 15:45:33,327 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 15:45:33,327 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 15:45:33,328 - discord.client - INFO - logging in using static token
+2025-08-21 15:45:34,438 - HawkBot - INFO - Sincronizados 6 comandos slash
+2025-08-21 15:45:34,439 - HawkBot - INFO - Ranks atualizados automaticamente
+2025-08-21 15:45:34,823 - HawkBot - ERROR - Erro fatal ao executar bot: Shard ID None is requesting privileged intents that have not been explicitly enabled in the developer portal. It is recommended to go to https://discord.com/developers/applications/ and explicitly enable the privileged intents within your application's page. If this is not possible, then consider disabling the privileged intents instead.
+2025-08-21 15:54:21,644 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:54:21,645 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:54:21,645 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:54:21,645 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:54:21,645 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:54:21,646 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 15:54:21,646 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 15:54:21,646 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 15:54:21,646 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 15:54:21,647 - discord.client - INFO - logging in using static token
+2025-08-21 15:54:22,845 - HawkBot - INFO - Sincronizados 6 comandos slash
+2025-08-21 15:54:22,845 - HawkBot - INFO - Ranks atualizados automaticamente
+2025-08-21 15:54:23,270 - HawkBot - ERROR - Erro fatal ao executar bot: Shard ID None is requesting privileged intents that have not been explicitly enabled in the developer portal. It is recommended to go to https://discord.com/developers/applications/ and explicitly enable the privileged intents within your application's page. If this is not possible, then consider disabling the privileged intents instead.
+2025-08-21 15:56:35,182 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 15:56:35,183 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 15:56:35,183 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 15:56:35,183 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 15:56:35,183 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 15:56:35,183 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 15:56:35,183 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 15:56:35,183 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 15:56:35,183 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 15:56:35,184 - discord.client - INFO - logging in using static token
+2025-08-21 15:56:36,252 - HawkBot - INFO - Sincronizados 6 comandos slash
+2025-08-21 15:56:36,253 - HawkBot - INFO - Ranks atualizados automaticamente
+2025-08-21 15:56:36,796 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 88f6a381cc2cf95b26d9f4bc0797cf2c).
+2025-08-21 15:56:38,803 - HawkBot - INFO - Bot Hawk Esports#6418 está online!
+2025-08-21 15:56:38,804 - HawkBot - INFO - Bot conectado em 0 servidor(es)
+2025-08-21 15:57:01,669 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 15:58:36,068 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:00:34,653 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:01:06,763 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 16:01:06,763 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 16:01:06,763 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 16:01:06,764 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 16:01:06,764 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 16:01:06,764 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 16:01:06,764 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 16:01:06,764 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 16:01:06,764 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 16:01:06,765 - discord.client - INFO - logging in using static token
+2025-08-21 16:01:07,862 - HawkBot - INFO - Sincronizados 6 comandos slash
+2025-08-21 16:01:07,862 - HawkBot - INFO - Ranks atualizados automaticamente
+2025-08-21 16:01:08,240 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 0ce8b158f0d94cebbd7885f87b937719).
+2025-08-21 16:01:10,247 - HawkBot - INFO - Bot Hawk Esports#6418 está online!
+2025-08-21 16:01:10,247 - HawkBot - INFO - Bot conectado em 0 servidor(es)
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - INFO - Iniciando configuração completa do servidor 
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Predador': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Mestre MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,037 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Co-Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,038 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Membro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,038 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Recruta': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,038 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Inativo': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,038 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Acesso liberado': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:01:33,038 - HawkBot.ServerSetup - INFO - Criadas 0 roles
+2025-08-21 16:01:33,232 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📌・Informações': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:33,440 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '💬・Comunidade': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:33,816 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎮・Game': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:34,038 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎙・Voz': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:34,275 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🔒・Privados': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:34,470 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📋・Registro': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:01:34,471 - HawkBot.ServerSetup - INFO - Criadas 0 categorias
+2025-08-21 16:01:34,471 - HawkBot.ServerSetup - INFO - Configuração do servidor concluída com sucesso!
+2025-08-21 16:04:45,431 - HawkBot.ServerSetup - INFO - Iniciando configuração completa do servidor 
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Predador': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Mestre MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,432 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Co-Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,433 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Membro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,433 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Recruta': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,433 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Inativo': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,433 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Acesso liberado': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:04:45,433 - HawkBot.ServerSetup - INFO - Criadas 0 roles
+2025-08-21 16:04:45,669 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📌・Informações': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:45,857 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '💬・Comunidade': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:46,062 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎮・Game': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:46,241 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎙・Voz': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:46,553 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🔒・Privados': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:46,841 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📋・Registro': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:04:46,841 - HawkBot.ServerSetup - INFO - Criadas 0 categorias
+2025-08-21 16:04:46,841 - HawkBot.ServerSetup - INFO - Configuração do servidor concluída com sucesso!
+2025-08-21 16:09:09,438 - HawkBot.ServerSetup - INFO - Iniciando configuração completa do servidor 
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Predador': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Mestre MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Co-Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Membro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Recruta': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Inativo': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Acesso liberado': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:09:09,439 - HawkBot.ServerSetup - INFO - Criadas 0 roles
+2025-08-21 16:09:09,638 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📌・Informações': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:09,828 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '💬・Comunidade': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:10,010 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎮・Game': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:10,203 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🎙・Voz': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:10,418 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '🔒・Privados': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:10,670 - HawkBot.ServerSetup - ERROR - Erro ao criar categoria '📋・Registro': 403 Forbidden (error code: 50013): Missing Permissions
+2025-08-21 16:09:10,671 - HawkBot.ServerSetup - INFO - Criadas 0 categorias
+2025-08-21 16:09:10,671 - HawkBot.ServerSetup - INFO - Configuração do servidor concluída com sucesso!
+2025-08-21 16:11:01,057 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:11:34,283 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:11:34,329 - HawkBot.ServerSetup - INFO - Iniciando configuração completa do servidor Hawk Esports
+2025-08-21 16:11:34,329 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Predador': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,329 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Mestre MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Diamante MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Ouro MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Prata MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Bronze MM': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Co-Líder': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Membro': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Recruta': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Inativo': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - ERROR - Erro ao criar role 'Acesso liberado': type object 'Permissions' has no attribute 'default'
+2025-08-21 16:11:34,330 - HawkBot.ServerSetup - INFO - Criadas 0 roles
+2025-08-21 16:11:34,641 - HawkBot.ServerSetup - INFO - Categoria '📌・Informações' criada
+2025-08-21 16:11:34,957 - HawkBot.ServerSetup - INFO - Canal '📜・regras' criado com sucesso
+2025-08-21 16:11:35,505 - HawkBot.ServerSetup - INFO - Canal '📢・anúncios' criado com sucesso
+2025-08-21 16:11:35,803 - HawkBot.ServerSetup - INFO - Canal '📊・resultados' criado com sucesso
+2025-08-21 16:11:36,170 - HawkBot.ServerSetup - INFO - Canal '📆・calendário' criado com sucesso
+2025-08-21 16:11:36,391 - HawkBot.ServerSetup - INFO - Categoria '💬・Comunidade' criada
+2025-08-21 16:11:37,186 - HawkBot.ServerSetup - INFO - Canal '💭・geral' criado com sucesso
+2025-08-21 16:11:37,465 - HawkBot.ServerSetup - INFO - Canal '📷・clipes' criado com sucesso
+2025-08-21 16:11:37,995 - HawkBot.ServerSetup - INFO - Canal '🎉・eventos' criado com sucesso
+2025-08-21 16:11:38,228 - HawkBot.ServerSetup - INFO - Categoria '🎮・Game' criada
+2025-08-21 16:11:38,492 - HawkBot.ServerSetup - INFO - Canal '🎯・scrims' criado com sucesso
+2025-08-21 16:11:38,876 - HawkBot.ServerSetup - INFO - Canal '🏆・ranking' criado com sucesso
+2025-08-21 16:11:39,153 - HawkBot.ServerSetup - INFO - Canal '📊・estatísticas' criado com sucesso
+2025-08-21 16:11:39,402 - HawkBot.ServerSetup - INFO - Categoria '🎙・Voz' criada
+2025-08-21 16:11:39,726 - HawkBot.ServerSetup - INFO - Canal 'Squad 1' criado com sucesso
+2025-08-21 16:11:41,611 - HawkBot.ServerSetup - INFO - Canal 'Squad 2' criado com sucesso
+2025-08-21 16:11:41,874 - HawkBot.ServerSetup - INFO - Canal 'Squad 3' criado com sucesso
+2025-08-21 16:11:42,291 - HawkBot.ServerSetup - INFO - Canal 'Treino' criado com sucesso
+2025-08-21 16:11:42,654 - HawkBot.ServerSetup - INFO - Canal 'Estratégia Líder' criado com sucesso
+2025-08-21 16:11:42,900 - HawkBot.ServerSetup - INFO - Categoria '🔒・Privados' criada
+2025-08-21 16:11:43,594 - HawkBot.ServerSetup - INFO - Canal 'Líder' criado com sucesso
+2025-08-21 16:11:44,191 - HawkBot.ServerSetup - INFO - Canal 'Co-Líder' criado com sucesso
+2025-08-21 16:11:44,924 - HawkBot.ServerSetup - INFO - Canal 'Staff' criado com sucesso
+2025-08-21 16:11:45,196 - HawkBot.ServerSetup - INFO - Categoria '📋・Registro' criada
+2025-08-21 16:11:45,196 - HawkBot.ServerSetup - INFO - Canal '📋・registro' já existe, pulando...
+2025-08-21 16:11:45,196 - HawkBot.ServerSetup - INFO - Criadas 6 categorias
+2025-08-21 16:11:45,197 - HawkBot.ServerSetup - INFO - Configuração do servidor concluída com sucesso!
+2025-08-21 16:12:18,054 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:12:18,098 - HawkBot.Storage - INFO - Jogador adicionado: LiiiraaK1nG (343264130905669632)
+2025-08-21 16:12:18,098 - HawkBot.Registration - WARNING - Role 'Acesso liberado' não encontrada no guild Hawk Esports
+2025-08-21 16:12:19,779 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:12:19,925 - HawkBot.Registration - INFO - Confirmação de registro enviada via DM para liiiraa
+2025-08-21 16:12:19,926 - HawkBot.Registration - INFO - Jogador registrado: LiiiraaK1nG (liiiraa)
+2025-08-21 16:13:22,291 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:14:07,003 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\Liiiraa\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Liiiraa\Documents\bot-dc\bot.py", line 101, in on_message
+    await self.medal_integration.process_medal_clip(message)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MedalIntegration' object has no attribute 'process_medal_clip'. Did you mean: 'processed_clips'?
+2025-08-21 16:14:33,029 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-21 16:14:33,030 - HawkBot.Storage - INFO - Dados carregados: 6 entradas
+2025-08-21 16:14:33,030 - HawkBot.Storage - INFO - Storage inicializado: data.json
+2025-08-21 16:14:33,030 - HawkBot.Registration - INFO - Sistema de registro inicializado
+2025-08-21 16:14:33,030 - HawkBot.PUBGAPI - INFO - PUBG API inicializada com sucesso
+2025-08-21 16:14:33,030 - HawkBot.RankSystem - INFO - Sistema de Ranking inicializado
+2025-08-21 16:14:33,030 - HawkBot.MedalIntegration - INFO - Integração Medal inicializada
+2025-08-21 16:14:33,030 - HawkBot.TaskScheduler - INFO - Agendador de tarefas inicializado
+2025-08-21 16:14:33,030 - HawkBot - INFO - Bot Hawk Esports inicializado com sucesso!
+2025-08-21 16:14:33,031 - discord.client - INFO - logging in using static token
+2025-08-21 16:14:33,861 - HawkBot - INFO - Sincronizados 6 comandos slash
+2025-08-21 16:14:33,861 - HawkBot - INFO - Ranks atualizados automaticamente
+2025-08-21 16:14:34,263 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 1f297041d495cd385704afa7ef267d24).
+2025-08-21 16:14:36,273 - HawkBot - INFO - Bot Hawk Esports#6418 está online!
+2025-08-21 16:14:36,274 - HawkBot - INFO - Bot conectado em 1 servidor(es)
+2025-08-21 16:16:34,442 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 1f297041d495cd385704afa7ef267d24.

@@ -1,0 +1,134 @@
+{
+  "players": {},
+  "guilds": {},
+  "clips": {},
+  "rankings": {},
+  "settings": {
+    "last_update": null,
+    "version": "1.0.0",
+    "created_at": "2025-08-22T14:41:13.783019"
+  },
+  "stats": {
+    "total_players": 0,
+    "total_clips": 0,
+    "last_rank_update": null
+  },
+  "checkin_system": {
+    "sessions": {
+      "test_scrim_001": {
+        "id": "test_scrim_001",
+        "type": "scrim",
+        "start_time": "2025-08-22T15:12:24.428955",
+        "end_time": "2025-08-22T17:12:24.428955",
+        "max_players": 8,
+        "description": "Sessão de teste para validar o sistema",
+        "created_at": "2025-08-22T14:42:24.428977",
+        "status": "active",
+        "players": {
+          "111111111": {
+            "username": "Player1",
+            "checkin_time": "2025-08-22T14:42:24.430428",
+            "checkout_time": "2025-08-22T14:42:24.432753",
+            "status": "checked_out"
+          },
+          "222222222": {
+            "username": "Player2",
+            "checkin_time": "2025-08-22T14:42:24.431113",
+            "checkout_time": null,
+            "status": "checked_in"
+          },
+          "333333333": {
+            "username": "Player3",
+            "checkin_time": "2025-08-22T14:42:24.431915",
+            "checkout_time": null,
+            "status": "checked_in"
+          }
+        },
+        "checkin_count": 3,
+        "checkout_count": 1
+      }
+    },
+    "player_stats": {
+      "111111111": {
+        "username": "Player1",
+        "total_checkins": 1,
+        "total_checkouts": 1,
+        "no_shows": 0,
+        "by_type": {
+          "scrim": {
+            "checkins": 1,
+            "checkouts": 1
+          },
+          "ranked": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "mm": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "tournament": {
+            "checkins": 0,
+            "checkouts": 0
+          }
+        },
+        "last_activity": "2025-08-22T14:42:24.432758"
+      },
+      "222222222": {
+        "username": "Player2",
+        "total_checkins": 1,
+        "total_checkouts": 0,
+        "no_shows": 0,
+        "by_type": {
+          "scrim": {
+            "checkins": 1,
+            "checkouts": 0
+          },
+          "ranked": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "mm": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "tournament": {
+            "checkins": 0,
+            "checkouts": 0
+          }
+        },
+        "last_activity": "2025-08-22T14:42:24.431121"
+      },
+      "333333333": {
+        "username": "Player3",
+        "total_checkins": 1,
+        "total_checkouts": 0,
+        "no_shows": 0,
+        "by_type": {
+          "scrim": {
+            "checkins": 1,
+            "checkouts": 0
+          },
+          "ranked": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "mm": {
+            "checkins": 0,
+            "checkouts": 0
+          },
+          "tournament": {
+            "checkins": 0,
+            "checkouts": 0
+          }
+        },
+        "last_activity": "2025-08-22T14:42:24.431920"
+      }
+    },
+    "settings": {
+      "reminder_time": 30,
+      "auto_checkout_time": 180,
+      "require_checkout": true
+    }
+  }
+}
