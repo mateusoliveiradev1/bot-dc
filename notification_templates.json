@@ -1,0 +1,86 @@
+{
+  "rank_update_promotion": {
+    "id": "rank_update_promotion",
+    "type": "rank_update",
+    "title": "🎉 Promoção de Rank!",
+    "message": "Parabéns! Você subiu para o rank **{new_rank}** com {points} pontos!",
+    "color": 4437377,
+    "emoji": "🎉",
+    "priority": "high",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  },
+  "achievement_unlocked": {
+    "id": "achievement_unlocked",
+    "type": "new_achievement",
+    "title": "🏆 Nova Conquista Desbloqueada!",
+    "message": "Você desbloqueou a conquista **{achievement_name}**!\n{achievement_description}",
+    "color": 16766720,
+    "emoji": "🏆",
+    "priority": "medium",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  },
+  "tournament_starting": {
+    "id": "tournament_starting",
+    "type": "tournament_start",
+    "title": "⚔️ Torneio Iniciando!",
+    "message": "O torneio **{tournament_name}** está começando em {time_remaining}!\nPrepare-se para a batalha!",
+    "color": 15746887,
+    "emoji": "⚔️",
+    "priority": "high",
+    "requires_action": true,
+    "action_button": "Participar",
+    "expires_after": null
+  },
+  "daily_challenge_available": {
+    "id": "daily_challenge_available",
+    "type": "daily_challenge",
+    "title": "🎯 Novo Desafio Diário!",
+    "message": "Um novo desafio diário está disponível!\n**{challenge_name}**\nRecompensa: {reward}",
+    "color": 7506394,
+    "emoji": "🎯",
+    "priority": "medium",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  },
+  "minigame_milestone": {
+    "id": "minigame_milestone",
+    "type": "minigame_milestone",
+    "title": "🎮 Marco Alcançado!",
+    "message": "Você alcançou um marco nos mini-games!\n**{milestone_name}**\n{description}",
+    "color": 10181046,
+    "emoji": "🎮",
+    "priority": "low",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  },
+  "system_announcement": {
+    "id": "system_announcement",
+    "type": "system_announcement",
+    "title": "📢 Anúncio do Sistema",
+    "message": "{announcement_text}",
+    "color": 54442,
+    "emoji": "📢",
+    "priority": "medium",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  },
+  "birthday_reminder": {
+    "id": "birthday_reminder",
+    "type": "birthday",
+    "title": "🎂 Feliz Aniversário!",
+    "message": "Hoje é seu aniversário! 🎉\nA equipe Hawk Esports deseja um feliz aniversário!\nVocê ganhou um presente especial!",
+    "color": 16738740,
+    "emoji": "🎂",
+    "priority": "high",
+    "requires_action": false,
+    "action_button": null,
+    "expires_after": null
+  }
+}

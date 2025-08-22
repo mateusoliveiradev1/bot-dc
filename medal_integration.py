@@ -238,6 +238,10 @@ class MedalIntegration:
                 return
             
             # Encontrar canal de clipes
+            if not hasattr(original_message.guild, 'channels'):
+                logger.debug("Guild mock sem atributo channels - pulando repost")
+                return
+                
             clips_channel = discord.utils.get(
                 original_message.guild.channels,
                 name=self.clips_channel_name

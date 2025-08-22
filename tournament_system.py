@@ -107,8 +107,19 @@ class TournamentSystem:
                                  username: str, team_name: str = None) -> bool:
         """Registra um participante no torneio"""
         try:
+            # Validar dados de entrada
+            if not tournament_id or not user_id or not username:
+                logger.warning("Dados inválidos para registro de participante")
+                return False
+            
+            # Limitar tamanho dos campos
+            username = username[:50]  # Máximo 50 caracteres
+            if team_name:
+                team_name = team_name[:30]  # Máximo 30 caracteres
+            
             tournament = self.active_tournaments.get(tournament_id)
             if not tournament:
+                logger.warning(f"Torneio não encontrado: {tournament_id}")
                 return False
             
             # Verificar se inscrições estão abertas
@@ -412,9 +423,14 @@ class TournamentSystem:
     
     def _get_participant_by_id(self, user_id: str) -> Dict:
         """Obtém dados do participante pelo ID"""
-        # Esta função seria implementada para buscar dados do participante
-        # Por simplicidade, retornando um placeholder
-        return {'user_id': user_id, 'username': 'Player', 'team_name': 'Team'}
+        # Buscar em todos os torneios ativos
+        for tournament in self.active_tournaments.values():
+            for participant in tournament.get('participants', []):
+                if participant.get('user_id') == user_id:
+                    return participant
+        
+        # Se não encontrar, retornar dados básicos
+        return {'user_id': user_id, 'username': 'Player', 'team_name': f'Team_{user_id[:6]}'}
     
     async def _finish_tournament(self, tournament_id: str):
         """Finaliza um torneio"""

@@ -573,6 +573,18 @@ class AchievementSystem:
         
         return leaderboard[:limit]
     
+    def get_all_achievements(self) -> Dict[str, Achievement]:
+        """Obter todas as conquistas disponíveis"""
+        return self.achievements.copy()
+    
+    def get_achievements_by_category(self, category: str) -> List[Achievement]:
+        """Obter conquistas por categoria"""
+        achievements = []
+        for achievement in self.achievements.values():
+            if achievement.category == category:
+                achievements.append(achievement)
+        return achievements
+    
     async def send_achievement_notification(self, user_id: str, achievement: Achievement, channel):
         """Enviar notificação de conquista desbloqueada"""
         try:

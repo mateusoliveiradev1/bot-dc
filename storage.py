@@ -175,6 +175,10 @@ class DataStorage:
             }
             
             # Atualizar estatísticas
+            if "stats" not in self.data:
+                self.data["stats"] = {"total_players": 0, "total_clips": 0}
+            if "total_players" not in self.data["stats"]:
+                self.data["stats"]["total_players"] = 0
             self.data["stats"]["total_players"] += 1
             
             self.save_data()

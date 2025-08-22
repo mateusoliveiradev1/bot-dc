@@ -626,6 +626,13 @@ class BadgeSystem:
                 badges.append(badge.value)
         return badges
     
+    def get_all_badges(self) -> List[Dict[str, Any]]:
+        """Obtém todos os emblemas disponíveis"""
+        badges = []
+        for badge in BadgeType:
+            badges.append(badge.value)
+        return badges
+    
     async def check_user_badges(self, user_id: str, pubg_data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Verifica quais emblemas um usuário deve receber"""
         if not self.config.get("enabled", True):

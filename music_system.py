@@ -284,9 +284,8 @@ class MusicSystem:
             player.current_song = next_song
             player.is_playing = True
             player.is_paused = False
-            player.skip_votes.clear()
-            player.song_start_time = datetime.now()  # Marcar início da música
             player.skip_votes.clear()  # Limpar votos da música anterior
+            player.song_start_time = datetime.now()  # Marcar início da música
             
             # Obter URL de streaming
             try:
@@ -295,15 +294,21 @@ class MusicSystem:
                     stream_url = stream_data['url']
                 else:
                     stream_url = next_song.url
-            except:
+            except Exception as e:
+                logger.warning(f"Erro ao obter URL de streaming, usando URL original: {e}")
                 stream_url = next_song.url
             
             # Criar source de áudio
-            source = discord.FFmpegPCMAudio(stream_url, **self.ffmpeg_options)
-            source = discord.PCMVolumeTransformer(source, volume=player.volume)
-            
-            # Tocar música
-            player.voice_client.play(source, after=lambda e: self._song_finished(guild_id, e))
+            try:
+                source = discord.FFmpegPCMAudio(stream_url, **self.ffmpeg_options)
+                source = discord.PCMVolumeTransformer(source, volume=player.volume)
+                
+                # Tocar música
+                player.voice_client.play(source, after=lambda e: self._song_finished(guild_id, e))
+            except Exception as e:
+                logger.error(f"Erro ao criar source de áudio: {e}")
+                player.is_playing = False
+                return
             
             logger.info(f"Tocando: {next_song.title} no servidor {guild_id}")
             

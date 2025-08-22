@@ -111,9 +111,19 @@ class NotificationPreferences:
     
     def should_receive(self, notification: UserNotification) -> bool:
         """Determina se o usuário deve receber a notificação"""
-        # Verificar se o tipo está habilitado
-        notification_type = NotificationType(notification.template_id.split('_')[0])
-        if not self.is_type_enabled(notification_type):
+        # Verificar se o tipo está habilitado - usar mapeamento de template para tipo
+        template_type_map = {
+            "rank_update_promotion": NotificationType.RANK_UPDATE,
+            "achievement_unlocked": NotificationType.NEW_ACHIEVEMENT,
+            "tournament_starting": NotificationType.TOURNAMENT_START,
+            "daily_challenge_available": NotificationType.DAILY_CHALLENGE,
+            "minigame_milestone": NotificationType.MINIGAME_MILESTONE,
+            "system_announcement": NotificationType.SYSTEM_ANNOUNCEMENT,
+            "birthday_reminder": NotificationType.BIRTHDAY
+        }
+        
+        notification_type = template_type_map.get(notification.template_id)
+        if not notification_type or not self.is_type_enabled(notification_type):
             return False
         
         # Verificar prioridade mínima

@@ -1,0 +1,197 @@
+{
+  "123456789": {
+    "badges": [
+      {
+        "name": "Spray Master",
+        "emoji": "💥",
+        "color": 16717636,
+        "description": "Mestre do spray control",
+        "rarity": "épico",
+        "category": "combat",
+        "earned_date": "2025-08-22T19:14:48.558555"
+      },
+      {
+        "name": "Demolition Expert",
+        "emoji": "💣",
+        "color": 16733986,
+        "description": "Especialista em explosivos",
+        "rarity": "raro",
+        "category": "combat",
+        "earned_date": "2025-08-22T19:14:48.558557"
+      },
+      {
+        "name": "Berserker",
+        "emoji": "⚔️",
+        "color": 9109504,
+        "description": "Fúria incontrolável em combate",
+        "rarity": "lendário",
+        "category": "combat",
+        "earned_date": "2025-08-22T19:14:48.558560"
+      },
+      {
+        "name": "Silent Assassin",
+        "emoji": "🗡️",
+        "color": 3026478,
+        "description": "Eliminações silenciosas e precisas",
+        "rarity": "épico",
+        "category": "combat",
+        "earned_date": "2025-08-22T19:14:48.558561"
+      },
+      {
+        "name": "Rifle Expert",
+        "emoji": "🔫",
+        "color": 5025616,
+        "description": "Mestre dos rifles de assalto",
+        "rarity": "raro",
+        "category": "weapons",
+        "earned_date": "2025-08-22T19:14:48.558563"
+      },
+      {
+        "name": "Sniper God",
+        "emoji": "🎯",
+        "color": 1668818,
+        "description": "Divindade dos rifles de precisão",
+        "rarity": "mítico",
+        "category": "weapons",
+        "earned_date": "2025-08-22T19:14:48.558565"
+      },
+      {
+        "name": "SMG Rusher",
+        "emoji": "🏃",
+        "color": 16750592,
+        "description": "Velocidade e agressividade com SMGs",
+        "rarity": "comum",
+        "category": "weapons",
+        "earned_date": "2025-08-22T19:14:48.558566"
+      },
+      {
+        "name": "Shotgun Sheriff",
+        "emoji": "🤠",
+        "color": 7951688,
+        "description": "Lei e ordem com escopetas",
+        "rarity": "raro",
+        "category": "weapons",
+        "earned_date": "2025-08-22T19:14:48.558567"
+      },
+      {
+        "name": "Pistol Virtuoso",
+        "emoji": "🔫",
+        "color": 6323595,
+        "description": "Artista das pistolas",
+        "rarity": "épico",
+        "category": "weapons",
+        "earned_date": "2025-08-22T19:14:48.558569"
+      },
+      {
+        "name": "Zone Master",
+        "emoji": "🌪️",
+        "color": 10233776,
+        "description": "Mestre da rotação de zona",
+        "rarity": "raro",
+        "category": "survival",
+        "earned_date": "2025-08-22T19:14:48.558571"
+      },
+      {
+        "name": "Loot Goblin",
+        "emoji": "👹",
+        "color": 5025616,
+        "description": "Colecionador compulsivo de loot",
+        "rarity": "comum",
+        "category": "survival",
+        "earned_date": "2025-08-22T19:14:48.558572"
+      },
+      {
+        "name": "Vehicle Master",
+        "emoji": "🚗",
+        "color": 16733986,
+        "description": "Especialista em veículos",
+        "rarity": "raro",
+        "category": "survival",
+        "earned_date": "2025-08-22T19:14:48.558573"
+      },
+      {
+        "name": "Camper King",
+        "emoji": "🏕️",
+        "color": 9159498,
+        "description": "Mestre da paciência e posicionamento",
+        "rarity": "raro",
+        "category": "survival",
+        "earned_date": "2025-08-22T19:14:48.558575"
+      },
+      {
+        "name": "Bridge Troll",
+        "emoji": "🌉",
+        "color": 7951688,
+        "description": "Guardião das pontes",
+        "rarity": "épico",
+        "category": "survival",
+        "earned_date": "2025-08-22T19:14:48.558576"
+      },
+      {
+        "name": "Guardian Angel",
+        "emoji": "👼",
+        "color": 16777215,
+        "description": "Protetor incansável da equipe",
+        "rarity": "lendário",
+        "category": "support",
+        "earned_date": "2025-08-22T19:14:48.558577"
+      },
+      {
+        "name": "Supply Sergeant",
+        "emoji": "📦",
+        "color": 6323595,
+        "description": "Especialista em suprimentos",
+        "rarity": "raro",
+        "category": "support",
+        "earned_date": "2025-08-22T19:14:48.558579"
+      },
+      {
+        "name": "Intel Officer",
+        "emoji": "🔍",
+        "color": 4149685,
+        "description": "Especialista em reconhecimento",
+        "rarity": "épico",
+        "category": "support",
+        "earned_date": "2025-08-22T19:14:48.558580"
+      },
+      {
+        "name": "Smoke Tactician",
+        "emoji": "💨",
+        "color": 10395294,
+        "description": "Mestre das granadas de fumaça",
+        "rarity": "raro",
+        "category": "support",
+        "earned_date": "2025-08-22T19:14:48.558581"
+      },
+      {
+        "name": "Season Warrior",
+        "emoji": "⚔️",
+        "color": 16739125,
+        "description": "Guerreiro da temporada atual",
+        "rarity": "épico",
+        "category": "seasonal",
+        "earned_date": "2025-08-22T19:14:48.558584"
+      },
+      {
+        "name": "Early Bird",
+        "emoji": "🐦",
+        "color": 2201331,
+        "description": "Primeiro a experimentar novos recursos",
+        "rarity": "especial",
+        "category": "seasonal",
+        "earned_date": "2025-08-22T19:14:48.558585"
+      },
+      {
+        "name": "Anniversary Veteran",
+        "emoji": "🎂",
+        "color": 15277667,
+        "description": "Presente desde o aniversário do servidor",
+        "rarity": "mítico",
+        "category": "seasonal",
+        "earned_date": "2025-08-22T19:14:48.558586"
+      }
+    ],
+    "last_check": "2025-08-22T19:14:48.558539",
+    "total_score": 4300
+  }
+}
