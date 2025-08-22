@@ -26,6 +26,7 @@ from rank import RankSystem
 from medal_integration import MedalIntegration
 from scheduler import TaskScheduler
 from storage import DataStorage
+from postgres_storage import PostgreSQLStorage
 from tournament_system import TournamentSystem
 from web_dashboard import WebDashboard
 from achievement_system import AchievementSystem
@@ -45,6 +46,7 @@ from checkin_system import CheckInSystem
 from checkin_notifications import CheckInNotifications
 from checkin_reminders import CheckInReminders
 from checkin_reports import CheckInReports
+from keep_alive import KeepAlive
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -75,8 +77,8 @@ class HawkBot(commands.Bot):
             description='Bot oficial do clã Hawk Esports - PUBG'
         )
         
-        # Inicializar módulos
-        self.storage = DataStorage()
+        # Inicializar sistema de armazenamento (PostgreSQL ou JSON)
+        self.storage = self._initialize_storage()
         self.embed_templates = EmbedTemplates({})
         self.server_setup = ServerSetup(self)
         self.registration = Registration(self)
@@ -105,9 +107,34 @@ class HawkBot(commands.Bot):
         
         logger.info("Bot Hawk Esports inicializado com sucesso!")
     
+    def _initialize_storage(self):
+        """Inicializa o sistema de armazenamento baseado nas variáveis de ambiente"""
+        # Verifica se há configuração de PostgreSQL
+        db_host = os.getenv('DB_HOST')
+        db_name = os.getenv('DB_NAME')
+        db_user = os.getenv('DB_USER')
+        db_password = os.getenv('DB_PASSWORD')
+        
+        if db_host and db_name and db_user and db_password:
+            logger.info("🐘 Usando PostgreSQL como sistema de armazenamento")
+            return PostgreSQLStorage()
+        else:
+            logger.info("📁 Usando JSON como sistema de armazenamento (desenvolvimento)")
+            return DataStorage()
+    
     async def setup_hook(self):
         """Configurações iniciais do bot"""
         try:
+            # Inicializar sistema de armazenamento
+            if hasattr(self.storage, 'initialize'):
+                await self.storage.initialize()
+            
+            # Inicializar sistema keep alive para Render
+            if os.getenv('RENDER'):
+                self.keep_alive = KeepAlive()
+                self.keep_alive.start()
+                logger.info("🔄 Sistema keep alive iniciado para Render")
+            
             # Sincronizar comandos slash
             synced = await self.tree.sync()
             logger.info(f"Sincronizados {len(synced)} comandos slash")
@@ -164,6 +191,20 @@ class HawkBot(commands.Bot):
                 
         except Exception as e:
             logger.error(f"Erro no setup_hook: {e}")
+    
+    async def close(self):
+        """Método chamado quando o bot é desligado"""
+        # Parar sistema keep alive se estiver rodando
+        if hasattr(self, 'keep_alive') and self.keep_alive:
+            self.keep_alive.stop()
+            logger.info("🔄 Sistema keep alive parado")
+        
+        # Fechar conexão do storage
+        if hasattr(self.storage, 'close'):
+            await self.storage.close()
+            logger.info("💾 Conexão do armazenamento fechada")
+        
+        await super().close()
     
     async def on_ready(self):
         """Evento quando bot fica online"""

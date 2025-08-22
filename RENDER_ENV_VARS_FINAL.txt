@@ -1,0 +1,39 @@
+
+# ============================================================
+# VARIÁVEIS DE AMBIENTE PARA RENDER - HAWK ESPORTS BOT
+# ============================================================
+# Cole estas variáveis no painel do Render (Environment Variables)
+
+# 🤖 DISCORD BOT
+DISCORD_TOKEN=MTQwODE1NTczNTQ1MTM2OTUzNA.GUEGAW.umvZoNwDCiLZlTnM67sEsc5XpZh5qbuzktBBvw
+
+# 🗄️ BANCO DE DADOS SUPABASE (SUBSTITUA COM SEUS DADOS)
+DATABASE_URL=postgresql://postgres:[SUA_SENHA]@db.[SEU_PROJECT_ID].supabase.co:5432/postgres
+
+# 🎮 PUBG API (Opcional - deixe vazio se não usar)
+PUBG_API_KEY=
+
+# 🏆 MEDAL.TV API (Opcional - deixe vazio se não usar)
+MEDAL_API_KEY=
+
+# ⚙️ CONFIGURAÇÕES GERAIS
+BOT_PREFIX=!
+DEBUG=false
+RENDER=true
+TIMEZONE=America/Sao_Paulo
+LOG_LEVEL=INFO
+
+# 🌐 WEB DASHBOARD (Opcional)
+WEB_PORT=10000
+WEB_HOST=0.0.0.0
+
+# ============================================================
+# PRÓXIMOS PASSOS:
+# ============================================================
+# 1. Crie um projeto no Supabase (https://supabase.com)
+# 2. Execute o SQL do arquivo 'supabase_setup.sql' no SQL Editor
+# 3. Copie a connection string do Supabase
+# 4. Substitua DATABASE_URL acima com sua connection string
+# 5. Cole todas as variáveis no Render
+# 6. Faça o deploy!
+# ============================================================

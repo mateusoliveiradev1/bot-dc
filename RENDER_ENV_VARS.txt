@@ -1,0 +1,57 @@
+# ========================================
+# VARIÁVEIS DE AMBIENTE PARA O RENDER
+# ========================================
+# Cole estas variáveis no painel do Render
+# Seção: Environment Variables
+
+# ========================================
+# DISCORD BOT (OBRIGATÓRIO)
+# ========================================
+DISCORD_TOKEN=MTQwODE1NTczNTQ1MTM2OTUzNA.GUEGAW.umvZoNwDCiLZlTnM67sEsc5XpZh5qbuzktBBvw
+
+# ========================================
+# POSTGRESQL - SUPABASE (OBRIGATÓRIO)
+# ========================================
+# IMPORTANTE: Substitua pelos dados do seu projeto Supabase
+DATABASE_URL=postgresql://postgres:[SUA_SENHA]@db.[SEU_PROJETO].supabase.co:5432/postgres
+DB_HOST=db.[SEU_PROJETO].supabase.co
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=[SUA_SENHA_SUPABASE]
+DB_PORT=5432
+
+# ========================================
+# APIS EXTERNAS (OPCIONAIS)
+# ========================================
+# Adicione suas chaves se quiser usar essas funcionalidades
+PUBG_API_KEY=sua_chave_pubg_aqui
+MEDAL_API_KEY=sua_chave_medal_aqui
+
+# ========================================
+# CONFIGURAÇÕES DO BOT
+# ========================================
+BOT_PREFIX=!
+TIMEZONE=America/Sao_Paulo
+DEBUG=false
+LOG_LEVEL=INFO
+
+# ========================================
+# CONFIGURAÇÕES DE DEPLOY
+# ========================================
+RENDER=true
+WEB_PORT=10000
+WEB_HOST=0.0.0.0
+
+# ========================================
+# INSTRUÇÕES:
+# ========================================
+# 1. Crie seu projeto no Supabase (nome: hawk-esports-bot)
+# 2. Substitua [SEU_PROJETO] pelo ID do seu projeto
+# 3. Substitua [SUA_SENHA_SUPABASE] pela senha do banco
+# 4. Cole todas as variáveis no Render
+# 5. Faça o deploy!
+
+# ========================================
+# EXEMPLO DE DATABASE_URL COMPLETA:
+# ========================================
+# DATABASE_URL=postgresql://postgres:MinhaSenh@123@db.abcdefghijk.supabase.co:5432/postgres

@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: hawk-bot-1755897513
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: DISCORD_TOKEN
+        value: MTQwODE1NTczNTQ1MTM2OTUzNA.GUEGAW.umvZoNwDCiLZlTnM67sEsc5XpZh5qbuzktBBvw
+      - key: BOT_PREFIX
+        value: "!"
+      - key: RENDER
+        value: "true"
+      - key: WEB_PORT
+        value: "10000"
+      - key: WEB_HOST
+        value: "0.0.0.0"
+      - key: DEBUG
+        value: "false"
+      - key: TIMEZONE
+        value: "America/Sao_Paulo"
+      - key: LOG_LEVEL
+        value: "INFO"
+      - key: PUBG_API_KEY
+        value: ""
+      - key: MEDAL_API_KEY
+        value: ""
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
