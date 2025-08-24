@@ -217,6 +217,9 @@ class HawkBot(commands.Bot):
         logger.info(f'{self.user} está online!')
         logger.info(f'Bot conectado em {len(self.guilds)} servidor(es)')
         
+        # Sincronizar comandos slash com tratamento de rate limit
+        await self._sync_commands_with_retry()
+        
         # Iniciar dashboard web em thread separada
         try:
             import threading
@@ -271,6 +274,31 @@ class HawkBot(commands.Bot):
         quiz_result = await self.minigames_system.check_quiz_answer(reaction, user)
         if quiz_result:
             await reaction.message.channel.send(embed=quiz_result)
+    
+    async def _sync_commands_with_retry(self, max_retries: int = 3):
+        """Sincroniza comandos slash com tratamento de rate limit"""
+        for attempt in range(max_retries):
+            try:
+                synced = await self.tree.sync()
+                logger.info(f"✅ Sincronizados {len(synced)} comandos slash com sucesso!")
+                return
+            except discord.HTTPException as e:
+                if e.status == 429:  # Rate limited
+                    retry_after = getattr(e, 'retry_after', 60)
+                    logger.warning(f"⚠️ Rate limit detectado. Aguardando {retry_after:.1f} segundos antes de tentar novamente...")
+                    logger.warning(f"Tentativa {attempt + 1}/{max_retries}")
+                    
+                    if attempt < max_retries - 1:  # Não esperar na última tentativa
+                        await asyncio.sleep(retry_after)
+                    else:
+                        logger.error("❌ Máximo de tentativas de sincronização atingido. Comandos slash podem não estar atualizados.")
+                        logger.info("ℹ️ O bot continuará funcionando normalmente. Os comandos serão sincronizados na próxima reinicialização.")
+                else:
+                    logger.error(f"❌ Erro HTTP ao sincronizar comandos: {e}")
+                    break
+            except Exception as e:
+                logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
+                break
     
     @tasks.loop(minutes=30)
     async def auto_update_ranks(self):
