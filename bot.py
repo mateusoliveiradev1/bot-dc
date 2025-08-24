@@ -28,19 +28,37 @@ sys.path.insert(0, str(src_path))
 
 from core.storage import DataStorage
 from core.postgres_storage import PostgreSQLStorage as PostgresStorage
+from core.rank import RankSystem
 from features.pubg import api as pubg_api
-from features.music import player as music_system
-from features.tournaments import system as tournament_system
-from features.achievements import system as achievement_system
-from features.badges import system as badge_system
-from features.notifications import system as notifications_system
-from features.moderation import system as moderation_system
-from features.minigames import system as minigames_system
+from features.pubg.api import PUBGIntegration
+from features.pubg.dual_ranking import DualRankingSystem
+from features.pubg.rank_roles import PubgRankRoles
+from features.tournaments.seasons import SeasonSystem
+from features.music.dynamic_channels import DynamicChannelsSystem
+from features.music.channels import MusicChannelsSystem
+from features.checkin.system import CheckInSystem
+from features.checkin.notifications import CheckInNotifications
+from features.checkin.reminders import CheckInReminders
+from features.checkin.reports import CheckInReports
+from features.music.player import MusicSystem
+from features.tournaments.manager import TournamentSystem as tournament_system
+from features.achievements.system import AchievementSystem
+from features.badges.system import BadgeSystem
+from features.notifications.system import NotificationsSystem
+from features.moderation.system import ModerationSystem
+from features.minigames.system import MinigamesSystem
 from features.checkin import system as checkin_system
 from integrations.medal import MedalIntegration
-from utils import scheduler, embed_templates, charts_system, keep_alive
+from utils import embed_templates, keep_alive
+from utils.charts_system import ChartsSystem
+from utils.scheduler import TaskScheduler
+from utils.keep_alive import KeepAlive
 from web.app import WebDashboard
 from core.registration import Registration
+
+# Importar ServerSetup dos scripts
+sys.path.append(str(Path(__file__).parent / 'scripts' / 'setup'))
+from server_setup import ServerSetup
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -73,14 +91,14 @@ class HawkBot(commands.Bot):
         
         # Inicializar sistema de armazenamento (PostgreSQL ou JSON)
         self.storage = self._initialize_storage()
-        self.embed_templates = EmbedTemplates({})
+        self.embed_templates = embed_templates
         self.server_setup = ServerSetup(self)
         self.registration = Registration(self)
         self.pubg_api = PUBGIntegration()
         self.rank_system = RankSystem(self, self.storage, self.pubg_api)
         self.dual_ranking_system = DualRankingSystem(self, self.storage, self.pubg_api, self.rank_system)
         self.medal_integration = MedalIntegration(self, self.storage)
-        self.tournament_system = TournamentSystem(self, self.storage)
+        self.tournament_system = tournament_system(self, self.storage)
         self.web_dashboard = WebDashboard(self)
         self.achievement_system = AchievementSystem(self, self.storage)
         self.music_system = MusicSystem(self)

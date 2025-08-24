@@ -16,7 +16,7 @@ import os
 from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime
 from enum import Enum
-from emoji_system import emoji_system
+from utils.emoji_system import emoji_system
 
 logger = logging.getLogger('HawkBot.PubgRankRoles')
 
