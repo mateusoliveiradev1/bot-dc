@@ -1,0 +1,213 @@
+{
+  "migration_date": "2025-08-24T18:32:40.590324",
+  "project_root": "C:\\Users\\Liiiraa\\Documents\\bot-dc",
+  "backup_location": "C:\\Users\\Liiiraa\\Documents\\bot-dc\\migration_backup",
+  "log": [
+    {
+      "timestamp": "2025-08-24T18:32:40.397516",
+      "level": "info",
+      "message": "Iniciando migracao para Hawk Bot Moderno..."
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.397589",
+      "level": "info",
+      "message": "\nExecutando: Criar backup"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.397679",
+      "level": "info",
+      "message": "Criando backup dos arquivos existentes..."
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.398703",
+      "level": "info",
+      "message": "Backup criado: bot.py"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.399078",
+      "level": "info",
+      "message": "Backup criado: .env"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400423",
+      "level": "info",
+      "message": "Backup de diretório criado: data/"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400765",
+      "level": "info",
+      "message": "Backup criado: requirements.txt"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400803",
+      "level": "success",
+      "message": "Backup concluído com sucesso!"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400844",
+      "level": "success",
+      "message": "Concluido: Criar backup"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400887",
+      "level": "info",
+      "message": "\nExecutando: Verificar dependências"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.400952",
+      "level": "info",
+      "message": "Verificando dependências..."
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.562453",
+      "level": "info",
+      "message": "✓ discord"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.582120",
+      "level": "info",
+      "message": "✓ pydantic"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.582164",
+      "level": "info",
+      "message": "✓ aiohttp"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.582216",
+      "level": "info",
+      "message": "✓ asyncpg"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588343",
+      "level": "info",
+      "message": "✓ psutil"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588383",
+      "level": "success",
+      "message": "Todas as dependências estão instaladas!"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588403",
+      "level": "success",
+      "message": "Concluido: Verificar dependências"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588434",
+      "level": "info",
+      "message": "\nExecutando: Migrar arquivo .env"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588566",
+      "level": "info",
+      "message": "Migrando configurações do .env..."
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588770",
+      "level": "info",
+      "message": "Migrado: DISCORD_TOKEN -> DISCORD_BOT_TOKEN"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588798",
+      "level": "info",
+      "message": "Migrado: BOT_PREFIX -> DISCORD_COMMAND_PREFIX"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588841",
+      "level": "info",
+      "message": "Migrado: PUBG_API_KEY -> API_PUBG_API_KEY"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588870",
+      "level": "info",
+      "message": "Migrado: MEDAL_API_KEY -> API_MEDAL_API_KEY"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588896",
+      "level": "info",
+      "message": "Migrado: LOG_LEVEL -> LOGGING_LEVEL"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.588971",
+      "level": "info",
+      "message": "Migrado: DEBUG -> DEBUG_ENABLE_DEBUG_MODE"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589242",
+      "level": "success",
+      "message": "Migração do .env concluída!"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589286",
+      "level": "success",
+      "message": "Concluido: Migrar arquivo .env"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589345",
+      "level": "info",
+      "message": "\nExecutando: Criar diretórios"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589425",
+      "level": "info",
+      "message": "Criando diretórios necessários..."
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589537",
+      "level": "info",
+      "message": "Diretório criado/verificado: data"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589704",
+      "level": "info",
+      "message": "Diretório criado/verificado: logs"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589867",
+      "level": "info",
+      "message": "Diretório criado/verificado: cache"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.589979",
+      "level": "info",
+      "message": "Diretório criado/verificado: backups"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590119",
+      "level": "info",
+      "message": "Diretório criado/verificado: temp"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590147",
+      "level": "success",
+      "message": "Diretórios criados com sucesso!"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590171",
+      "level": "success",
+      "message": "Concluido: Criar diretórios"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590203",
+      "level": "info",
+      "message": "\nExecutando: Testar bot moderno"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590265",
+      "level": "warning",
+      "message": "Pulando teste do bot moderno - módulos não disponíveis"
+    },
+    {
+      "timestamp": "2025-08-24T18:32:40.590296",
+      "level": "success",
+      "message": "Concluido: Testar bot moderno"
+    }
+  ],
+  "summary": {
+    "total_steps": 40,
+    "errors": 0,
+    "warnings": 1,
+    "success": 9
+  }
+}

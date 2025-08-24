@@ -1,0 +1,23 @@
+{
+  "player_stats": {
+    "343264130905669632": {
+      "games_played": 2,
+      "games_won": 1,
+      "total_points": 30,
+      "quiz_correct": 1,
+      "quiz_total": 2,
+      "rps_wins": 0,
+      "roulette_wins": 0,
+      "daily_challenges_completed": 0,
+      "last_daily_reset": "2025-08-22",
+      "daily_progress": {
+        "messages": 0,
+        "reactions": 0,
+        "voice_time": 0,
+        "quiz_correct": 1,
+        "roulette_wins": 0
+      }
+    }
+  },
+  "last_save": "2025-08-22T14:13:24.421852"
+}

@@ -1,0 +1,103 @@
+{
+  "bot_name": "Hawk Bot",
+  "version": "2.0.0",
+  "description": "Bot Discord para comunidade de esports",
+  "debug_mode": true,
+  "environment": "development",
+  
+  "discord": {
+    "token": "YOUR_BOT_TOKEN_HERE",
+    "command_prefix": "!",
+    "owner_ids": [],
+    "guild_ids": [],
+    "max_messages": 1000,
+    "case_insensitive": true,
+    "strip_after_prefix": true,
+    "intents_members": true,
+    "intents_presences": false,
+    "intents_message_content": true
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "structured": true,
+    "sanitize_sensitive": true,
+    "log_to_file": true,
+    "log_dir": "logs",
+    "max_file_size_mb": 10,
+    "backup_count": 5,
+    "console_output": true,
+    "json_format": true
+  },
+  
+  "cache": {
+    "enabled": true,
+    "strategy": "ADAPTIVE",
+    "max_size": 1000,
+    "default_ttl_seconds": 300,
+    "max_memory_mb": 100,
+    "cleanup_interval_seconds": 60,
+    "compression_enabled": true,
+    "predictive_learning": true
+  },
+  
+  "database": {
+    "type": "sqlite",
+    "host": "localhost",
+    "port": 5432,
+    "database": "hawkbot",
+    "username": null,
+    "password": null,
+    "pool_size": 5,
+    "max_overflow": 10,
+    "pool_timeout": 30,
+    "echo_sql": false
+  },
+  
+  "pubg": {
+    "api_key": null,
+    "platform": "steam",
+    "region": "pc-na",
+    "cache_duration_minutes": 30,
+    "rate_limit_per_minute": 10,
+    "timeout_seconds": 30
+  },
+  
+  "music": {
+    "enabled": true,
+    "max_queue_size": 50,
+    "max_song_duration_minutes": 30,
+    "default_volume": 0.5,
+    "auto_disconnect_minutes": 5,
+    "search_results_limit": 10,
+    "allow_playlists": true,
+    "allow_livestreams": false,
+    "ytdl_options": {
+      "format": "bestaudio/best",
+      "noplaylist": true,
+      "quiet": true,
+      "no_warnings": true
+    }
+  },
+  
+  "security": {
+    "rate_limit_enabled": true,
+    "max_commands_per_minute": 30,
+    "max_commands_per_hour": 500,
+    "blacklisted_users": [],
+    "blacklisted_guilds": [],
+    "admin_only_commands": [],
+    "log_security_events": true,
+    "auto_ban_threshold": 10
+  },
+  
+  "performance": {
+    "max_concurrent_tasks": 100,
+    "task_timeout_seconds": 300,
+    "memory_limit_mb": 512,
+    "cpu_usage_threshold": 80.0,
+    "enable_profiling": false,
+    "metrics_collection": true,
+    "health_check_interval": 60
+  }
+}
