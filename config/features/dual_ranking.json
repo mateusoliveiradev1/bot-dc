@@ -1,0 +1,1413 @@
+{
+  "internal_ranking": {
+    "tiers": {
+      "Rookie": {
+        "min_points": 0,
+        "max_points": 999,
+        "color": "#8B4513",
+        "emoji": "🥉",
+        "role_name": "Novato Interno"
+      },
+      "Bronze": {
+        "min_points": 1000,
+        "max_points": 2499,
+        "color": "#CD7F32",
+        "emoji": "🥉",
+        "role_name": "Bronze Interno"
+      },
+      "Silver": {
+        "min_points": 2500,
+        "max_points": 4999,
+        "color": "#C0C0C0",
+        "emoji": "🥈",
+        "role_name": "Prata Interno"
+      },
+      "Gold": {
+        "min_points": 5000,
+        "max_points": 9999,
+        "color": "#FFD700",
+        "emoji": "🥇",
+        "role_name": "Ouro Interno"
+      },
+      "Diamond": {
+        "min_points": 10000,
+        "max_points": 19999,
+        "color": "#B9F2FF",
+        "emoji": "💎",
+        "role_name": "Diamante Interno"
+      },
+      "Master": {
+        "min_points": 20000,
+        "max_points": 39999,
+        "color": "#9932CC",
+        "emoji": "👑",
+        "role_name": "Mestre Interno"
+      },
+      "Legend": {
+        "min_points": 40000,
+        "max_points": 999999,
+        "color": "#FF0000",
+        "emoji": "🔥",
+        "role_name": "Lenda Interna"
+      }
+    },
+    "activity_points": {
+      "MESSAGE_SENT": {
+        "base_points": 5,
+        "daily_limit": 50,
+        "multiplier": 1.0,
+        "description": "Enviar mensagem no chat"
+      },
+      "VOICE_MINUTE": {
+        "base_points": 3,
+        "daily_limit": 180,
+        "multiplier": 1.0,
+        "description": "Minuto em canal de voz"
+      },
+      "TOURNAMENT_PARTICIPATION": {
+        "base_points": 100,
+        "daily_limit": 3,
+        "multiplier": 2.0,
+        "description": "Participar de torneio"
+      },
+      "TOURNAMENT_WIN": {
+        "base_points": 500,
+        "daily_limit": 2,
+        "multiplier": 3.0,
+        "description": "Vencer torneio"
+      },
+      "MINIGAME_PLAY": {
+        "base_points": 20,
+        "daily_limit": 10,
+        "multiplier": 1.2,
+        "description": "Jogar mini-game"
+      },
+      "MINIGAME_WIN": {
+        "base_points": 50,
+        "daily_limit": 5,
+        "multiplier": 1.5,
+        "description": "Vencer mini-game"
+      },
+      "ACHIEVEMENT_UNLOCK": {
+        "base_points": 200,
+        "daily_limit": 5,
+        "multiplier": 2.5,
+        "description": "Desbloquear conquista"
+      },
+      "DAILY_LOGIN": {
+        "base_points": 25,
+        "daily_limit": 1,
+        "multiplier": 1.0,
+        "description": "Login diário"
+      },
+      "WEEKLY_CHALLENGE": {
+        "base_points": 300,
+        "daily_limit": 1,
+        "multiplier": 2.0,
+        "description": "Completar desafio semanal"
+      },
+      "HELP_MEMBER": {
+        "base_points": 75,
+        "daily_limit": 5,
+        "multiplier": 1.8,
+        "description": "Ajudar outro membro"
+      }
+    },
+    "streak_bonuses": {
+      "3": 1.1,
+      "7": 1.25,
+      "14": 1.5,
+      "30": 2.0,
+      "60": 2.5,
+      "90": 3.0
+    },
+    "decay": {
+      "enabled": true,
+      "inactive_days": 7,
+      "decay_rate": 0.02,
+      "min_points_threshold": 100
+    }
+  },
+  "pubg_ranking": {
+    "integration": {
+      "auto_update_on_join": true,
+      "update_interval_hours": 6,
+      "required_matches": {
+        "ranked": 10,
+        "mm": 5
+      }
+    },
+    "rank_weights": {
+      "kd_ratio": 0.3,
+      "win_rate": 0.25,
+      "avg_damage": 0.2,
+      "total_wins": 0.15,
+      "survival_time": 0.1
+    },
+    "tier_thresholds": {
+      "Bronze IV": 0,
+      "Bronze III": 250,
+      "Bronze II": 500,
+      "Bronze I": 750,
+      "Silver IV": 1000,
+      "Silver III": 1250,
+      "Silver II": 1500,
+      "Silver I": 1750,
+      "Gold IV": 2000,
+      "Gold III": 2250,
+      "Gold II": 2500,
+      "Gold I": 2750,
+      "Platinum IV": 3000,
+      "Platinum III": 3250,
+      "Platinum II": 3500,
+      "Platinum I": 3750,
+      "Crystal IV": 4000,
+      "Crystal III": 4250,
+      "Crystal II": 4500,
+      "Crystal I": 4750,
+      "Diamond IV": 5000,
+      "Diamond III": 5250,
+      "Diamond II": 5500,
+      "Diamond I": 5750,
+      "Master IV": 6000,
+      "Master III": 6250,
+      "Master II": 6500,
+      "Master I": 6750,
+      "Survivor": 7000
+    }
+  },
+  "badges": {
+    "pubg_badges": {
+      "first_win": {
+        "name": "Primeira Vitória",
+        "emoji": "🥇",
+        "description": "Sua primeira chicken dinner!",
+        "requirement": "wins >= 1",
+        "rarity": "common"
+      },
+      "chicken_dinner_bronze": {
+        "name": "Caçador de Frango Bronze",
+        "emoji": "🥉",
+        "description": "10 vitórias no PUBG",
+        "requirement": "wins >= 10",
+        "rarity": "common"
+      },
+      "chicken_dinner_silver": {
+        "name": "Caçador de Frango Prata",
+        "emoji": "🥈",
+        "description": "50 vitórias no PUBG",
+        "requirement": "wins >= 50",
+        "rarity": "uncommon"
+      },
+      "chicken_dinner_gold": {
+        "name": "Caçador de Frango Ouro",
+        "emoji": "🥇",
+        "description": "100 vitórias no PUBG",
+        "requirement": "wins >= 100",
+        "rarity": "rare"
+      },
+      "chicken_dinner_master": {
+        "name": "Mestre dos Frangos",
+        "emoji": "🍗",
+        "description": "250 vitórias no PUBG",
+        "requirement": "wins >= 250",
+        "rarity": "epic"
+      },
+      "chicken_dinner_legend": {
+        "name": "Lenda dos Frangos",
+        "emoji": "👑",
+        "description": "500+ vitórias no PUBG",
+        "requirement": "wins >= 500",
+        "rarity": "legendary"
+      },
+      "headshot_novice": {
+        "name": "Atirador Iniciante",
+        "emoji": "🎯",
+        "description": "Taxa de headshot > 15%",
+        "requirement": "headshot_rate > 0.15",
+        "rarity": "common"
+      },
+      "headshot_expert": {
+        "name": "Atirador Expert",
+        "emoji": "🏹",
+        "description": "Taxa de headshot > 25%",
+        "requirement": "headshot_rate > 0.25",
+        "rarity": "rare"
+      },
+      "headshot_master": {
+        "name": "Mestre dos Headshots",
+        "emoji": "🎪",
+        "description": "Taxa de headshot > 35%",
+        "requirement": "headshot_rate > 0.35",
+        "rarity": "epic"
+      },
+      "sniper_elite": {
+        "name": "Elite Sniper",
+        "emoji": "🔫",
+        "description": "Taxa de headshot > 45%",
+        "requirement": "headshot_rate > 0.45",
+        "rarity": "legendary"
+      },
+      "survivor_bronze": {
+        "name": "Sobrevivente Bronze",
+        "emoji": "⏱️",
+        "description": "Tempo médio > 15min",
+        "requirement": "avg_survival > 900",
+        "rarity": "common"
+      },
+      "survivor_silver": {
+        "name": "Sobrevivente Prata",
+        "emoji": "⌚",
+        "description": "Tempo médio > 20min",
+        "requirement": "avg_survival > 1200",
+        "rarity": "uncommon"
+      },
+      "survivor_gold": {
+        "name": "Sobrevivente Ouro",
+        "emoji": "⏰",
+        "description": "Tempo médio > 25min",
+        "requirement": "avg_survival > 1500",
+        "rarity": "rare"
+      },
+      "damage_dealer_bronze": {
+        "name": "Destruidor Bronze",
+        "emoji": "💥",
+        "description": "Dano médio > 300",
+        "requirement": "avg_damage > 300",
+        "rarity": "common"
+      },
+      "damage_dealer_silver": {
+        "name": "Destruidor Prata",
+        "emoji": "💢",
+        "description": "Dano médio > 400",
+        "requirement": "avg_damage > 400",
+        "rarity": "uncommon"
+      },
+      "damage_dealer_gold": {
+        "name": "Destruidor Ouro",
+        "emoji": "🔥",
+        "description": "Dano médio > 500",
+        "requirement": "avg_damage > 500",
+        "rarity": "rare"
+      },
+      "damage_dealer_master": {
+        "name": "Mestre da Destruição",
+        "emoji": "💀",
+        "description": "Dano médio > 600",
+        "requirement": "avg_damage > 600",
+        "rarity": "epic"
+      },
+      "kd_warrior": {
+        "name": "Guerreiro K/D",
+        "emoji": "⚔️",
+        "description": "K/D ratio > 2.0",
+        "requirement": "kd_ratio > 2.0",
+        "rarity": "rare"
+      },
+      "kd_master": {
+        "name": "Mestre K/D",
+        "emoji": "🗡️",
+        "description": "K/D ratio > 3.0",
+        "requirement": "kd_ratio > 3.0",
+        "rarity": "epic"
+      },
+      "kd_legend": {
+        "name": "Lenda K/D",
+        "emoji": "⚡",
+        "description": "K/D ratio > 4.0",
+        "requirement": "kd_ratio > 4.0",
+        "rarity": "legendary"
+      },
+      "top_10_hunter": {
+        "name": "Caçador Top 10",
+        "emoji": "🔟",
+        "description": "Taxa de Top 10 > 50%",
+        "requirement": "top10_rate > 0.5",
+        "rarity": "rare"
+      },
+      "top_10_master": {
+        "name": "Mestre Top 10",
+        "emoji": "🏅",
+        "description": "Taxa de Top 10 > 70%",
+        "requirement": "top10_rate > 0.7",
+        "rarity": "epic"
+      },
+      "rank_bronze": {
+        "name": "Escalador Bronze",
+        "emoji": "🥉",
+        "description": "Alcançar rank Bronze",
+        "requirement": "'Bronze' in rank",
+        "rarity": "common"
+      },
+      "rank_silver": {
+        "name": "Escalador Prata",
+        "emoji": "🥈",
+        "description": "Alcançar rank Silver",
+        "requirement": "'Silver' in rank",
+        "rarity": "common"
+      },
+      "rank_gold": {
+        "name": "Escalador Ouro",
+        "emoji": "🥇",
+        "description": "Alcançar rank Gold",
+        "requirement": "'Gold' in rank",
+        "rarity": "uncommon"
+      },
+      "rank_platinum": {
+        "name": "Guerreiro Platina",
+        "emoji": "🏆",
+        "description": "Alcançar rank Platinum",
+        "requirement": "'Platinum' in rank",
+        "rarity": "rare"
+      },
+      "rank_crystal": {
+        "name": "Cristal Tier",
+        "emoji": "💎",
+        "description": "Alcançar rank Crystal",
+        "requirement": "'Crystal' in rank",
+        "rarity": "epic"
+      },
+      "rank_diamond": {
+        "name": "Diamante Eterno",
+        "emoji": "💍",
+        "description": "Alcançar rank Diamond",
+        "requirement": "'Diamond' in rank",
+        "rarity": "epic"
+      },
+      "rank_master": {
+        "name": "Mestre Supremo",
+        "emoji": "👑",
+        "description": "Alcançar rank Master",
+        "requirement": "'Master' in rank",
+        "rarity": "legendary"
+      },
+      "rank_survivor": {
+        "name": "Sobrevivente Supremo",
+        "emoji": "🌟",
+        "description": "Alcançar o rank mais alto - Survivor",
+        "requirement": "rank == 'Survivor'",
+        "rarity": "mythic"
+      },
+      "versatile_player": {
+        "name": "Jogador Versátil",
+        "emoji": "🎮",
+        "description": "Jogar em todos os modos de jogo",
+        "requirement": "solo_games > 10 and duo_games > 10 and squad_games > 10",
+        "rarity": "rare"
+      },
+      "solo_specialist": {
+        "name": "Especialista Solo",
+        "emoji": "🎯",
+        "description": "100+ partidas solo",
+        "requirement": "solo_games >= 100",
+        "rarity": "uncommon"
+      },
+      "squad_leader": {
+        "name": "Líder de Squad",
+        "emoji": "👥",
+        "description": "100+ partidas em squad",
+        "requirement": "squad_games >= 100",
+        "rarity": "uncommon"
+      },
+      "veteran_player": {
+        "name": "Veterano PUBG",
+        "emoji": "🎖️",
+        "description": "1000+ partidas jogadas",
+        "requirement": "total_games >= 1000",
+        "rarity": "epic"
+      },
+      "season_grinder": {
+        "name": "Grinder da Season",
+        "emoji": "📈",
+        "description": "500+ partidas na season atual",
+        "requirement": "season_games >= 500",
+        "rarity": "rare"
+      }
+    },
+    "internal_badges": {
+      "first_message": {
+        "name": "Primeira Palavra",
+        "emoji": "💭",
+        "description": "Envie sua primeira mensagem!",
+        "requirement": "total_messages >= 1",
+        "rarity": "common"
+      },
+      "chatter_bronze": {
+        "name": "Conversador Bronze",
+        "emoji": "💬",
+        "description": "100 mensagens enviadas",
+        "requirement": "total_messages >= 100",
+        "rarity": "common"
+      },
+      "chatter_silver": {
+        "name": "Conversador Prata",
+        "emoji": "💭",
+        "description": "500 mensagens enviadas",
+        "requirement": "total_messages >= 500",
+        "rarity": "uncommon"
+      },
+      "chatter_gold": {
+        "name": "Conversador Ouro",
+        "emoji": "🗨️",
+        "description": "1000 mensagens enviadas",
+        "requirement": "total_messages >= 1000",
+        "rarity": "rare"
+      },
+      "chatter_master": {
+        "name": "Mestre das Palavras",
+        "emoji": "📢",
+        "description": "5000 mensagens enviadas",
+        "requirement": "total_messages >= 5000",
+        "rarity": "epic"
+      },
+      "chatter_legend": {
+        "name": "Lenda da Conversa",
+        "emoji": "🎙️",
+        "description": "10000+ mensagens enviadas",
+        "requirement": "total_messages >= 10000",
+        "rarity": "legendary"
+      },
+      "voice_newcomer": {
+        "name": "Novato da Voz",
+        "emoji": "🎧",
+        "description": "10 horas em canais de voz",
+        "requirement": "total_voice_minutes >= 600",
+        "rarity": "common"
+      },
+      "voice_regular": {
+        "name": "Frequentador de Voz",
+        "emoji": "🎤",
+        "description": "50 horas em canais de voz",
+        "requirement": "total_voice_minutes >= 3000",
+        "rarity": "uncommon"
+      },
+      "voice_enthusiast": {
+        "name": "Entusiasta da Voz",
+        "emoji": "🔊",
+        "description": "100 horas em canais de voz",
+        "requirement": "total_voice_minutes >= 6000",
+        "rarity": "rare"
+      },
+      "voice_master": {
+        "name": "Mestre da Voz",
+        "emoji": "🎵",
+        "description": "250 horas em canais de voz",
+        "requirement": "total_voice_minutes >= 15000",
+        "rarity": "epic"
+      },
+      "voice_legend": {
+        "name": "Lenda da Voz",
+        "emoji": "🎶",
+        "description": "500+ horas em canais de voz",
+        "requirement": "total_voice_minutes >= 30000",
+        "rarity": "legendary"
+      },
+      "early_bird": {
+        "name": "Madrugador",
+        "emoji": "🌅",
+        "description": "Ativo entre 5h-8h da manhã",
+        "requirement": "early_morning_activity >= 20",
+        "rarity": "uncommon"
+      },
+      "night_owl": {
+        "name": "Coruja Noturna",
+        "emoji": "🦉",
+        "description": "Ativo entre 23h-2h da madrugada",
+        "requirement": "late_night_activity >= 20",
+        "rarity": "uncommon"
+      },
+      "weekend_warrior": {
+        "name": "Guerreiro de Fim de Semana",
+        "emoji": "🎉",
+        "description": "Muito ativo nos fins de semana",
+        "requirement": "weekend_activity >= 50",
+        "rarity": "rare"
+      },
+      "daily_visitor": {
+        "name": "Visitante Diário",
+        "emoji": "📅",
+        "description": "7 dias consecutivos online",
+        "requirement": "max_streak >= 7",
+        "rarity": "common"
+      },
+      "streak_bronze": {
+        "name": "Sequência Bronze",
+        "emoji": "🔥",
+        "description": "15 dias consecutivos online",
+        "requirement": "max_streak >= 15",
+        "rarity": "uncommon"
+      },
+      "streak_silver": {
+        "name": "Sequência Prata",
+        "emoji": "🌟",
+        "description": "30 dias consecutivos online",
+        "requirement": "max_streak >= 30",
+        "rarity": "rare"
+      },
+      "streak_gold": {
+        "name": "Sequência Ouro",
+        "emoji": "⭐",
+        "description": "60 dias consecutivos online",
+        "requirement": "max_streak >= 60",
+        "rarity": "epic"
+      },
+      "streak_legend": {
+        "name": "Lenda da Consistência",
+        "emoji": "💫",
+        "description": "100+ dias consecutivos online",
+        "requirement": "max_streak >= 100",
+        "rarity": "legendary"
+      },
+      "tournament_participant": {
+        "name": "Participante de Torneio",
+        "emoji": "🎯",
+        "description": "Participar de 5 torneios",
+        "requirement": "tournament_participations >= 5",
+        "rarity": "common"
+      },
+      "tournament_competitor": {
+        "name": "Competidor de Torneio",
+        "emoji": "🏅",
+        "description": "3 vitórias em torneios",
+        "requirement": "tournament_wins >= 3",
+        "rarity": "rare"
+      },
+      "tournament_champion": {
+        "name": "Campeão de Torneios",
+        "emoji": "🏆",
+        "description": "10 vitórias em torneios",
+        "requirement": "tournament_wins >= 10",
+        "rarity": "epic"
+      },
+      "tournament_legend": {
+        "name": "Lenda dos Torneios",
+        "emoji": "👑",
+        "description": "25+ vitórias em torneios",
+        "requirement": "tournament_wins >= 25",
+        "rarity": "legendary"
+      },
+      "helper_bronze": {
+        "name": "Ajudante Bronze",
+        "emoji": "🤝",
+        "description": "10 ajudas a membros",
+        "requirement": "help_count >= 10",
+        "rarity": "common"
+      },
+      "helper_silver": {
+        "name": "Ajudante Prata",
+        "emoji": "🆘",
+        "description": "25 ajudas a membros",
+        "requirement": "help_count >= 25",
+        "rarity": "uncommon"
+      },
+      "helper_gold": {
+        "name": "Ajudante Ouro",
+        "emoji": "💪",
+        "description": "50 ajudas a membros",
+        "requirement": "help_count >= 50",
+        "rarity": "rare"
+      },
+      "community_hero": {
+        "name": "Herói da Comunidade",
+        "emoji": "🦸",
+        "description": "100+ ajudas a membros",
+        "requirement": "help_count >= 100",
+        "rarity": "epic"
+      },
+      "reaction_master": {
+        "name": "Mestre das Reações",
+        "emoji": "😍",
+        "description": "1000+ reações dadas",
+        "requirement": "reactions_given >= 1000",
+        "rarity": "rare"
+      },
+      "popular_member": {
+        "name": "Membro Popular",
+        "emoji": "⭐",
+        "description": "500+ reações recebidas",
+        "requirement": "reactions_received >= 500",
+        "rarity": "rare"
+      },
+      "minigame_player": {
+        "name": "Jogador de Minigames",
+        "emoji": "🎲",
+        "description": "50+ partidas de minigames",
+        "requirement": "minigame_plays >= 50",
+        "rarity": "uncommon"
+      },
+      "minigame_champion": {
+        "name": "Campeão de Minigames",
+        "emoji": "🎮",
+        "description": "25+ vitórias em minigames",
+        "requirement": "minigame_wins >= 25",
+        "rarity": "rare"
+      },
+      "achievement_hunter": {
+        "name": "Caçador de Conquistas",
+        "emoji": "🎖️",
+        "description": "15+ conquistas desbloqueadas",
+        "requirement": "achievements_count >= 15",
+        "rarity": "uncommon"
+      },
+      "achievement_master": {
+        "name": "Mestre das Conquistas",
+        "emoji": "🏅",
+        "description": "25+ conquistas desbloqueadas",
+        "requirement": "achievements_count >= 25",
+        "rarity": "rare"
+      },
+      "achievement_legend": {
+        "name": "Lenda das Conquistas",
+        "emoji": "🌟",
+        "description": "50+ conquistas desbloqueadas",
+        "requirement": "achievements_count >= 50",
+        "rarity": "epic"
+      },
+      "rank_bronze_internal": {
+        "name": "Novato Promissor",
+        "emoji": "🥉",
+        "description": "Alcançar rank Bronze interno",
+        "requirement": "internal_tier == 'Bronze'",
+        "rarity": "common"
+      },
+      "rank_silver_internal": {
+        "name": "Membro Prata",
+        "emoji": "🥈",
+        "description": "Alcançar rank Silver interno",
+        "requirement": "internal_tier == 'Silver'",
+        "rarity": "uncommon"
+      },
+      "rank_gold_internal": {
+        "name": "Membro Ouro",
+        "emoji": "🥇",
+        "description": "Alcançar rank Gold interno",
+        "requirement": "internal_tier == 'Gold'",
+        "rarity": "rare"
+      },
+      "rank_diamond_internal": {
+        "name": "Diamante da Comunidade",
+        "emoji": "💎",
+        "description": "Alcançar rank Diamond interno",
+        "requirement": "internal_tier == 'Diamond'",
+        "rarity": "epic"
+      },
+      "rank_master_internal": {
+        "name": "Mestre da Comunidade",
+        "emoji": "👑",
+        "description": "Alcançar rank Master interno",
+        "requirement": "internal_tier == 'Master'",
+        "rarity": "legendary"
+      },
+      "rank_legend_internal": {
+        "name": "Lenda Interna",
+        "emoji": "🌟",
+        "description": "Alcançar o rank mais alto - Legend",
+        "requirement": "internal_tier == 'Legend'",
+        "rarity": "mythic"
+      },
+      "server_birthday": {
+        "name": "Aniversariante do Servidor",
+        "emoji": "🎂",
+        "description": "Estar presente no aniversário do servidor",
+        "requirement": "server_birthday_participation >= 1",
+        "rarity": "special"
+      },
+      "event_participant": {
+        "name": "Participante de Eventos",
+        "emoji": "🎊",
+        "description": "Participar de 10+ eventos especiais",
+        "requirement": "special_events >= 10",
+        "rarity": "rare"
+      },
+      "founding_member": {
+        "name": "Membro Fundador",
+        "emoji": "🏛️",
+        "description": "Um dos primeiros 50 membros",
+        "requirement": "member_number <= 50",
+        "rarity": "mythic"
+      },
+      "veteran_member": {
+        "name": "Veterano do Servidor",
+        "emoji": "🎖️",
+        "description": "1+ ano no servidor",
+        "requirement": "days_in_server >= 365",
+        "rarity": "epic"
+      },
+      "ancient_member": {
+        "name": "Membro Ancestral",
+        "emoji": "🏺",
+        "description": "2+ anos no servidor",
+        "requirement": "days_in_server >= 730",
+        "rarity": "legendary"
+      }
+    }
+  },
+  "badge_rarities": {
+    "common": {
+      "color": "0x95a5a6",
+      "gradient_colors": ["0x95a5a6", "0xbdc3c7"],
+      "name": "Comum",
+      "emoji": "⚪",
+      "description": "Badges básicos para todos os jogadores",
+      "border": "▫️",
+      "border_style": "simple",
+      "glow": false,
+      "animation": false,
+      "visual_effects": {
+        "shadow": false,
+        "pulse": false,
+        "sparkle": false
+      }
+    },
+    "uncommon": {
+      "color": "0x2ecc71",
+      "gradient_colors": ["0x2ecc71", "0x58d68d"],
+      "name": "Incomum",
+      "emoji": "🟢",
+      "description": "Badges para jogadores dedicados",
+      "border": "🟩",
+      "border_style": "rounded",
+      "glow": false,
+      "animation": false,
+      "visual_effects": {
+        "shadow": true,
+        "pulse": false,
+        "sparkle": false
+      }
+    },
+    "rare": {
+      "color": "0x3498db",
+      "gradient_colors": ["0x3498db", "0x5dade2", "0x85c1e9"],
+      "name": "Raro",
+      "emoji": "🔵",
+      "description": "Badges para jogadores experientes",
+      "border": "🟦",
+      "border_style": "double",
+      "glow": true,
+      "glow_intensity": "medium",
+      "animation": false,
+      "visual_effects": {
+        "shadow": true,
+        "pulse": true,
+        "sparkle": false,
+        "shimmer": true
+      }
+    },
+    "epic": {
+      "color": "0x9b59b6",
+      "gradient_colors": ["0x9b59b6", "0xbb74e5", "0xd7bde2"],
+      "name": "Épico",
+      "emoji": "🟣",
+      "description": "Badges para jogadores elite",
+      "border": "🟪",
+      "border_style": "ornate",
+      "glow": true,
+      "glow_intensity": "high",
+      "animation": true,
+      "animation_type": "pulse",
+      "visual_effects": {
+        "shadow": true,
+        "pulse": true,
+        "sparkle": true,
+        "shimmer": true,
+        "particle_trail": true
+      }
+    },
+    "legendary": {
+      "color": "0xf39c12",
+      "gradient_colors": ["0xf39c12", "0xf7dc6f", "0xfdeaa7"],
+      "name": "Lendário",
+      "emoji": "🟡",
+      "description": "Badges para verdadeiras lendas",
+      "border": "🟨",
+      "border_style": "royal",
+      "glow": true,
+      "glow_intensity": "ultra",
+      "animation": true,
+      "animation_type": "rainbow_pulse",
+      "special_effect": "✨",
+      "visual_effects": {
+        "shadow": true,
+        "pulse": true,
+        "sparkle": true,
+        "shimmer": true,
+        "particle_trail": true,
+        "golden_aura": true,
+        "crown_effect": true
+      }
+    },
+    "mythic": {
+      "color": "0xe74c3c",
+      "gradient_colors": ["0xe74c3c", "0xec7063", "0xf1948a", "0xfadbd8"],
+      "name": "Mítico",
+      "emoji": "🔴",
+      "description": "Badges ultra raros e especiais",
+      "border": "🟥",
+      "border_style": "mythical",
+      "glow": true,
+      "glow_intensity": "legendary",
+      "animation": true,
+      "animation_type": "cosmic_swirl",
+      "special_effect": "💫",
+      "visual_effects": {
+        "shadow": true,
+        "pulse": true,
+        "sparkle": true,
+        "shimmer": true,
+        "particle_trail": true,
+        "cosmic_aura": true,
+        "lightning_effect": true,
+        "dimensional_rift": true
+      }
+    },
+    "special": {
+      "color": "0xfd79a8",
+      "gradient_colors": ["0xfd79a8", "0xfdcb6e", "0x6c5ce7", "0xa29bfe"],
+      "name": "Especial",
+      "emoji": "🌸",
+      "description": "Badges de eventos únicos",
+      "border": "🌺",
+      "border_style": "festive",
+      "glow": true,
+      "glow_intensity": "rainbow",
+      "animation": true,
+      "animation_type": "celebration",
+      "special_effect": "🎆",
+      "visual_effects": {
+        "shadow": true,
+        "pulse": true,
+        "sparkle": true,
+        "shimmer": true,
+        "particle_trail": true,
+        "rainbow_aura": true,
+        "confetti_effect": true,
+        "fireworks": true
+      }
+    }
+  },
+  "badge_display_settings": {
+    "max_display_per_category": 12,
+    "show_rarity_colors": true,
+    "show_progress_bars": true,
+    "group_by_rarity": true,
+    "show_unlock_date": true,
+    "animated_rare_badges": true,
+    "visual_enhancements": {
+      "use_borders": true,
+      "show_glow_effects": true,
+      "animate_special_badges": true,
+      "use_gradient_backgrounds": true,
+      "show_rarity_indicators": true,
+      "compact_mode": false,
+      "show_badge_count": true,
+      "highlight_new_badges": true,
+      "use_custom_separators": true,
+      "enable_3d_effects": true,
+      "show_particle_effects": true,
+      "use_dynamic_colors": true,
+      "enable_hover_effects": true,
+      "show_achievement_trails": true,
+      "use_holographic_style": true,
+      "enable_sound_effects": false,
+      "show_rarity_auras": true,
+      "use_premium_animations": true
+    },
+    "embed_styling": {
+      "title_format": "✨ {title} ✨",
+      "subtitle_format": "━━━ {subtitle} ━━━",
+      "footer_format": "🌟 {rarity_stats} | 🎯 Total: {total_badges} | ⚡ Hawk Esports",
+      "field_separator": "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰",
+      "badge_format": "{glow_start}{border} {emoji} **{name}** {special_effect}{glow_end}",
+      "rarity_header": "╔══════ {rarity_emoji} {rarity_name} ══════╗",
+      "rarity_footer": "╚═══════════════════════════════╝",
+      "empty_category": "🌫️ Nenhum badge nesta categoria ainda\n💡 *Continue jogando para desbloquear!*",
+      "progress_bar_format": "{filled}{empty} {percentage}%",
+      "achievement_unlock": "🎉 **DESBLOQUEADO!** {badge_name} 🎉",
+      "new_badge_highlight": "🆕 {badge} ✨",
+      "legendary_format": "👑 {badge} 👑",
+      "mythic_format": "🌌 {badge} 🌌"
+    },
+    "colors": {
+      "pubg_theme": "0x1e90ff",
+      "server_theme": "0x32cd32",
+      "all_badges_theme": "0xffd700",
+      "progress_bar_fill": "0x00ff00",
+      "progress_bar_empty": "0x808080",
+      "gradient_primary": "0xff6b6b",
+      "gradient_secondary": "0x4ecdc4",
+      "glow_color": "0xffffff",
+      "shadow_color": "0x000000",
+      "highlight_color": "0xffff00",
+      "premium_gold": "0xffd700",
+      "premium_silver": "0xc0c0c0",
+      "premium_bronze": "0xcd7f32",
+      "cosmic_purple": "0x8a2be2",
+      "electric_blue": "0x00bfff",
+      "fire_red": "0xff4500",
+      "nature_green": "0x228b22"
+    },
+    "animations": {
+      "pulse_speed": "2s",
+      "glow_intensity": "0.8",
+      "particle_count": 15,
+      "trail_length": "3s",
+      "shimmer_duration": "1.5s",
+      "bounce_height": "5px",
+      "rotation_speed": "4s",
+      "fade_duration": "0.5s"
+    },
+    "embed_themes": {
+      "default": {
+        "color": "0x7289DA",
+        "use_custom_thumbnail": false,
+        "background_image": null,
+        "custom_footer": {
+          "text": "Hawk Esports - Sistema de Badges",
+          "icon_url": null
+        }
+      },
+      "pubg": {
+        "color": "0xFF6B35",
+        "use_custom_thumbnail": true,
+        "background_image": "https://cdn.discordapp.com/attachments/123456789/pubg_bg.png",
+        "author_text": "🎮 PUBG Badge System",
+        "custom_footer": {
+          "text": "🏆 Hawk Esports - PUBG Badges | Powered by PUBG API",
+          "icon_url": "https://cdn.discordapp.com/attachments/123456789/pubg_icon.png"
+        },
+        "custom_thumbnails": {
+          "pubg": "https://cdn.discordapp.com/attachments/123456789/pubg_thumb.png"
+        }
+      },
+      "server": {
+        "color": "0x4A90E2",
+        "use_custom_thumbnail": true,
+        "background_image": "https://cdn.discordapp.com/attachments/123456789/server_bg.png",
+        "author_text": "🏠 Server Badge System",
+        "custom_footer": {
+          "text": "🌟 Hawk Esports - Server Badges | Community Achievements",
+          "icon_url": "https://cdn.discordapp.com/attachments/123456789/server_icon.png"
+        },
+        "custom_thumbnails": {
+          "server": "https://cdn.discordapp.com/attachments/123456789/server_thumb.png"
+        }
+      },
+      "legendary": {
+        "color": "0xFFD700",
+        "use_custom_thumbnail": true,
+        "background_image": "https://cdn.discordapp.com/attachments/123456789/legendary_bg.png",
+        "author_text": "👑 Legendary Badge Collection",
+        "custom_footer": {
+          "text": "✨ Hawk Esports - Legendary Achievements | Elite Status",
+          "icon_url": "https://cdn.discordapp.com/attachments/123456789/crown_icon.png"
+        }
+      },
+      "mythic": {
+        "color": "0x9932CC",
+        "use_custom_thumbnail": true,
+        "background_image": "https://cdn.discordapp.com/attachments/123456789/mythic_bg.png",
+        "author_text": "🌌 Mythic Badge Realm",
+        "custom_footer": {
+          "text": "🔮 Hawk Esports - Mythic Achievements | Transcendent Power",
+          "icon_url": "https://cdn.discordapp.com/attachments/123456789/crystal_icon.png"
+        }
+      }
+    },
+    "title_animations": {
+      "default": {
+        "enabled": true,
+        "type": "sparkle"
+      },
+      "pubg": {
+        "enabled": true,
+        "type": "fire"
+      },
+      "server": {
+        "enabled": true,
+        "type": "royal"
+      },
+      "legendary": {
+        "enabled": true,
+        "type": "cosmic"
+      },
+      "mythic": {
+        "enabled": true,
+        "type": "mystical"
+      },
+      "celebration": {
+        "enabled": true,
+        "type": "celebration"
+      },
+      "electric": {
+        "enabled": true,
+        "type": "electric"
+      },
+      "ice": {
+        "enabled": true,
+        "type": "ice"
+      },
+      "rainbow": {
+        "enabled": true,
+        "type": "rainbow"
+      }
+    }
+  },
+  "point_multipliers": {
+    "weekend": 1.5,
+    "event_day": 2.0,
+    "birthday": 3.0
+  },
+  "rank_roles": {
+    "internal": {
+      "Legend": "Lenda Interna",
+      "Master": "Mestre Interno",
+      "Diamond": "Diamante Interno",
+      "Gold": "Ouro Interno",
+      "Silver": "Prata Interno",
+      "Bronze": "Bronze Interno",
+      "Rookie": "Novato Interno"
+    },
+    "pubg": {
+      "Survivor": "Sobrevivente Supremo PUBG",
+      "Master I": "Mestre I PUBG",
+      "Master II": "Mestre II PUBG",
+      "Master III": "Mestre III PUBG",
+      "Master IV": "Mestre IV PUBG",
+      "Diamond I": "Diamante I PUBG",
+      "Diamond II": "Diamante II PUBG",
+      "Diamond III": "Diamante III PUBG",
+      "Diamond IV": "Diamante IV PUBG",
+      "Crystal I": "Cristal I PUBG",
+      "Crystal II": "Cristal II PUBG",
+      "Crystal III": "Cristal III PUBG",
+      "Crystal IV": "Cristal IV PUBG",
+      "Platinum I": "Platina I PUBG",
+      "Platinum II": "Platina II PUBG",
+      "Platinum III": "Platina III PUBG",
+      "Platinum IV": "Platina IV PUBG",
+      "Gold I": "Ouro I PUBG",
+      "Gold II": "Ouro II PUBG",
+      "Gold III": "Ouro III PUBG",
+      "Gold IV": "Ouro IV PUBG",
+      "Silver I": "Prata I PUBG",
+      "Silver II": "Prata II PUBG",
+      "Silver III": "Prata III PUBG",
+      "Silver IV": "Prata IV PUBG",
+      "Bronze I": "Bronze I PUBG",
+      "Bronze II": "Bronze II PUBG",
+      "Bronze III": "Bronze III PUBG",
+      "Bronze IV": "Bronze IV PUBG"
+    }
+  },
+  "badge_roles": {
+    "visual_roles": {
+      "badge_novice": {
+        "name": "🌱 Novato dos Badges",
+        "color": "0x95a5a6",
+        "gradient_colors": ["0x95a5a6", "0xbdc3c7"],
+        "requirement": "total_badges >= 1",
+        "description": "Conquistou seu primeiro badge",
+        "priority": 1,
+        "visual_effects": {
+          "glow": false,
+          "animation": false
+        }
+      },
+      "badge_apprentice": {
+        "name": "🎓 Aprendiz de Badges",
+        "color": "0x2ecc71",
+        "gradient_colors": ["0x2ecc71", "0x58d68d"],
+        "requirement": "total_badges >= 3",
+        "description": "Possui 3 ou mais badges",
+        "priority": 2,
+        "visual_effects": {
+          "glow": true,
+          "animation": false
+        }
+      },
+      "badge_collector": {
+        "name": "🏆 Colecionador de Badges",
+        "color": "0x3498db",
+        "gradient_colors": ["0x3498db", "0x5dade2"],
+        "requirement": "total_badges >= 7",
+        "description": "Possui 7 ou mais badges",
+        "priority": 3,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "pulse": true
+        }
+      },
+      "badge_enthusiast": {
+        "name": "🎖️ Entusiasta de Badges",
+        "color": "0x9b59b6",
+        "gradient_colors": ["0x9b59b6", "0xbb74e5"],
+        "requirement": "total_badges >= 15",
+        "description": "Possui 15 ou mais badges",
+        "priority": 4,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "pulse": true,
+          "sparkle": true
+        }
+      },
+      "badge_master": {
+        "name": "🏅 Mestre dos Badges",
+        "color": "0xe67e22",
+        "gradient_colors": ["0xe67e22", "0xf39c12"],
+        "requirement": "total_badges >= 25",
+        "description": "Possui 25 ou mais badges",
+        "priority": 5,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "pulse": true,
+          "sparkle": true,
+          "golden_aura": true
+        }
+      },
+      "badge_legend": {
+        "name": "🌟 Lenda dos Badges",
+        "color": "0xf1c40f",
+        "gradient_colors": ["0xf1c40f", "0xf7dc6f"],
+        "requirement": "total_badges >= 40",
+        "description": "Possui 40 ou mais badges",
+        "priority": 6,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "pulse": true,
+          "sparkle": true,
+          "golden_aura": true,
+          "crown_effect": true
+        }
+      },
+      "rare_collector": {
+        "name": "💎 Colecionador Raro",
+        "color": "0x1abc9c",
+        "gradient_colors": ["0x1abc9c", "0x48c9b0"],
+        "requirement": "rare_badges >= 3",
+        "description": "Possui 3 ou mais badges raros+",
+        "priority": 7,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "shimmer": true,
+          "diamond_sparkle": true
+        }
+      },
+      "epic_hunter": {
+        "name": "⚡ Caçador Épico",
+        "color": "0xe74c3c",
+        "gradient_colors": ["0xe74c3c", "0xec7063"],
+        "requirement": "epic_badges >= 2",
+        "description": "Possui 2 ou mais badges épicos+",
+        "priority": 8,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "lightning_effect": true,
+          "electric_aura": true
+        }
+      },
+      "legendary_champion": {
+        "name": "👑 Campeão Lendário",
+        "color": "0xfd79a8",
+        "gradient_colors": ["0xfd79a8", "0xfdcb6e"],
+        "requirement": "legendary_badges >= 1",
+        "description": "Possui 1 ou mais badges lendários+",
+        "priority": 9,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "royal_aura": true,
+          "crown_effect": true,
+          "legendary_glow": true
+        }
+      },
+      "mythic_deity": {
+        "name": "🔮 Divindade Mítica",
+        "color": "0x8e44ad",
+        "gradient_colors": ["0x8e44ad", "0xa569bd", "0xbb8fce"],
+        "requirement": "mythic_badges >= 1",
+        "description": "Possui badges míticos",
+        "priority": 10,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "cosmic_aura": true,
+          "dimensional_rift": true,
+          "mythic_power": true
+        }
+      },
+      "pubg_rookie": {
+        "name": "🎮 Novato PUBG",
+        "color": "0x27ae60",
+        "gradient_colors": ["0x27ae60", "0x2ecc71"],
+        "requirement": "pubg_badges >= 3",
+        "description": "Possui 3 ou mais badges PUBG",
+        "priority": 11,
+        "visual_effects": {
+          "glow": true,
+          "game_aura": true
+        }
+      },
+      "pubg_specialist": {
+        "name": "🎯 Especialista PUBG",
+        "color": "0x2980b9",
+        "gradient_colors": ["0x2980b9", "0x3498db"],
+        "requirement": "pubg_badges >= 8",
+        "description": "Possui 8 ou mais badges PUBG",
+        "priority": 12,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "tactical_aura": true,
+          "sniper_glow": true
+        }
+      },
+      "pubg_master": {
+        "name": "🏹 Mestre PUBG",
+        "color": "0x8e44ad",
+        "gradient_colors": ["0x8e44ad", "0xa569bd"],
+        "requirement": "pubg_badges >= 15",
+        "description": "Possui 15 ou mais badges PUBG",
+        "priority": 13,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "master_aura": true,
+          "victory_glow": true,
+          "chicken_dinner_effect": true
+        }
+      },
+      "server_member": {
+        "name": "🏠 Membro do Servidor",
+        "color": "0x95a5a6",
+        "gradient_colors": ["0x95a5a6", "0xbdc3c7"],
+        "requirement": "server_badges >= 2",
+        "description": "Possui 2 ou mais badges do servidor",
+        "priority": 14,
+        "visual_effects": {
+          "glow": false,
+          "home_aura": true
+        }
+      },
+      "server_champion": {
+        "name": "🏆 Campeão do Servidor",
+        "color": "0x2980b9",
+        "gradient_colors": ["0x2980b9", "0x3498db"],
+        "requirement": "server_badges >= 8",
+        "description": "Possui 8 ou mais badges do servidor",
+        "priority": 15,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "champion_aura": true,
+          "server_pride": true
+        }
+      },
+      "server_legend": {
+        "name": "🌟 Lenda do Servidor",
+        "color": "0xf39c12",
+        "gradient_colors": ["0xf39c12", "0xf7dc6f"],
+        "requirement": "server_badges >= 15",
+        "description": "Possui 15 ou mais badges do servidor",
+        "priority": 16,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "legendary_aura": true,
+          "server_crown": true,
+          "community_glow": true
+        }
+      },
+      "ultimate_collector": {
+        "name": "🌈 Colecionador Supremo",
+        "color": "0xff6b6b",
+        "gradient_colors": ["0xff6b6b", "0xff7675", "0xfd79a8"],
+        "requirement": "total_badges >= 60 and rare_badges >= 8 and epic_badges >= 5",
+        "description": "Colecionador supremo com 60+ badges",
+        "priority": 17,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "rainbow_aura": true,
+          "supreme_glow": true,
+          "collector_crown": true,
+          "ultimate_power": true
+        }
+      },
+      "transcendent_being": {
+        "name": "🌌 Ser Transcendente",
+        "color": "0x6c5ce7",
+        "gradient_colors": ["0x6c5ce7", "0xa29bfe", "0xfd79a8", "0xfdcb6e"],
+        "requirement": "total_badges >= 100 and mythic_badges >= 3 and legendary_badges >= 5",
+        "description": "Transcendeu os limites com 100+ badges",
+        "priority": 18,
+        "visual_effects": {
+          "glow": true,
+          "animation": true,
+          "transcendent_aura": true,
+          "cosmic_power": true,
+          "reality_distortion": true,
+          "divine_presence": true,
+          "omnipotent_glow": true
+        }
+      }
+    },
+    "role_settings": {
+      "auto_assign": true,
+      "remove_lower_priority": true,
+      "update_on_badge_change": true,
+      "create_missing_roles": true,
+      "role_permissions": {
+        "send_messages": true,
+        "add_reactions": true,
+        "use_external_emojis": true
+      }
+    }
+  },
+  "badge_nickname_system": {
+    "enabled": true,
+    "max_badges_display": 2,
+    "update_on_badge_change": true,
+    "priority_badges": ["mítico", "lendário", "épico", "raro", "comum"],
+    "exclude_roles": ["Admin", "Moderador", "Staff"],
+    "auto_clean_old_emojis": true,
+    "respect_manual_nicknames": false
+  },
+  "notifications": {
+    "rank_up": {
+      "enabled": true,
+      "channel_announce": true,
+      "dm_notify": true
+    },
+    "badge_unlock": {
+      "enabled": true,
+      "channel_announce": true,
+      "dm_notify": true
+    },
+    "tier_promotion": {
+      "enabled": true,
+      "channel_announce": true,
+      "dm_notify": true
+    }
+  },
+  "leaderboard": {
+    "update_interval_minutes": 30,
+    "cache_duration_minutes": 15,
+    "max_entries": 50,
+    "show_inactive_days": 30
+  },
+  "real_time_updates": {
+    "enabled": true,
+    "rank_update_interval_minutes": 30,
+    "stats_update_interval_minutes": 15,
+    "auto_sync_on_activity": true,
+    "priority_users": [],
+    "max_api_calls_per_hour": 120
+  },
+  "daily_reset_hour": 0
+}

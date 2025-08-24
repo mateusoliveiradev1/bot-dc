@@ -1,0 +1,27 @@
+{
+  "temp_channels": {
+    "enabled": true,
+    "auto_delete_empty": true,
+    "empty_timeout_minutes": 5,
+    "max_temp_channels": 20,
+    "temp_channel_prefix": "🎮・",
+    "creator_permissions": true
+  },
+  "rank_channels": {
+    "enabled": true,
+    "auto_create": true,
+    "min_members_per_rank": 3,
+    "rank_prefixes": {
+      "Predador": "🔥・",
+      "Diamante": "💎・",
+      "Ouro": "🥇・",
+      "Prata": "🥈・",
+      "Bronze": "🥉・"
+    }
+  },
+  "trigger_channels": [],
+  "voice_categories": {
+    "temp_category_name": "🎮・Salas Temporárias",
+    "rank_category_name": "🏆・Canais por Patente"
+  }
+}

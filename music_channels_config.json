@@ -1,26 +1,29 @@
 {
+  "music_channels": {
     "enabled": true,
-    "trigger_channels": [],
-    "music_category_name": "🎵 MÚSICA",
-    "temp_channel_prefix": "🎵 Música",
+    "auto_create": true,
+    "max_music_channels": 5,
+    "music_channel_prefix": "🎵・",
     "auto_delete_empty": true,
-    "cleanup_interval": 300,
-    "max_channels": 10,
-    "channel_permissions": {
-        "connect": true,
-        "speak": true,
-        "use_voice_activation": true,
-        "stream": true
-    },
-    "music_controls": {
-        "auto_play_on_join": false,
-        "auto_pause_on_empty": true,
-        "update_channel_name": true,
-        "show_current_song": true
-    },
-    "stats": {
-        "music_channels_created": 0,
-        "total_sessions": 0,
-        "last_cleanup": null
+    "empty_timeout_minutes": 10,
+    "default_bitrate": 128000,
+    "default_user_limit": 10,
+    "quality_presets": {
+      "low": 64000,
+      "medium": 128000,
+      "high": 256000,
+      "ultra": 384000
     }
+  },
+  "trigger_channels": [],
+  "voice_categories": {
+    "music_category_name": "🎵・Canais de Música"
+  },
+  "auto_controls": {
+    "enabled": true,
+    "show_now_playing": true,
+    "show_queue_info": true,
+    "auto_update_channel_name": true,
+    "update_interval_seconds": 30
+  }
 }

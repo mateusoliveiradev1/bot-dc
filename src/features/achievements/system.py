@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 import logging
-from storage import DataStorage
+from core.storage import DataStorage
 
 logger = logging.getLogger('AchievementSystem')
 

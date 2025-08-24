@@ -1,0 +1,113 @@
+{
+  "enabled": true,
+  "auto_check": true,
+  "announcement_channel": null,
+  "announce_new_badges": true,
+  "display_in_profile": true,
+  "max_display_badges": 5,
+  "check_interval_hours": 6,
+  "rarity_multipliers": {
+    "comum": 1.0,
+    "raro": 1.5,
+    "épico": 2.0,
+    "lendário": 3.0,
+    "mítico": 5.0
+  },
+  "categories": {
+    "combat": {
+      "name": "Combate",
+      "description": "Emblemas relacionados a eliminações e combate",
+      "emoji": "⚔️"
+    },
+    "survival": {
+      "name": "Sobrevivência",
+      "description": "Emblemas relacionados a sobrevivência e estratégia",
+      "emoji": "🛡️"
+    },
+    "support": {
+      "name": "Suporte",
+      "description": "Emblemas relacionados a trabalho em equipe",
+      "emoji": "🤝"
+    },
+    "achievement": {
+      "name": "Conquistas",
+      "description": "Emblemas de conquistas gerais",
+      "emoji": "🏅"
+    },
+    "special": {
+      "name": "Especiais",
+      "description": "Emblemas especiais e únicos",
+      "emoji": "⭐"
+    }
+  },
+  "rarities": {
+    "comum": {
+      "name": "Comum",
+      "color": 8421504,
+      "weight": 1,
+      "emoji": "⚪"
+    },
+    "raro": {
+      "name": "Raro",
+      "color": 32767,
+      "weight": 2,
+      "emoji": "🔵"
+    },
+    "épico": {
+      "name": "Épico",
+      "color": 8388863,
+      "weight": 3,
+      "emoji": "🟣"
+    },
+    "lendário": {
+      "name": "Lendário",
+      "color": 16744448,
+      "weight": 4,
+      "emoji": "🟠"
+    },
+    "mítico": {
+      "name": "Mítico",
+      "color": 16711808,
+      "weight": 5,
+      "emoji": "🔴"
+    }
+  },
+  "requirements_info": {
+    "first_kills": "Número de primeiras eliminações da partida",
+    "clutch_wins": "Vitórias em situações 1vX (1v2, 1v3, 1v4)",
+    "headshot_ratio": "Taxa de headshots (0.0 a 1.0)",
+    "long_range_kills": "Eliminações de longa distância (>100m)",
+    "multi_kills": "Eliminações múltiplas em sequência",
+    "max_kill_streak": "Maior sequência de eliminações",
+    "avg_survival_time": "Tempo médio de sobrevivência (segundos)",
+    "top_10_ratio": "Taxa de chegada ao top 10 (0.0 a 1.0)",
+    "wins": "Número total de vitórias",
+    "win_ratio": "Taxa de vitórias (0.0 a 1.0)",
+    "stealth_wins": "Vitórias com poucos kills (estratégia furtiva)",
+    "avg_damage_per_match": "Dano médio por partida",
+    "revives": "Número de revividas de companheiros",
+    "assists": "Número de assistências",
+    "heals": "Número de curas aplicadas",
+    "matches_played": "Número total de partidas jogadas",
+    "days_active": "Dias ativos no jogo",
+    "perfect_matches": "Partidas com 100% de precisão",
+    "flawless_wins": "Vitórias sem tomar dano",
+    "tournament_wins": "Vitórias em torneios",
+    "community_points": "Pontos de contribuição à comunidade",
+    "helped_members": "Membros ajudados na comunidade"
+  },
+  "display_settings": {
+    "show_rarity_colors": true,
+    "show_category_icons": true,
+    "show_earned_date": true,
+    "compact_mode": false,
+    "sort_by_rarity": true,
+    "group_by_category": false
+  },
+  "notification_settings": {
+    "dm_on_new_badge": false,
+    "ping_on_announcement": false,
+    "weekly_summary": true,
+    "milestone_notifications": true
+  }
+}

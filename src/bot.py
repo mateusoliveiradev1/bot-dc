@@ -22,25 +22,37 @@ from typing import Literal
 import sys
 from pathlib import Path
 
-# Adiciona o diretório src ao path
-src_path = Path(__file__).parent / 'src'
-sys.path.insert(0, str(src_path))
-
 from core.storage import DataStorage
 from core.postgres_storage import PostgreSQLStorage as PostgresStorage
-from features.pubg import api as pubg_api
-from features.music import player as music_system
-from features.tournaments import system as tournament_system
-from features.achievements import system as achievement_system
-from features.badges import system as badge_system
-from features.notifications import system as notifications_system
-from features.moderation import system as moderation_system
-from features.minigames import system as minigames_system
-from features.checkin import system as checkin_system
+from core.rank import RankSystem
+from features.pubg.api import PUBGIntegration
+from features.pubg.dual_ranking import DualRankingSystem
+from features.pubg.roles import PubgRankRoles
+from features.music.player import MusicSystem
+from features.music.dynamic_channels import DynamicChannelsSystem
+from features.music.channels import MusicChannelsSystem
+from features.tournaments.manager import TournamentSystem
+from features.tournaments.seasons import SeasonSystem
+from features.achievements.system import AchievementSystem
+from features.badges.system import BadgeSystem
+from features.notifications.system import NotificationsSystem
+from features.moderation.system import ModerationSystem
+from features.minigames.system import MinigamesSystem
+from features.checkin.system import CheckInSystem
+from features.checkin.notifications import CheckInNotifications
+from features.checkin.reminders import CheckInReminders
+from features.checkin.reports import CheckInReports
 from integrations.medal import MedalIntegration
-from utils import scheduler, embed_templates, charts_system, keep_alive
+from utils import scheduler, embed_templates, keep_alive
+from utils.keep_alive import KeepAlive
+from utils.charts_system import ChartsSystem
+from utils.scheduler import TaskScheduler
 from web.app import WebDashboard
 from core.registration import Registration
+
+# Importar ServerSetup dos scripts
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'scripts', 'setup'))
+from server_setup import ServerSetup
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -73,7 +85,7 @@ class HawkBot(commands.Bot):
         
         # Inicializar sistema de armazenamento (PostgreSQL ou JSON)
         self.storage = self._initialize_storage()
-        self.embed_templates = EmbedTemplates({})
+        self.embed_templates = embed_templates
         self.server_setup = ServerSetup(self)
         self.registration = Registration(self)
         self.pubg_api = PUBGIntegration()

@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 from datetime import datetime, timedelta
 from typing import Optional
-from checkin_system import CheckInSystem, SessionType
+from .system import CheckInSystem, SessionType
 import asyncio
 
 class CheckInCommands(commands.Cog):

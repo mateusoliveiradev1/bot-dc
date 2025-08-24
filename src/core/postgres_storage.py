@@ -2,7 +2,7 @@ import os
 import asyncio
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
-from database import DatabaseManager, DatabaseConfig
+from .database import DatabaseManager, DatabaseConfig
 
 class PostgreSQLStorage:
     """Sistema de armazenamento usando PostgreSQL"""

@@ -18,29 +18,43 @@ from dotenv import load_dotenv
 from datetime import datetime
 from typing import Literal
 
-# Importar módulos personalizados da nova estrutura
+# Importar módulos personalizados
 import sys
 from pathlib import Path
 
-# Adiciona o diretório src ao path
-src_path = Path(__file__).parent / 'src'
-sys.path.insert(0, str(src_path))
+# Adiciona diretórios ao path
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root / 'scripts' / 'setup'))
+sys.path.insert(0, str(project_root / 'src'))
 
-from core.storage import DataStorage
-from core.postgres_storage import PostgreSQLStorage as PostgresStorage
-from features.pubg import api as pubg_api
-from features.music import player as music_system
-from features.tournaments import system as tournament_system
-from features.achievements import system as achievement_system
-from features.badges import system as badge_system
-from features.notifications import system as notifications_system
-from features.moderation import system as moderation_system
-from features.minigames import system as minigames_system
-from features.checkin import system as checkin_system
-from integrations.medal import MedalIntegration
-from utils import scheduler, embed_templates, charts_system, keep_alive
-from web.app import WebDashboard
-from core.registration import Registration
+from server_setup import ServerSetup
+from .registration import Registration
+from ..features.pubg.api import PUBGIntegration
+from .rank import RankSystem
+from ..integrations.medal import MedalIntegration
+from ..utils.scheduler import TaskScheduler
+from .storage import DataStorage
+from .postgres_storage import PostgreSQLStorage
+from ..features.tournaments.system import TournamentSystem
+from ..web.dashboard import WebDashboard
+from ..features.achievements.system import AchievementSystem
+from ..features.pubg.dual_ranking import DualRankingSystem
+from ..features.music.player import MusicSystem
+from ..features.moderation.system import ModerationSystem
+from ..features.minigames.system import MinigamesSystem
+from ..utils.charts_system import ChartsSystem
+from ..features.notifications.system import NotificationsSystem
+from ..utils.embed_templates import EmbedTemplates
+from ..features.pubg.rank_roles import PubgRankRoles
+from ..features.badges.system import BadgeSystem, BadgeType
+from ..features.tournaments.seasons import SeasonSystem
+from ..features.music.dynamic_channels import DynamicChannelsSystem
+from ..features.music.channels import MusicChannelsSystem
+from ..features.checkin.system import CheckInSystem
+from ..features.checkin.notifications import CheckInNotifications
+from ..features.checkin.reminders import CheckInReminders
+from ..features.checkin.reports import CheckInReports
+from ..utils.keep_alive import KeepAlive
 
 # Carregar variáveis de ambiente
 load_dotenv()

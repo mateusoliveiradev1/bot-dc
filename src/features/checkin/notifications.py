@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 import logging
-from checkin_system import CheckInSystem, SessionType, CheckInStatus
+from .system import CheckInSystem, SessionType, CheckInStatus
 
 logger = logging.getLogger(__name__)
 
