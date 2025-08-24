@@ -551,6 +551,10 @@ class Registration:
                 "not_found": not_found_count,
                 "total_registered": len(all_players)
             }
+            
+        except Exception as e:
+            logger.error(f"Erro na atualização em massa de cargos de acesso: {e}")
+            return {"error": str(e)}
     
     async def _grant_unregistered_role(self, member: discord.Member):
         """Concede a role 'Não Registrado' para um membro"""
@@ -606,7 +610,3 @@ class Registration:
         except Exception as e:
             logger.error(f"Erro ao remover role 'Não Registrado' de {user.name}: {e}")
             return False
-            
-        except Exception as e:
-            logger.error(f"Erro na atualização em massa de cargos de acesso: {e}")
-            return {"error": str(e)}

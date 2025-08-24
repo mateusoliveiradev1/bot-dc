@@ -9,7 +9,7 @@ from pathlib import Path
 src_path = Path(__file__).parent / 'src'
 sys.path.insert(0, str(src_path))
 
-from core.config import settings
+from core.config.settings import settings
 from bot import HawkBot  # Importa o bot da estrutura src
 
 def main():

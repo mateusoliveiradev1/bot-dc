@@ -1,0 +1,67 @@
+# Render Configuration for Hawk Esports Bot
+# This file contains all necessary configurations for Render deployment
+
+services:
+  - type: web
+    name: hawk-esports-bot
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: DISCORD_TOKEN
+        sync: false  # Set manually in Render dashboard
+      - key: DATABASE_URL
+        sync: false  # Set manually in Render dashboard
+      - key: PUBG_API_KEY
+        sync: false  # Optional - set manually if needed
+      - key: MEDAL_API_KEY
+        sync: false  # Optional - set manually if needed
+      - key: BOT_PREFIX
+        value: "!"
+      - key: DEBUG
+        value: "false"
+      - key: RENDER
+        value: "true"
+      - key: TIMEZONE
+        value: "America/Sao_Paulo"
+      - key: LOG_LEVEL
+        value: "INFO"
+      - key: WEB_PORT
+        value: "10000"
+      - key: WEB_HOST
+        value: "0.0.0.0"
+      - key: STORAGE_TYPE
+        value: "json"  # Use JSON for now, can be changed to postgres later
+      - key: ENABLE_MUSIC
+        value: "true"
+    autoDeploy: true
+    branch: main
+    rootDir: .
+    
+# Health check configuration
+healthCheckPath: /
+
+# Auto-scaling configuration
+scaling:
+  minInstances: 1
+  maxInstances: 1
+
+# Resource limits
+resources:
+  cpu: 0.5
+  memory: 512MB
+
+# Environment-specific settings
+production:
+  logging:
+    level: INFO
+    format: structured
+  performance:
+    cache_enabled: true
+    rate_limiting: true
+  security:
+    secure_headers: true
+    cors_enabled: true
