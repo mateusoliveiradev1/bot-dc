@@ -217,8 +217,10 @@ class HawkBot(commands.Bot):
         logger.info(f'{self.user} está online!')
         logger.info(f'Bot conectado em {len(self.guilds)} servidor(es)')
         
-        # Sincronizar comandos slash com tratamento de rate limit
-        await self._sync_commands_with_retry()
+        # Sincronização de comandos desabilitada temporariamente devido ao rate limiting
+        # Os comandos existentes continuarão funcionando normalmente
+        logger.info("⚠️ Sincronização de comandos slash desabilitada temporariamente")
+        logger.info("ℹ️ Comandos existentes continuarão funcionando normalmente")
         
         # Iniciar dashboard web em thread separada
         try:

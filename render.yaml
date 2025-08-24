@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: hawk-esports-bot
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: PORT
+        value: 10000
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: DATABASE_STORAGE_TYPE
+        value: json
+      - key: DATABASE_JSON_FILE_PATH
+        value: ./data/bot_data.json
+      - key: DISCORD_COMMAND_PREFIX
+        value: "!"
+      - key: DISCORD_ENABLE_MESSAGE_CONTENT
+        value: "true"
+      - key: DISCORD_ENABLE_GUILD_MEMBERS
+        value: "true"
+      - key: DISCORD_ENABLE_VOICE_STATES
+        value: "true"
+      - key: DISCORD_CASE_INSENSITIVE
+        value: "true"
+      - key: WEB_DASHBOARD_ENABLED
+        value: "true"
+      - key: WEB_DASHBOARD_HOST
+        value: "0.0.0.0"
+      - key: WEB_DASHBOARD_PORT
+        value: "10000"
+      - key: WEB_DASHBOARD_DEBUG
+        value: "false"
+      - key: ENVIRONMENT
+        value: production
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: hawk-bot-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

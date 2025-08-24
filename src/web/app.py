@@ -103,6 +103,45 @@ class WebDashboard:
             """Página de perfil do jogador"""
             return render_template('player_profile.html')
         
+        @self.app.route('/health')
+        def health():
+            """Endpoint de health check para Render"""
+            try:
+                # Verificar status do bot
+                bot_status = "online" if self.bot and hasattr(self.bot, 'user') and self.bot.user else "offline"
+                
+                # Verificar conexão de armazenamento
+                storage_status = "connected"
+                try:
+                    self.storage.load_data()
+                except Exception:
+                    storage_status = "disconnected"
+                
+                # Contar guilds se bot estiver online
+                guild_count = len(self.bot.guilds) if self.bot and hasattr(self.bot, 'guilds') else 0
+                
+                return jsonify({
+                    "status": "healthy",
+                    "bot_status": bot_status,
+                    "storage_status": storage_status,
+                    "guild_count": guild_count,
+                    "timestamp": datetime.now().isoformat()
+                }), 200
+            except Exception as e:
+                return jsonify({
+                    "status": "unhealthy",
+                    "error": str(e),
+                    "timestamp": datetime.now().isoformat()
+                }), 500
+        
+        @self.app.route('/ping')
+        def ping():
+            """Endpoint de ping simples"""
+            return jsonify({
+                "message": "pong",
+                "timestamp": datetime.now().isoformat()
+            }), 200
+        
         @self.app.route('/api/stats')
         def get_stats():
             """API para obter estatísticas gerais"""

@@ -473,6 +473,42 @@ class WebDashboard:
             except Exception as e:
                 logger.error(f"Erro ao obter dados de performance: {e}")
                 return jsonify({'labels': [], 'kd_data': [], 'kills_data': [], 'wins_data': []})
+        
+        @self.app.route('/health')
+        def health_check():
+            """Endpoint de health check para o Render"""
+            try:
+                # Verificar se o bot está conectado
+                bot_status = "online" if (self.bot and self.bot.is_ready()) else "offline"
+                
+                # Verificar storage
+                storage_status = "connected"
+                try:
+                    self.storage.load_data()
+                except:
+                    storage_status = "disconnected"
+                
+                health_data = {
+                    "status": "healthy",
+                    "timestamp": datetime.now().isoformat(),
+                    "bot_status": bot_status,
+                    "storage_status": storage_status,
+                    "guilds": len(self.bot.guilds) if (self.bot and self.bot.is_ready()) else 0
+                }
+                
+                return jsonify(health_data), 200
+            except Exception as e:
+                logger.error(f"Health check falhou: {e}")
+                return jsonify({
+                    "status": "unhealthy",
+                    "error": str(e),
+                    "timestamp": datetime.now().isoformat()
+                }), 503
+        
+        @self.app.route('/ping')
+        def ping():
+            """Endpoint simples de ping"""
+            return jsonify({"message": "pong", "timestamp": datetime.now().isoformat()}), 200
     
     def run(self, host='0.0.0.0', port=5000, debug=True):
         """Executar o servidor web"""
