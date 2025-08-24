@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 from datetime import datetime, timedelta
 from typing import Optional, List
-from checkin_system import CheckInSystem, SessionType
+from .system import CheckInSystem, SessionType
 import asyncio
 
 class CheckInAdmin(commands.Cog):
@@ -13,7 +13,7 @@ class CheckInAdmin(commands.Cog):
         
     def setup_checkin_system(self, storage):
         """Configura o sistema de check-in"""
-        self.checkin_system = CheckInSystem(storage)
+        self.checkin_system = CheckInSystem(self.bot, storage)
         
     @app_commands.command(name="admin_cancelar_sessao", description="[ADMIN] Cancela uma sessão ativa")
     @app_commands.describe(sessao_id="ID da sessão para cancelar")
