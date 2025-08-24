@@ -95,7 +95,8 @@ class ModernHawkBot(commands.Bot):
             'src.commands.pubg_commands',
             'src.commands.music_commands', 
             'src.commands.season_commands',
-            'src.commands.admin_commands'
+            'src.commands.admin_commands',
+            'src.commands.economy_commands'
         ]
         
         loaded_cogs = 0
