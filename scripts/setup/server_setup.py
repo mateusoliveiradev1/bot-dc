@@ -97,7 +97,8 @@ class ServerSetup:
                     {"name": "Inativo", "color": 0x696969, "hoist": False}
                 ],
                 "special": [
-                    {"name": "Acesso liberado", "color": 0x00FF00, "hoist": False}
+                    {"name": "Acesso liberado", "color": 0x00FF00, "hoist": False},
+                    {"name": "Não Registrado", "color": 0xFF6B6B, "hoist": False}
                 ]
             }
         }
@@ -274,46 +275,25 @@ class ServerSetup:
             logger.error(f"Erro ao configurar permissões do canal '{channel_name}': {e}")
     
     async def _setup_special_permissions(self, guild: discord.Guild):
-        """Configura permissões especiais do servidor"""
+        """Configura permissões especiais do servidor com sistema de acesso limitado"""
         try:
-            # Configurar permissões para role "Acesso liberado"
+            # Buscar roles necessárias
             acesso_role = discord.utils.get(guild.roles, name="Acesso liberado")
-            if not acesso_role:
+            nao_registrado_role = discord.utils.get(guild.roles, name="Não Registrado")
+            
+            if not acesso_role or not nao_registrado_role:
+                logger.warning("Roles 'Acesso liberado' ou 'Não Registrado' não encontradas")
                 return
             
-            # Encontrar canais que precisam da role "Acesso liberado"
-            restricted_channels = [
-                "💭・geral", "📷・clipes", "🎉・eventos",
-                "🎯・scrims", "📊・estatísticas"
+            # === CANAIS PÚBLICOS (visíveis para todos) ===
+            public_channels = [
+                "📜・regras", "📢・anúncios", "📋・registro"
             ]
             
-            for channel_name in restricted_channels:
+            for channel_name in public_channels:
                 channel = discord.utils.get(guild.channels, name=channel_name)
                 if channel and isinstance(channel, discord.TextChannel):
-                    # Negar acesso para @everyone
-                    await channel.set_permissions(
-                        guild.default_role,
-                        read_messages=False,
-                        send_messages=False
-                    )
-                    
-                    # Permitir acesso para quem tem "Acesso liberado"
-                    await channel.set_permissions(
-                        acesso_role,
-                        read_messages=True,
-                        send_messages=True
-                    )
-            
-            # Canais especiais onde apenas o bot pode enviar mensagens
-            bot_only_channels = [
-                "🏆・ranking", "📜・regras", "📢・anúncios", 
-                "📊・resultados", "📆・calendário"
-            ]
-            
-            for channel_name in bot_only_channels:
-                channel = discord.utils.get(guild.channels, name=channel_name)
-                if channel and isinstance(channel, discord.TextChannel):
-                    # Permitir que todos vejam mas não enviem mensagens
+                    # @everyone pode ver mas não enviar mensagens
                     await channel.set_permissions(
                         guild.default_role,
                         read_messages=True,
@@ -321,18 +301,23 @@ class ServerSetup:
                         add_reactions=True
                     )
                     
-                    # Permitir que o bot envie mensagens
+                    # Não registrados podem ver mas não enviar mensagens
                     await channel.set_permissions(
-                        guild.me,
+                        nao_registrado_role,
                         read_messages=True,
-                        send_messages=True,
-                        manage_messages=True,
-                        embed_links=True,
-                        attach_files=True
+                        send_messages=False,
+                        add_reactions=True
                     )
                     
-                    # Permitir que membros com "Acesso liberado" vejam o canal
-                    if channel_name == "🏆・ranking":
+                    # Registrados podem ver mas não enviar mensagens (exceto registro)
+                    if channel_name == "📋・registro":
+                        await channel.set_permissions(
+                            acesso_role,
+                            read_messages=True,
+                            send_messages=True,
+                            add_reactions=True
+                        )
+                    else:
                         await channel.set_permissions(
                             acesso_role,
                             read_messages=True,
@@ -340,7 +325,95 @@ class ServerSetup:
                             add_reactions=True
                         )
             
-            logger.info("Permissões especiais configuradas com sucesso")
+            # === CANAIS RESTRITOS (apenas para registrados) ===
+            restricted_channels = [
+                "💭・geral", "📷・clipes", "🎉・eventos",
+                "🎯・scrims", "📊・estatísticas", "🏆・ranking",
+                "📊・resultados", "📆・calendário", "🎵・música"
+            ]
+            
+            for channel_name in restricted_channels:
+                channel = discord.utils.get(guild.channels, name=channel_name)
+                if channel and isinstance(channel, discord.TextChannel):
+                    # @everyone não pode ver
+                    await channel.set_permissions(
+                        guild.default_role,
+                        read_messages=False,
+                        send_messages=False
+                    )
+                    
+                    # Não registrados não podem ver
+                    await channel.set_permissions(
+                        nao_registrado_role,
+                        read_messages=False,
+                        send_messages=False
+                    )
+                    
+                    # Registrados podem ver e interagir
+                    if channel_name in ["🏆・ranking", "📊・resultados", "📆・calendário"]:
+                        # Canais somente leitura para registrados
+                        await channel.set_permissions(
+                            acesso_role,
+                            read_messages=True,
+                            send_messages=False,
+                            add_reactions=True
+                        )
+                    else:
+                        # Canais interativos para registrados
+                        await channel.set_permissions(
+                            acesso_role,
+                            read_messages=True,
+                            send_messages=True,
+                            add_reactions=True
+                        )
+            
+            # === CANAIS DE VOZ RESTRITOS ===
+            voice_channels = [
+                "Squad 1", "Squad 2", "Squad 3", "Treino", "Estratégia Líder",
+                "🎧・Música Geral", "🎤・Karaokê"
+            ]
+            
+            for channel_name in voice_channels:
+                channel = discord.utils.get(guild.channels, name=channel_name)
+                if channel and isinstance(channel, discord.VoiceChannel):
+                    # @everyone não pode ver
+                    await channel.set_permissions(
+                        guild.default_role,
+                        view_channel=False,
+                        connect=False
+                    )
+                    
+                    # Não registrados não podem ver
+                    await channel.set_permissions(
+                        nao_registrado_role,
+                        view_channel=False,
+                        connect=False
+                    )
+                    
+                    # Registrados podem ver e conectar
+                    await channel.set_permissions(
+                        acesso_role,
+                        view_channel=True,
+                        connect=True,
+                        speak=True
+                    )
+            
+            # Configurar permissões do bot em todos os canais
+            for channel in guild.channels:
+                if isinstance(channel, (discord.TextChannel, discord.VoiceChannel)):
+                    await channel.set_permissions(
+                        guild.me,
+                        read_messages=True,
+                        send_messages=True,
+                        manage_messages=True,
+                        embed_links=True,
+                        attach_files=True,
+                        view_channel=True,
+                        connect=True,
+                        speak=True
+                    )
+            
+            logger.info("Sistema de permissões com acesso limitado configurado com sucesso")
             
         except Exception as e:
             logger.error(f"Erro ao configurar permissões especiais: {e}")

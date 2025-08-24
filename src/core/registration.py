@@ -34,6 +34,9 @@ class Registration:
         try:
             logger.info(f"Novo membro: {member.name} ({member.id})")
             
+            # Atribuir role "Não Registrado" automaticamente
+            await self._grant_unregistered_role(member)
+            
             # Enviar mensagem de boas-vindas via DM
             await self._send_welcome_dm(member)
             
@@ -70,7 +73,8 @@ class Registration:
             if not success:
                 return False
             
-            # Atribuir role "Acesso liberado"
+            # Remover role "Não Registrado" e atribuir "Acesso liberado"
+            await self._remove_unregistered_role(user)
             await self._grant_access_role(user)
             
             # Verificar conquistas de registro
@@ -290,7 +294,7 @@ class Registration:
             logger.error(f"Erro ao enviar DM de boas-vindas para {member.name}: {e}")
     
     async def _send_registration_notification(self, member: discord.Member):
-        """Envia notificação de novo membro no canal de registro"""
+        """Envia notificação de novo membro no canal de registro com sistema de boas-vindas completo"""
         try:
             # Buscar canal de registro
             registration_channel = discord.utils.get(
@@ -302,28 +306,88 @@ class Registration:
                 logger.warning(f"Canal de registro não encontrado: {self.registration_channel_name}")
                 return
             
-            embed = discord.Embed(
-                title="👋 Novo Membro!",
-                description=f"**{member.mention}** entrou no servidor!",
-                color=discord.Color.green()
+            # Embed principal de boas-vindas
+            welcome_embed = discord.Embed(
+                title="🎉 Bem-vindo(a) ao Hawk Esports!",
+                description=f"Olá **{member.mention}**! Seja muito bem-vindo(a) ao nosso servidor!",
+                color=0x00ff88
             )
             
-            embed.add_field(
-                name="📋 Próximo Passo",
+            welcome_embed.add_field(
+                name="🚨 ACESSO LIMITADO",
                 value=(
-                    f"{member.mention}, use o comando:\n"
-                    "`/register_pubg nome:<seu_nick> shard:<plataforma>`\n\n"
-                    "Para ter acesso completo ao **Hawk Esports**!"
+                    "⚠️ **Você possui acesso limitado!**\n"
+                    "Para ter acesso completo aos canais e recursos do servidor, "
+                    "você precisa se registrar primeiro."
                 ),
                 inline=False
             )
             
-            embed.set_thumbnail(url=member.avatar.url if member.avatar else member.default_avatar.url)
-            embed.set_footer(text=f"Membro #{member.guild.member_count}")
-            embed.timestamp = datetime.now()
+            welcome_embed.add_field(
+                name="📋 Como se Registrar",
+                value=(
+                    "Use o comando abaixo para se registrar:\n"
+                    "`/register_pubg nome:<seu_nick_pubg> shard:<plataforma>`\n\n"
+                    "**Plataformas disponíveis:**\n"
+                    "• `steam` - PC (Steam)\n"
+                    "• `psn` - PlayStation\n"
+                    "• `xbox` - Xbox\n"
+                    "• `kakao` - PC (Kakao)"
+                ),
+                inline=False
+            )
             
-            await registration_channel.send(embed=embed)
-            logger.info(f"Notificação de novo membro enviada para {member.name}")
+            welcome_embed.add_field(
+                name="✨ Após o Registro",
+                value=(
+                    "🔓 **Acesso completo aos canais**\n"
+                    "🏆 **Sistema de ranking automático**\n"
+                    "📊 **Estatísticas detalhadas**\n"
+                    "🎯 **Participação em scrims e eventos**\n"
+                    "🎵 **Canais de voz exclusivos**"
+                ),
+                inline=False
+            )
+            
+            welcome_embed.set_thumbnail(url=member.avatar.url if member.avatar else member.default_avatar.url)
+            welcome_embed.set_footer(
+                text=f"Membro #{member.guild.member_count} • Registre-se para acesso completo!",
+                icon_url=member.guild.icon.url if member.guild.icon else None
+            )
+            welcome_embed.timestamp = datetime.now()
+            
+            # Embed de exemplo de registro
+            example_embed = discord.Embed(
+                title="💡 Exemplo de Registro",
+                description="Veja como usar o comando de registro:",
+                color=0x3498db
+            )
+            
+            example_embed.add_field(
+                name="📝 Exemplo Prático",
+                value=(
+                    "`/register_pubg nome:HawkPlayer123 shard:steam`\n\n"
+                    "**Substitua:**\n"
+                    "• `HawkPlayer123` pelo seu nick no PUBG\n"
+                    "• `steam` pela sua plataforma"
+                ),
+                inline=False
+            )
+            
+            example_embed.add_field(
+                name="❓ Precisa de Ajuda?",
+                value=(
+                    "Se tiver dúvidas, mencione um **@Moderador** ou **@Admin**\n"
+                    "Estamos aqui para ajudar! 😊"
+                ),
+                inline=False
+            )
+            
+            # Enviar embeds
+            await registration_channel.send(embed=welcome_embed)
+            await registration_channel.send(embed=example_embed)
+            
+            logger.info(f"Sistema de boas-vindas completo enviado para {member.name}")
             
         except Exception as e:
             logger.error(f"Erro ao enviar notificação de registro para {member.name}: {e}")
@@ -487,6 +551,61 @@ class Registration:
                 "not_found": not_found_count,
                 "total_registered": len(all_players)
             }
+    
+    async def _grant_unregistered_role(self, member: discord.Member):
+        """Concede a role 'Não Registrado' para um membro"""
+        try:
+            guild = member.guild
+            unregistered_role = discord.utils.get(guild.roles, name="Não Registrado")
+            
+            if not unregistered_role:
+                logger.warning(f"Role 'Não Registrado' não encontrada no servidor {guild.name}")
+                return False
+            
+            if unregistered_role in member.roles:
+                logger.info(f"Membro {member.name} já possui a role 'Não Registrado'")
+                return True
+            
+            await member.add_roles(unregistered_role, reason="Novo membro - acesso limitado")
+            logger.info(f"Role 'Não Registrado' concedida para {member.name}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erro ao conceder role 'Não Registrado' para {member.name}: {e}")
+            return False
+    
+    async def _remove_unregistered_role(self, user: discord.User):
+        """Remove a role 'Não Registrado' de um usuário"""
+        try:
+            # Encontrar o membro no servidor
+            member = None
+            for guild in self.bot.guilds:
+                member = guild.get_member(user.id)
+                if member:
+                    break
+            
+            if not member:
+                logger.warning(f"Membro {user.name} não encontrado em nenhum servidor")
+                return False
+            
+            guild = member.guild
+            unregistered_role = discord.utils.get(guild.roles, name="Não Registrado")
+            
+            if not unregistered_role:
+                logger.warning(f"Role 'Não Registrado' não encontrada no servidor {guild.name}")
+                return False
+            
+            if unregistered_role not in member.roles:
+                logger.info(f"Membro {member.name} não possui a role 'Não Registrado'")
+                return True
+            
+            await member.remove_roles(unregistered_role, reason="Usuário registrado - acesso liberado")
+            logger.info(f"Role 'Não Registrado' removida de {member.name}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erro ao remover role 'Não Registrado' de {user.name}: {e}")
+            return False
             
         except Exception as e:
             logger.error(f"Erro na atualização em massa de cargos de acesso: {e}")

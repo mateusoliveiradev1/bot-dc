@@ -84,7 +84,7 @@ class ReminderCommands(commands.Cog):
                 inline=False
             )
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             logger.info(f"Lembrete criado por {interaction.user}: {titulo}")
             
         except Exception as e:
@@ -136,7 +136,7 @@ class ReminderCommands(commands.Cog):
             if len(reminders) > 10:
                 embed.set_footer(text=f"Mostrando 10 de {len(reminders)} lembretes")
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             
         except Exception as e:
             logger.error(f"Erro ao listar lembretes: {e}")
@@ -175,7 +175,7 @@ class ReminderCommands(commands.Cog):
                     timestamp=datetime.now()
                 )
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             
         except Exception as e:
             logger.error(f"Erro ao remover lembrete: {e}")
@@ -258,7 +258,7 @@ class ReminderCommands(commands.Cog):
                     timestamp=datetime.now()
                 )
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             
         except Exception as e:
             logger.error(f"Erro ao configurar lembretes: {e}")
@@ -317,7 +317,7 @@ class ReminderCommands(commands.Cog):
                 inline=True
             )
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             
         except Exception as e:
             logger.error(f"Erro ao mostrar status dos lembretes: {e}")
@@ -362,7 +362,7 @@ class ReminderCommands(commands.Cog):
                 inline=False
             )
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             logger.info(f"Limpeza de lembretes executada por {interaction.user} ({dias} dias)")
             
         except Exception as e:

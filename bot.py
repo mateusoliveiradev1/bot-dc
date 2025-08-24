@@ -912,13 +912,13 @@ async def pause_music(interaction: discord.Interaction):
 async def skip_music(interaction: discord.Interaction):
     """Comando para pular música"""
     success, message = await bot.music_system.skip_song(interaction.guild.id, interaction.user.id)
-    await interaction.response.send_message(message)
+    await interaction.response.send_message(message, ephemeral=True)
 
 @bot.tree.command(name="stop", description="⏹️ Para a música e limpa a fila")
 async def stop_music(interaction: discord.Interaction):
     """Comando para parar música"""
     success, message = await bot.music_system.stop_music(interaction.guild.id)
-    await interaction.response.send_message(message)
+    await interaction.response.send_message(message, ephemeral=True)
 
 @bot.tree.command(name="queue", description="📝 Mostra a fila de músicas")
 async def show_queue(interaction: discord.Interaction):
@@ -979,7 +979,7 @@ async def show_queue(interaction: discord.Interaction):
     
     embed.set_footer(text="Hawk Esports - Sistema de Música")
     
-    await interaction.response.send_message(embed=embed)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="volume", description="🔊 Define o volume da música (0-100)")
 @discord.app_commands.describe(
@@ -994,7 +994,7 @@ async def set_volume(interaction: discord.Interaction, nivel: int):
 async def toggle_loop(interaction: discord.Interaction):
     """Comando para alternar modo de repetição"""
     success, message = await bot.music_system.toggle_loop(interaction.guild.id)
-    await interaction.response.send_message(message)
+    await interaction.response.send_message(message, ephemeral=True)
 
 @bot.tree.command(name="shuffle", description="🔀 Embaralha a fila de músicas")
 async def shuffle_queue(interaction: discord.Interaction):
@@ -1006,7 +1006,7 @@ async def shuffle_queue(interaction: discord.Interaction):
 async def disconnect_bot(interaction: discord.Interaction):
     """Comando para desconectar do canal de voz"""
     success, message = await bot.music_system.disconnect(interaction.guild.id)
-    await interaction.response.send_message(message)
+    await interaction.response.send_message(message, ephemeral=True)
 
 @bot.tree.command(name="nowplaying", description="🎵 Mostra a música atual com barra de progresso")
 async def now_playing(interaction: discord.Interaction):
@@ -1088,7 +1088,7 @@ async def now_playing(interaction: discord.Interaction):
     
     embed.set_footer(text="Hawk Esports - Sistema de Música Avançado")
     
-    await interaction.response.send_message(embed=embed)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="history", description="📜 Mostra o histórico de músicas tocadas")
 @discord.app_commands.describe(
@@ -1158,7 +1158,7 @@ async def music_history(interaction: discord.Interaction, limite: int = 10):
     
     embed.set_footer(text="Hawk Esports - Histórico de Música")
     
-    await interaction.response.send_message(embed=embed)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="favorites", description="⭐ Gerencia suas músicas favoritas")
 @discord.app_commands.describe(
@@ -1312,7 +1312,7 @@ async def music_favorites(interaction: discord.Interaction, acao: str, posicao: 
                 description=f"**{song.title}** foi adicionada à fila!",
                 color=discord.Color.gold()
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
         else:
             await interaction.response.send_message(f"❌ {message}", ephemeral=True)
 
@@ -1473,7 +1473,7 @@ async def playlist_manager(interaction: discord.Interaction, acao: str, nome: st
                 )
         
         embed.set_footer(text="Use /playlist acao:play para tocar esta playlist")
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
     
     elif acao == "add":
         if not nome or not musica:
@@ -1584,7 +1584,7 @@ async def playlist_manager(interaction: discord.Interaction, acao: str, nome: st
             )
         
         embed.set_footer(text="Use /playlist acao:show nome:<nome> para ver uma playlist pública")
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
 # ==================== COMANDOS DE CANAIS DINÂMICOS ====================
 
@@ -1744,7 +1744,7 @@ async def dynamic_channels_cmd(interaction: discord.Interaction, acao: str, cana
                 color=0x00FF00
             )
         
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
         
     except Exception as e:
         logger.error(f"Erro no comando dynamic_channels: {e}")
@@ -1894,7 +1894,7 @@ async def music_channels(interaction: discord.Interaction, acao: str, canal: dis
                 color=0x00FF00
             )
         
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
         
     except Exception as e:
         logger.error(f"Erro no comando music_channels: {e}")
@@ -3063,6 +3063,102 @@ async def update_access_roles(interaction: discord.Interaction):
         logger.error(f"Erro no comando update_access_roles: {e}")
         await interaction.followup.send(
             f"❌ Erro ao atualizar cargos: {str(e)}", 
+            ephemeral=True
+        )
+
+@bot.tree.command(name="setup_permissions", description="🔒 [ADMIN] Aplica sistema de permissões com acesso limitado")
+async def setup_permissions(interaction: discord.Interaction):
+    """Comando administrativo para aplicar permissões de acesso limitado em servidor existente"""
+    # Verificar permissões de administrador
+    if not interaction.user.guild_permissions.administrator:
+        await interaction.response.send_message(
+            "❌ Você precisa ser administrador para usar este comando!", 
+            ephemeral=True
+        )
+        return
+    
+    await interaction.response.defer()
+    
+    try:
+        guild = interaction.guild
+        
+        # Verificar se as roles necessárias existem
+        acesso_role = discord.utils.get(guild.roles, name="Acesso liberado")
+        nao_registrado_role = discord.utils.get(guild.roles, name="Não Registrado")
+        
+        if not acesso_role:
+            await interaction.followup.send(
+                "❌ Role 'Acesso liberado' não encontrada! Execute o setup do servidor primeiro.",
+                ephemeral=True
+            )
+            return
+            
+        if not nao_registrado_role:
+            await interaction.followup.send(
+                "❌ Role 'Não Registrado' não encontrada! Execute o setup do servidor primeiro.",
+                ephemeral=True
+            )
+            return
+        
+        # Aplicar permissões usando a mesma lógica do server_setup
+        from scripts.setup.server_setup import ServerSetup
+        setup = ServerSetup(bot)
+        await setup._setup_special_permissions(guild)
+        
+        # Atribuir role "Não Registrado" para membros não registrados
+        updated_members = 0
+        for member in guild.members:
+            if member.bot:
+                continue
+                
+            # Verificar se o membro está registrado
+            player_data = bot.storage.get_player(str(member.id))
+            
+            if not player_data:  # Não registrado
+                if nao_registrado_role not in member.roles:
+                    await member.add_roles(nao_registrado_role, reason="Aplicação de sistema de acesso limitado")
+                    updated_members += 1
+            else:  # Registrado
+                if nao_registrado_role in member.roles:
+                    await member.remove_roles(nao_registrado_role, reason="Usuário já registrado")
+                if acesso_role not in member.roles:
+                    await member.add_roles(acesso_role, reason="Usuário registrado")
+        
+        embed = discord.Embed(
+            title="✅ Sistema de Permissões Aplicado!",
+            description="Sistema de acesso limitado configurado com sucesso!",
+            color=discord.Color.green()
+        )
+        
+        embed.add_field(
+            name="🔒 Configurações Aplicadas",
+            value=(
+                "• Canais públicos: Visíveis para todos\n"
+                "• Canais restritos: Apenas para registrados\n"
+                "• Canais de voz: Apenas para registrados\n"
+                "• Permissões do bot: Configuradas"
+            ),
+            inline=False
+        )
+        
+        embed.add_field(
+            name="👥 Membros Atualizados",
+            value=f"**{updated_members}** membros receberam a role 'Não Registrado'",
+            inline=False
+        )
+        
+        embed.add_field(
+            name="💡 Próximos Passos",
+            value="Novos membros receberão automaticamente acesso limitado até se registrarem.",
+            inline=False
+        )
+        
+        await interaction.followup.send(embed=embed)
+        
+    except Exception as e:
+        logger.error(f"Erro no comando setup_permissions: {e}")
+        await interaction.followup.send(
+            f"❌ Erro ao aplicar permissões: {str(e)}", 
             ephemeral=True
         )
 

@@ -94,7 +94,7 @@ class CheckInCommands(commands.Cog):
             
             embed.set_footer(text=f"Criado por {interaction.user.display_name}", icon_url=interaction.user.avatar.url if interaction.user.avatar else None)
             
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             
         except ValueError as e:
             if "time data" in str(e):
@@ -206,7 +206,7 @@ class CheckInCommands(commands.Cog):
                 description="Nenhuma sessão ativa no momento.",
                 color=0x999999
             )
-            await interaction.response.send_message(embed=embed)
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             return
         
         embed = discord.Embed(
@@ -238,7 +238,7 @@ class CheckInCommands(commands.Cog):
         
         embed.set_footer(text="Use /checkin <sessao_id> para participar")
         
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
     
     @app_commands.command(name="info_sessao", description="Mostra informações detalhadas de uma sessão")
     @app_commands.describe(sessao_id="ID da sessão")
@@ -313,7 +313,7 @@ class CheckInCommands(commands.Cog):
             if len(players) > 10:
                 embed.add_field(name="➕ Mais", value=f"... e mais {len(players) - 10} jogador(es)", inline=False)
         
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
     
     @app_commands.command(name="minhas_sessoes", description="Mostra suas sessões recentes")
     async def minhas_sessoes(self, interaction: discord.Interaction):
