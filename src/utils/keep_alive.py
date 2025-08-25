@@ -14,10 +14,24 @@ logger = logging.getLogger(__name__)
 
 class KeepAlive:
     def __init__(self, bot, url=None):
+        import os
         self.bot = bot
-        self.url = url or "https://hawk-esports-bot.onrender.com"  # Substitua pela sua URL do Render
+        
+        # Configurar URL baseada no ambiente
+        if url:
+            self.url = url
+        elif os.getenv('RENDER'):
+            # No Render, usar a URL do próprio serviço
+            render_service_url = os.getenv('RENDER_EXTERNAL_URL', 'https://hawk-esports-bot.onrender.com')
+            self.url = render_service_url
+        else:
+            # Ambiente local
+            port = os.getenv('PORT', '10000')
+            self.url = f"http://localhost:{port}"
+            
         self.session = None
         self.keep_alive_task = None
+        logger.info(f"KeepAlive configurado para URL: {self.url}")
         
     async def start(self):
         """Inicia o sistema keep alive"""

@@ -107,8 +107,9 @@ class WebDashboard:
         def health():
             """Endpoint de health check para Render"""
             try:
-                # Verificar status do bot
-                bot_status = "online" if self.bot and hasattr(self.bot, 'user') and self.bot.user else "offline"
+                # Verificar se o bot está totalmente inicializado
+                bot_ready = self.bot and hasattr(self.bot, 'user') and self.bot.user and self.bot.is_ready()
+                bot_status = "online" if bot_ready else "offline"
                 
                 # Verificar conexão de armazenamento
                 storage_status = "connected"
@@ -118,21 +119,30 @@ class WebDashboard:
                     storage_status = "disconnected"
                 
                 # Contar guilds se bot estiver online
-                guild_count = len(self.bot.guilds) if self.bot and hasattr(self.bot, 'guilds') else 0
+                guild_count = len(self.bot.guilds) if bot_ready else 0
                 
-                return jsonify({
-                    "status": "healthy",
+                # Determinar se o serviço está saudável
+                is_healthy = bot_ready and storage_status == "connected"
+                
+                health_data = {
+                    "status": "healthy" if is_healthy else "unhealthy",
                     "bot_status": bot_status,
                     "storage_status": storage_status,
                     "guild_count": guild_count,
+                    "bot_ready": bot_ready,
                     "timestamp": datetime.now().isoformat()
-                }), 200
+                }
+                
+                # Retornar 503 se não estiver saudável (para que o Render saiba que ainda não está pronto)
+                status_code = 200 if is_healthy else 503
+                return jsonify(health_data), status_code
+                
             except Exception as e:
                 return jsonify({
                     "status": "unhealthy",
                     "error": str(e),
                     "timestamp": datetime.now().isoformat()
-                }), 500
+                }), 503
         
         @self.app.route('/ping')
         def ping():

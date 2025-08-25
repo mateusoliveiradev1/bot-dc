@@ -8,7 +8,7 @@ services:
     startCommand: python main.py
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.12
+        value: 3.13.4
       - key: PORT
         value: 10000
       - key: DISCORD_TOKEN
@@ -18,7 +18,7 @@ services:
       - key: DATABASE_STORAGE_TYPE
         value: json
       - key: DATABASE_JSON_FILE_PATH
-        value: ./data/bot_data.json
+        value: /opt/render/project/src/data/bot_data.json
       - key: DISCORD_COMMAND_PREFIX
         value: "!"
       - key: DISCORD_ENABLE_MESSAGE_CONTENT
@@ -39,8 +39,14 @@ services:
         value: "false"
       - key: ENVIRONMENT
         value: production
+      - key: RENDER
+        value: "true"
+      - key: RENDER_EXTERNAL_URL
+        value: "https://hawk-esports-bot.onrender.com"
     autoDeploy: true
     healthCheckPath: /health
+    healthCheckTimeout: 30
+    healthCheckInterval: 60
     disk:
       name: hawk-bot-data
       mountPath: /opt/render/project/src/data
