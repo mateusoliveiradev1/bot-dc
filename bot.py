@@ -228,7 +228,8 @@ class HawkBot(commands.Bot):
             import threading
             # Configurar host e porta para Render
             host = '0.0.0.0' if os.getenv('RENDER') else 'localhost'
-            port = int(os.getenv('PORT', 5000))  # Render usa variável PORT
+            # Usar PORT do Render ou FLASK_PORT como fallback
+            port = int(os.getenv('PORT', os.getenv('FLASK_PORT', '10000')))
             
             dashboard_thread = threading.Thread(
                 target=self.web_dashboard.run,
