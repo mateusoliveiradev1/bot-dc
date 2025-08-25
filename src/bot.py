@@ -141,9 +141,10 @@ class HawkBot(commands.Bot):
                 await self.keep_alive.start()
                 logger.info("🔄 Sistema keep alive iniciado para Render")
             
-            # Sincronizar comandos slash
-            synced = await self.tree.sync()
-            logger.info(f"Sincronizados {len(synced)} comandos slash")
+            # Sincronizar comandos slash - DESABILITADO para evitar rate limiting
+            # synced = await self.tree.sync()
+            # logger.info(f"Sincronizados {len(synced)} comandos slash")
+            logger.info("⚠️ Sincronização automática de comandos slash desabilitada para evitar rate limiting")
             
             # Configurar sistema de música
             await self.music_system.setup_hook()
@@ -278,30 +279,37 @@ class HawkBot(commands.Bot):
         if quiz_result:
             await reaction.message.channel.send(embed=quiz_result)
     
+    # FUNÇÃO DESABILITADA PARA EVITAR RATE LIMITING
+    # async def _sync_commands_with_retry(self, max_retries: int = 3):
+    #     """Sincroniza comandos slash com tratamento de rate limit"""
+    #     for attempt in range(max_retries):
+    #         try:
+    #             synced = await self.tree.sync()
+    #             logger.info(f"✅ Sincronizados {len(synced)} comandos slash com sucesso!")
+    #             return
+    #         except discord.HTTPException as e:
+    #             if e.status == 429:  # Rate limited
+    #                 retry_after = getattr(e, 'retry_after', 60)
+    #                 logger.warning(f"⚠️ Rate limit detectado. Aguardando {retry_after:.1f} segundos antes de tentar novamente...")
+    #                 logger.warning(f"Tentativa {attempt + 1}/{max_retries}")
+    #                 
+    #                 if attempt < max_retries - 1:  # Não esperar na última tentativa
+    #                     await asyncio.sleep(retry_after)
+    #                 else:
+    #                     logger.error("❌ Máximo de tentativas de sincronização atingido. Comandos slash podem não estar atualizados.")
+    #                     logger.info("ℹ️ O bot continuará funcionando normalmente. Os comandos serão sincronizados na próxima reinicialização.")
+    #             else:
+    #                 logger.error(f"❌ Erro HTTP ao sincronizar comandos: {e}")
+    #                 break
+    #         except Exception as e:
+    #             logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
+    #             break
+    
     async def _sync_commands_with_retry(self, max_retries: int = 3):
-        """Sincroniza comandos slash com tratamento de rate limit"""
-        for attempt in range(max_retries):
-            try:
-                synced = await self.tree.sync()
-                logger.info(f"✅ Sincronizados {len(synced)} comandos slash com sucesso!")
-                return
-            except discord.HTTPException as e:
-                if e.status == 429:  # Rate limited
-                    retry_after = getattr(e, 'retry_after', 60)
-                    logger.warning(f"⚠️ Rate limit detectado. Aguardando {retry_after:.1f} segundos antes de tentar novamente...")
-                    logger.warning(f"Tentativa {attempt + 1}/{max_retries}")
-                    
-                    if attempt < max_retries - 1:  # Não esperar na última tentativa
-                        await asyncio.sleep(retry_after)
-                    else:
-                        logger.error("❌ Máximo de tentativas de sincronização atingido. Comandos slash podem não estar atualizados.")
-                        logger.info("ℹ️ O bot continuará funcionando normalmente. Os comandos serão sincronizados na próxima reinicialização.")
-                else:
-                    logger.error(f"❌ Erro HTTP ao sincronizar comandos: {e}")
-                    break
-            except Exception as e:
-                logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
-                break
+        """Função desabilitada - sincronização de comandos slash removida para evitar rate limiting"""
+        logger.info("⚠️ Sincronização de comandos slash desabilitada para evitar rate limiting do Discord")
+        logger.info("ℹ️ Para sincronizar comandos manualmente, use o comando de desenvolvedor apropriado")
+        return
     
     @tasks.loop(minutes=30)
     async def auto_update_ranks(self):
