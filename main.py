@@ -10,7 +10,7 @@ src_path = Path(__file__).parent / 'src'
 sys.path.insert(0, str(src_path))
 
 from core.config.settings import settings
-from bot import HawkBot  # Importa o bot da estrutura src
+from src.bot import HawkBot  # Importa o bot da estrutura src
 
 def main():
     """Função principal que inicializa o bot."""
