@@ -18,6 +18,10 @@ from dotenv import load_dotenv
 from datetime import datetime
 from typing import Literal
 
+# FLAG GLOBAL PARA DESABILITAR SINCRONIZAÇÃO DE COMANDOS SLASH
+# Esta flag previne QUALQUER tentativa de sincronização para evitar rate limiting
+DISABLE_COMMAND_SYNC = True  # MANTER SEMPRE True PARA EVITAR RATE LIMITING
+
 # Importar módulos personalizados da nova estrutura
 import sys
 from pathlib import Path
@@ -141,10 +145,14 @@ class HawkBot(commands.Bot):
                 await self.keep_alive.start()
                 logger.info("🔄 Sistema keep alive iniciado para Render")
             
-            # Sincronizar comandos slash - DESABILITADO para evitar rate limiting
-            # synced = await self.tree.sync()
-            # logger.info(f"Sincronizados {len(synced)} comandos slash")
-            logger.info("⚠️ Sincronização automática de comandos slash desabilitada para evitar rate limiting")
+            # Verificar flag global de sincronização
+            if DISABLE_COMMAND_SYNC:
+                logger.info("🚫 Sincronização de comandos PERMANENTEMENTE DESABILITADA (DISABLE_COMMAND_SYNC=True)")
+                logger.info("⚠️ Esta proteção previne rate limiting do Discord API")
+            else:
+                # Sincronizar comandos slash - APENAS se flag permitir
+                synced = await self.tree.sync()
+                logger.info(f"Sincronizados {len(synced)} comandos slash")
             
             # Configurar sistema de música
             await self.music_system.setup_hook()
@@ -306,10 +314,37 @@ class HawkBot(commands.Bot):
     #             break
     
     async def _sync_commands_with_retry(self, max_retries: int = 3):
-        """Função desabilitada - sincronização de comandos slash removida para evitar rate limiting"""
-        logger.info("⚠️ Sincronização de comandos slash desabilitada para evitar rate limiting do Discord")
-        logger.info("ℹ️ Para sincronizar comandos manualmente, use o comando de desenvolvedor apropriado")
-        return
+        """Sincronização de comandos com proteção contra rate limiting"""
+        if DISABLE_COMMAND_SYNC:
+            logger.info("🚫 Tentativa de sincronização BLOQUEADA pela flag DISABLE_COMMAND_SYNC")
+            logger.info("⚠️ Esta proteção previne rate limiting do Discord API")
+            logger.info("ℹ️ Para sincronizar comandos, altere DISABLE_COMMAND_SYNC para False")
+            return
+        
+        # Código original de sincronização (apenas executado se flag permitir)
+        for attempt in range(max_retries):
+            try:
+                synced = await self.tree.sync()
+                logger.info(f"✅ Sincronizados {len(synced)} comandos slash com sucesso!")
+                return
+            except discord.HTTPException as e:
+                if e.status == 429:  # Rate limited
+                    retry_after = getattr(e, 'retry_after', 60)
+                    logger.warning(f"⚠️ Rate limit detectado. Aguardando {retry_after:.1f} segundos...")
+                    logger.warning(f"Tentativa {attempt + 1}/{max_retries}")
+                    
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(retry_after)
+                    else:
+                        logger.error("❌ Máximo de tentativas atingido. Ativando DISABLE_COMMAND_SYNC")
+                        # Auto-ativar proteção se rate limit persistir
+                        globals()['DISABLE_COMMAND_SYNC'] = True
+                else:
+                    logger.error(f"❌ Erro HTTP ao sincronizar comandos: {e}")
+                    break
+            except Exception as e:
+                logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
+                break
     
     @tasks.loop(minutes=30)
     async def auto_update_ranks(self):
