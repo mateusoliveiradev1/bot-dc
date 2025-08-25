@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install --no-cache-dir -r requirements.txt
-    startCommand: python main.py
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.13.4
@@ -42,9 +42,9 @@ services:
       - key: RENDER
         value: "true"
       - key: RENDER_EXTERNAL_URL
-    value: https://hawk-esports-bot.onrender.com
-  - key: API_PUBG_API_KEY
-    value: your_pubg_api_key_here
+        value: https://hawk-esports-bot.onrender.com
+      - key: API_PUBG_API_KEY
+        value: your_pubg_api_key_here
     autoDeploy: true
     healthCheckPath: /health
     healthCheckTimeout: 30

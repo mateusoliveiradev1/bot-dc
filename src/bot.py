@@ -654,7 +654,9 @@ async def dashboard_command(interaction: discord.Interaction):
     if os.getenv('RENDER'):
         dashboard_url = "https://hawk-esports-bot.onrender.com"  # Substitua pela sua URL do Render
     else:
-        dashboard_url = "http://localhost:5000"
+        # Usar a mesma porta configurada no bot
+        port = int(os.getenv('PORT', os.getenv('FLASK_PORT', '10000')))
+        dashboard_url = f"http://localhost:{port}"
     
     embed.add_field(
         name="🔗 Link de Acesso",
