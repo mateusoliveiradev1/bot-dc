@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hawk-esports-bot"
+version = "1.0.0"
+description = "Bot Discord Hawk Esports PUBG"
+author = "Hawk Esports"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+discord-py = "^2.3.2"
+aiohttp = "^3.8.5"
+requests = "^2.31.0"
+python-dotenv = "^1.0.0"
+coloredlogs = "^15.0.1"
+aiofiles = "^23.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

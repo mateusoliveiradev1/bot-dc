@@ -7,6 +7,26 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
+# Configurações específicas para Replit
+if os.getenv('REPL_ID'):  # Detecta ambiente Replit
+    REPLIT = True
+    WEB_PORT = int(os.getenv('PORT', 8000))
+    print(f"🌐 Rodando no Replit - ID: {os.getenv('REPL_ID')}")
+    
+    # Keep alive automático no Replit
+    from threading import Thread
+    import time
+    
+    def keep_alive():
+        while True:
+            time.sleep(300)  # 5 minutos
+            print("💓 Keep alive - Bot ativo")
+    
+    Thread(target=keep_alive, daemon=True).start()
+else:
+    REPLIT = False
+
+
 # Configurações específicas para Glitch.com
 if os.getenv('PROJECT_DOMAIN'):  # Detecta ambiente Glitch
     GLITCH = True

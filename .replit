@@ -1,0 +1,23 @@
+run = "python app.py"
+modules = ["python-3.10"]
+
+[nix]
+channel = "stable-22_11"
+
+[env]
+PYTHON_LD_LIBRARY_PATH = "/home/runner/$REPL_SLUG/.pythonlibs/lib"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[languages]
+
+[languages.python3]
+pattern = "**/*.py"
+
+[languages.python3.languageServer]
+start = "pylsp"
+
+[deployment]
+run = ["sh", "-c", "python app.py"]
+deploymentTarget = "cloudrun"
