@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: hawk-esports-bot
+    name: hawk-esports-discord-bot
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
