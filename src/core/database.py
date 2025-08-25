@@ -38,23 +38,32 @@ class DatabaseManager:
         self.config = config
         self.pool: Optional[asyncpg.Pool] = None
     
-    async def initialize(self):
-        """Inicializa o pool de conexões"""
-        try:
-            self.pool = await asyncpg.create_pool(
-                host=self.config.host,
-                port=self.config.port,
-                database=self.config.database,
-                user=self.config.user,
-                password=self.config.password,
-                min_size=1,
-                max_size=10
-            )
-            await self.create_tables()
-            print("✅ Banco de dados PostgreSQL conectado com sucesso!")
-        except Exception as e:
-            print(f"❌ Erro ao conectar com o banco de dados: {e}")
-            raise
+    async def initialize(self, max_retries: int = 3):
+        """Inicializa o pool de conexões com reconexão automática"""
+        for attempt in range(max_retries):
+            try:
+                self.pool = await asyncpg.create_pool(
+                    host=self.config.host,
+                    port=self.config.port,
+                    user=self.config.user,
+                    password=self.config.password,
+                    database=self.config.database,
+                    min_size=1,
+                    max_size=10,
+                    command_timeout=60,
+                    server_settings={
+                        'jit': 'off'
+                    }
+                )
+                await self.create_tables()
+                print("✅ Banco de dados PostgreSQL conectado com sucesso!")
+                return
+            except Exception as e:
+                print(f"❌ Tentativa {attempt + 1}/{max_retries} falhou: {e}")
+                if attempt == max_retries - 1:
+                    print("❌ Falha ao conectar com o banco de dados após todas as tentativas")
+                    raise
+                await asyncio.sleep(2 ** attempt)  # Backoff exponencial
     
     async def close(self):
         """Fecha o pool de conexões"""

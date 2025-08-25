@@ -40,3 +40,10 @@ cryptography>=41.0.0
 
 # Enhanced Logging
 rich>=13.7.0
+
+# Database (PostgreSQL)
+asyncpg>=0.29.0
+
+# Additional Dependencies
+weakref-backport>=1.0.0; python_version<'3.9'
+typing-extensions>=4.8.0

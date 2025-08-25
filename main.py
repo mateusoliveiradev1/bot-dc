@@ -9,11 +9,19 @@ from pathlib import Path
 src_path = Path(__file__).parent / 'src'
 sys.path.insert(0, str(src_path))
 
+# Adiciona também o diretório raiz para compatibilidade
+root_path = Path(__file__).parent
+sys.path.insert(0, str(root_path))
+
 def main():
     """Função principal que inicializa o bot."""
     try:
+        # Carrega variáveis de ambiente
+        from dotenv import load_dotenv
+        load_dotenv()
+        
         # Importa e executa o bot diretamente
-        from bot import bot
+        from src.bot import bot
         
         # Verificar token
         token = os.getenv('DISCORD_TOKEN')
