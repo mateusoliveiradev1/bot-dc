@@ -17,58 +17,99 @@ Veja a [documentação da arquitetura](docs/ARCHITECTURE.md) para mais detalhes.
 
 ## ✨ Principais Funcionalidades
 
-## 🚀 Deploy Gratuito
+## 🚀 Deploy no Render (Recomendado)
 
-### Opção 1: Railway (Recomendado)
+### Passo 1: Preparar Banco de Dados
 
-1. **Criar conta no Railway**
-   - Acesse [railway.app](https://railway.app)
-   - Faça login com GitHub
+**Opção A: PostgreSQL no Render**
+1. Acesse [render.com](https://render.com) e faça login
+2. Clique em "New" → "PostgreSQL"
+3. Configure:
+   - Name: `hawk-bot-db`
+   - Database: `hawk_bot`
+   - User: `hawk_user`
+4. Anote as credenciais geradas
 
-2. **Configurar banco de dados PostgreSQL**
-   - No Railway, clique em "New Project"
-   - Selecione "Provision PostgreSQL"
-   - Anote as credenciais do banco
+**Opção B: Supabase (Gratuito)**
+1. Acesse [supabase.com](https://supabase.com)
+2. Crie novo projeto
+3. Vá em Settings → Database
+4. Copie a Connection String
 
-3. **Deploy do bot**
-   - Clique em "New Project" → "Deploy from GitHub repo"
-   - Conecte seu repositório
-   - Configure as variáveis de ambiente (veja abaixo)
+### Passo 2: Deploy do Bot
 
-### Opção 2: Render + Supabase
-
-1. **Banco de dados no Supabase**
-   - Acesse [supabase.com](https://supabase.com)
-   - Crie um novo projeto
-   - Anote as credenciais de conexão
-
-2. **Deploy no Render**
-   - Acesse [render.com](https://render.com)
+1. **Conectar Repositório**
+   - No Render, clique em "New" → "Web Service"
    - Conecte seu repositório GitHub
-   - Configure como "Web Service"
+   - Branch: `main`
+
+2. **Configurações do Deploy**
+   - Name: `hawk-bot`
+   - Environment: `Python 3`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `python main.py`
+
+3. **Configurar Variáveis de Ambiente** (veja seção abaixo)
+
+### Passo 3: Configurar Discord Bot
+
+1. Acesse [Discord Developer Portal](https://discord.com/developers/applications)
+2. Crie nova aplicação
+3. Vá em "Bot" → "Reset Token"
+4. Copie o token e adicione nas variáveis de ambiente
+5. Ative as "Privileged Gateway Intents"
 
 ## ⚙️ Variáveis de Ambiente
 
-Configure estas variáveis no seu provedor de deploy:
+Configure estas variáveis no Render (Environment Variables):
+
+### Obrigatórias
 
 ```env
-# Discord Bot
+# Discord Bot (OBRIGATÓRIO)
 DISCORD_TOKEN=seu_token_do_bot_discord
 
-# PostgreSQL Database
+# PostgreSQL Database (OBRIGATÓRIO)
 DB_HOST=seu_host_do_banco
-DB_NAME=seu_nome_do_banco
+DB_NAME=seu_nome_do_banco  
 DB_USER=seu_usuario_do_banco
 DB_PASSWORD=sua_senha_do_banco
 DB_PORT=5432
 
-# PUBG API (opcional)
+# Ou use DATABASE_URL (alternativa)
+DATABASE_URL=postgresql://user:password@host:port/database
+```
+
+### Opcionais
+
+```env
+# PUBG API (para funcionalidades PUBG)
 PUBG_API_KEY=sua_chave_da_api_pubg
 
-# Configurações
+# Configurações do Sistema
 TIMEZONE=America/Sao_Paulo
 LOG_LEVEL=INFO
+STORAGE_TYPE=postgresql
+CACHE_TYPE=memory
+
+# Web Dashboard
+WEB_PORT=8080
+KEEP_ALIVE=true
+
+# Configurações do Bot
+COMMAND_PREFIX=!
+MAX_RETRIES=3
 ```
+
+### Como Configurar no Render
+
+1. No painel do seu serviço no Render
+2. Vá em "Environment"
+3. Adicione cada variável:
+   - Key: `DISCORD_TOKEN`
+   - Value: `seu_token_aqui`
+4. Clique em "Save Changes"
+5. O serviço será reiniciado automaticamente
 
 ## 🛠️ Desenvolvimento Local
 
