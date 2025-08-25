@@ -6,6 +6,15 @@ import sys
 from pathlib import Path
 from dotenv import load_dotenv
 
+
+# Configurações específicas para Glitch.com
+if os.getenv('PROJECT_DOMAIN'):  # Detecta ambiente Glitch
+    GLITCH = True
+    WEB_PORT = int(os.getenv('PORT', 3000))
+    print(f"🌐 Rodando no Glitch.com - Projeto: {os.getenv('PROJECT_DOMAIN')}")
+else:
+    GLITCH = False
+
 # Carrega variáveis de ambiente
 load_dotenv()
 

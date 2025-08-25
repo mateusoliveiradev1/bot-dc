@@ -1,0 +1,20 @@
+{
+  "name": "hawk-esports-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord Hawk Esports PUBG",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py"
+  },
+  "engines": {
+    "python": "3.10.x"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "pubg",
+    "esports"
+  ],
+  "author": "Hawk Esports",
+  "license": "MIT"
+}
