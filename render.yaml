@@ -1,2 +1,28 @@
-buildCommand: pip install -r requirements.txt
-startCommand: python main.py
+services:
+  - type: web
+    name: hawk-esports-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: PUBG_API_KEY
+        sync: false
+      - key: MEDAL_API_KEY
+        sync: false
+      - key: BOT_PREFIX
+        value: "!"
+      - key: PYTHON_VERSION
+        value: "3.10.12"
+    disk:
+      name: hawk-bot-disk
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
