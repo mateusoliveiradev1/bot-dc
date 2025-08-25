@@ -9,18 +9,20 @@ from pathlib import Path
 src_path = Path(__file__).parent / 'src'
 sys.path.insert(0, str(src_path))
 
-from core.config.settings import settings
-from src.bot import HawkBot  # Importa o bot da estrutura src
-
 def main():
     """Função principal que inicializa o bot."""
     try:
-        # Valida as configurações antes de iniciar
-        settings.validate()
+        # Importa e executa o bot diretamente
+        from bot import bot
         
-        # Inicializa e executa o bot
-        hawk_bot = HawkBot()
-        hawk_bot.run(settings.DISCORD_TOKEN)
+        # Verificar token
+        token = os.getenv('DISCORD_TOKEN')
+        if not token:
+            print("DISCORD_TOKEN não encontrado no arquivo .env!")
+            sys.exit(1)
+        
+        # Executar bot
+        bot.run(token)
         
     except Exception as e:
         print(f"Erro ao inicializar o bot: {e}")

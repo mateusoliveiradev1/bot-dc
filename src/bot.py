@@ -21,6 +21,14 @@ from typing import Literal
 # Configuração de sincronização de comandos slash
 # Sincronização automática habilitada para funcionamento normal
 
+# Proteção inteligente contra rate limiting
+RATE_LIMIT_PROTECTION = {
+    'enabled': False,
+    'last_rate_limit': None,
+    'consecutive_failures': 0,
+    'cooldown_until': None
+}
+
 # Importar módulos personalizados da nova estrutura
 import sys
 from pathlib import Path
@@ -144,9 +152,8 @@ class HawkBot(commands.Bot):
                 await self.keep_alive.start()
                 logger.info("🔄 Sistema keep alive iniciado para Render")
             
-            # Sincronizar comandos slash
-            synced = await self.tree.sync()
-            logger.info(f"Sincronizados {len(synced)} comandos slash")
+            # Sincronizar comandos slash com proteção inteligente
+            await self._sync_commands_with_protection()
             
             # Configurar sistema de música
             await self.music_system.setup_hook()
@@ -307,7 +314,58 @@ class HawkBot(commands.Bot):
     #             logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
     #             break
     
-
+    async def _sync_commands_with_protection(self):
+        """Sincronização inteligente com proteção contra rate limiting"""
+        global RATE_LIMIT_PROTECTION
+        
+        # Verificar se estamos em cooldown
+        if RATE_LIMIT_PROTECTION['cooldown_until']:
+            if datetime.now() < RATE_LIMIT_PROTECTION['cooldown_until']:
+                logger.warning("🚫 Sincronização bloqueada - em cooldown por rate limiting")
+                logger.info("ℹ️ Comandos existentes continuarão funcionando normalmente")
+                return
+            else:
+                # Cooldown expirou, resetar proteção
+                RATE_LIMIT_PROTECTION['cooldown_until'] = None
+                RATE_LIMIT_PROTECTION['consecutive_failures'] = 0
+        
+        # Verificar se proteção está ativada
+        if RATE_LIMIT_PROTECTION['enabled']:
+            logger.warning("🛡️ Proteção contra rate limiting ativada - sincronização desabilitada")
+            logger.info("ℹ️ Comandos existentes continuarão funcionando normalmente")
+            return
+        
+        try:
+            synced = await self.tree.sync()
+            logger.info(f"✅ Sincronizados {len(synced)} comandos slash com sucesso!")
+            # Reset contador de falhas em caso de sucesso
+            RATE_LIMIT_PROTECTION['consecutive_failures'] = 0
+            
+        except discord.HTTPException as e:
+            if e.status == 429:  # Rate limited
+                retry_after = getattr(e, 'retry_after', 300)
+                RATE_LIMIT_PROTECTION['last_rate_limit'] = datetime.now()
+                RATE_LIMIT_PROTECTION['consecutive_failures'] += 1
+                
+                logger.error(f"❌ RATE LIMIT DETECTADO! Retry after: {retry_after:.1f} segundos")
+                logger.warning(f"⚠️ Falhas consecutivas: {RATE_LIMIT_PROTECTION['consecutive_failures']}")
+                
+                # Ativar proteção após 2 falhas consecutivas
+                if RATE_LIMIT_PROTECTION['consecutive_failures'] >= 2:
+                    RATE_LIMIT_PROTECTION['enabled'] = True
+                    RATE_LIMIT_PROTECTION['cooldown_until'] = datetime.now() + timedelta(hours=1)
+                    logger.error("🛡️ PROTEÇÃO ATIVADA - Sincronização desabilitada por 1 hora")
+                    logger.info("ℹ️ Bot continuará funcionando normalmente sem sincronizar comandos")
+                else:
+                    # Cooldown temporário
+                    RATE_LIMIT_PROTECTION['cooldown_until'] = datetime.now() + timedelta(seconds=retry_after)
+                    logger.warning(f"⏳ Cooldown temporário até {RATE_LIMIT_PROTECTION['cooldown_until']}")
+                    
+            else:
+                logger.error(f"❌ Erro HTTP ao sincronizar comandos: {e}")
+                
+        except Exception as e:
+            logger.error(f"❌ Erro inesperado ao sincronizar comandos: {e}")
     
     @tasks.loop(minutes=30)
     async def auto_update_ranks(self):
@@ -4849,6 +4907,109 @@ async def filter_command(interaction: discord.Interaction,
         await interaction.response.send_message(embed=embed)
     else:
         await interaction.response.send_message("❌ Erro ao aplicar filtro de áudio!", ephemeral=True)
+
+@bot.tree.command(name="ratelimit", description="[ADMIN] Gerenciar proteção contra rate limiting")
+@app_commands.describe(
+    action="Ação a executar (status/enable/disable/reset)"
+)
+async def ratelimit_command(interaction: discord.Interaction, action: str):
+    """Comando administrativo para gerenciar rate limiting"""
+    # Verificar se é administrador
+    if not interaction.user.guild_permissions.administrator:
+        await interaction.response.send_message("❌ Apenas administradores podem usar este comando!", ephemeral=True)
+        return
+    
+    global RATE_LIMIT_PROTECTION
+    
+    action = action.lower()
+    
+    if action == "status":
+        # Mostrar status atual
+        status_emoji = "🛡️" if RATE_LIMIT_PROTECTION['enabled'] else "✅"
+        status_text = "ATIVADA" if RATE_LIMIT_PROTECTION['enabled'] else "DESATIVADA"
+        
+        embed = discord.Embed(
+            title="📊 Status da Proteção Rate Limiting",
+            color=0xff0000 if RATE_LIMIT_PROTECTION['enabled'] else 0x00ff00
+        )
+        
+        embed.add_field(
+            name="Status",
+            value=f"{status_emoji} {status_text}",
+            inline=True
+        )
+        
+        embed.add_field(
+            name="Falhas Consecutivas",
+            value=str(RATE_LIMIT_PROTECTION['consecutive_failures']),
+            inline=True
+        )
+        
+        if RATE_LIMIT_PROTECTION['last_rate_limit']:
+            embed.add_field(
+                name="Último Rate Limit",
+                value=RATE_LIMIT_PROTECTION['last_rate_limit'].strftime("%d/%m/%Y %H:%M:%S"),
+                inline=True
+            )
+        
+        if RATE_LIMIT_PROTECTION['cooldown_until']:
+            embed.add_field(
+                name="Cooldown Até",
+                value=RATE_LIMIT_PROTECTION['cooldown_until'].strftime("%d/%m/%Y %H:%M:%S"),
+                inline=True
+            )
+        
+        await interaction.response.send_message(embed=embed)
+    
+    elif action == "enable":
+        # Ativar proteção manualmente
+        RATE_LIMIT_PROTECTION['enabled'] = True
+        RATE_LIMIT_PROTECTION['cooldown_until'] = datetime.now() + timedelta(hours=1)
+        
+        embed = discord.Embed(
+            title="🛡️ Proteção Ativada",
+            description="Proteção contra rate limiting ativada manualmente por 1 hora.",
+            color=0xff9500
+        )
+        await interaction.response.send_message(embed=embed)
+        logger.warning(f"🛡️ Proteção ativada manualmente por {interaction.user}")
+    
+    elif action == "disable":
+        # Desativar proteção
+        RATE_LIMIT_PROTECTION['enabled'] = False
+        RATE_LIMIT_PROTECTION['cooldown_until'] = None
+        RATE_LIMIT_PROTECTION['consecutive_failures'] = 0
+        
+        embed = discord.Embed(
+            title="✅ Proteção Desativada",
+            description="Proteção contra rate limiting desativada. Comandos serão sincronizados normalmente.",
+            color=0x00ff00
+        )
+        await interaction.response.send_message(embed=embed)
+        logger.info(f"✅ Proteção desativada manualmente por {interaction.user}")
+    
+    elif action == "reset":
+        # Resetar completamente
+        RATE_LIMIT_PROTECTION['enabled'] = False
+        RATE_LIMIT_PROTECTION['last_rate_limit'] = None
+        RATE_LIMIT_PROTECTION['consecutive_failures'] = 0
+        RATE_LIMIT_PROTECTION['cooldown_until'] = None
+        
+        embed = discord.Embed(
+            title="🔄 Proteção Resetada",
+            description="Proteção contra rate limiting foi completamente resetada.",
+            color=0x0099ff
+        )
+        await interaction.response.send_message(embed=embed)
+        logger.info(f"🔄 Proteção resetada por {interaction.user}")
+    
+    else:
+        embed = discord.Embed(
+            title="❌ Ação Inválida",
+            description="Ações disponíveis: `status`, `enable`, `disable`, `reset`",
+            color=0xff0000
+        )
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @bot.tree.command(name="voteskip", description="Votar para pular a música atual")
 async def voteskip_command(interaction: discord.Interaction):
