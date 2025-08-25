@@ -19,7 +19,7 @@ class Settings:
     POSTGRES_URL: Optional[str] = os.getenv('POSTGRES_URL')
     
     # API Keys
-    PUBG_API_KEY: Optional[str] = os.getenv('PUBG_API_KEY')
+    PUBG_API_KEY: Optional[str] = os.getenv('API_PUBG_API_KEY')
     MEDAL_API_KEY: Optional[str] = os.getenv('MEDAL_API_KEY')
     
     # Web Dashboard

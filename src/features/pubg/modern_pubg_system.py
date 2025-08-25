@@ -184,7 +184,7 @@ class ModernPUBGSystem:
     
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
-        self.api_key = self.config.get('pubg_api_key') or os.getenv('PUBG_API_KEY')
+        self.api_key = self.config.get('pubg_api_key') or os.getenv('API_PUBG_API_KEY')
         self.base_url = "https://api.pubg.com"
         
         # Inicializar sistemas core

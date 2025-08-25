@@ -20,9 +20,9 @@ class KeepAlive:
         # Configurar URL baseada no ambiente
         if url:
             self.url = url
-        elif os.getenv('RENDER'):
+        elif os.getenv('RENDER') and os.getenv('RENDER_EXTERNAL_URL'):
             # No Render, usar a URL do próprio serviço
-            render_service_url = os.getenv('RENDER_EXTERNAL_URL', 'https://hawk-esports-bot.onrender.com')
+            render_service_url = os.getenv('RENDER_EXTERNAL_URL')
             self.url = render_service_url
         else:
             # Ambiente local

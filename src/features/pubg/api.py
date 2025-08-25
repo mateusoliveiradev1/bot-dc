@@ -26,7 +26,7 @@ class PUBGIntegration:
     """Classe otimizada para integração com a API oficial do PUBG"""
     
     def __init__(self):
-        self.api_key = os.getenv('PUBG_API_KEY')
+        self.api_key = os.getenv('API_PUBG_API_KEY')
         self.base_url = "https://api.pubg.com"
         
         # Sistema de cache avançado
@@ -71,7 +71,7 @@ class PUBGIntegration:
         }
         
         if not self.api_key:
-            logger.error("PUBG_API_KEY não encontrada nas variáveis de ambiente!")
+            logger.error("API_PUBG_API_KEY não encontrada nas variáveis de ambiente!")
         else:
             logger.info("PUBG API otimizada inicializada com sucesso")
             logger.info(f"Rate limit: {self.rate_limit['max_requests']} req/{self.rate_limit['time_window']}s")

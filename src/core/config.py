@@ -43,7 +43,7 @@ DEFAULT_CONFIG = {
     'DB_MAX_OVERFLOW': int(os.getenv('DB_MAX_OVERFLOW', '10')),
     
     # PUBG API
-    'PUBG_API_KEY': os.getenv('PUBG_API_KEY', ''),
+    'PUBG_API_KEY': os.getenv('API_PUBG_API_KEY', ''),
     'PUBG_PLATFORM': os.getenv('PUBG_PLATFORM', 'steam'),
     'PUBG_REGION': os.getenv('PUBG_REGION', 'pc-na'),
     
@@ -155,7 +155,7 @@ class APIConfig(BaseSettings):
     """Configurações das APIs externas"""
     
     # PUBG API
-    pubg_api_key: Optional[SecretStr] = Field(None, env="PUBG_API_KEY")
+    pubg_api_key: Optional[SecretStr] = Field(None, env="API_PUBG_API_KEY")
     pubg_api_base_url: str = Field("https://api.pubg.com", env="PUBG_API_BASE_URL")
     pubg_rate_limit: int = Field(8, env="PUBG_RATE_LIMIT")  # requests per minute
     
