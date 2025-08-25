@@ -8,21 +8,5 @@ services:
     envVars:
       - key: DISCORD_TOKEN
         sync: false
-      - key: DATABASE_URL
-        sync: false
-      - key: SUPABASE_URL
-        sync: false
-      - key: SUPABASE_KEY
-        sync: false
-      - key: PUBG_API_KEY
-        sync: false
-      - key: MEDAL_API_KEY
-        sync: false
-      - key: BOT_PREFIX
-        value: "!"
-      - key: PYTHON_VERSION
-        value: "3.10.12"
-    disk:
-      name: hawk-bot-disk
-      mountPath: /opt/render/project/src/data
-      sizeGB: 1
+      - key: PORT
+        value: "10000"
